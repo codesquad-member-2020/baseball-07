@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B512460501800F80E1F /* GithubLoginViewController.swift */; };
 		30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F192460374100BB21F2 /* AppDelegate.swift */; };
 		30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F1B2460374100BB21F2 /* SceneDelegate.swift */; };
 		30DF9F1E2460374100BB21F2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F1D2460374100BB21F2 /* MainViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30CF5B512460501800F80E1F /* GithubLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginViewController.swift; sourceTree = "<group>"; };
 		30DF9F162460374100BB21F2 /* BaseballGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseballGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DF9F192460374100BB21F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30DF9F1B2460374100BB21F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30CF5B4E24604FA800F80E1F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				30DF9F1D2460374100BB21F2 /* MainViewController.swift */,
+				30CF5B512460501800F80E1F /* GithubLoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		30CF5B4F24604FC000F80E1F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				30DF9F272460374400BB21F2 /* Info.plist */,
+				30DF9F1B2460374100BB21F2 /* SceneDelegate.swift */,
+				30DF9F192460374100BB21F2 /* AppDelegate.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		30CF5B5024604FD400F80E1F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				30DF9F222460374400BB21F2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		30DF9F0D2460374000BB21F2 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +85,11 @@
 		30DF9F182460374100BB21F2 /* BaseballGame */ = {
 			isa = PBXGroup;
 			children = (
-				30DF9F192460374100BB21F2 /* AppDelegate.swift */,
-				30DF9F1B2460374100BB21F2 /* SceneDelegate.swift */,
-				30DF9F1D2460374100BB21F2 /* MainViewController.swift */,
+				30CF5B5024604FD400F80E1F /* Resources */,
+				30CF5B4F24604FC000F80E1F /* Utilities */,
+				30CF5B4E24604FA800F80E1F /* ViewControllers */,
 				30DF9F1F2460374100BB21F2 /* Main.storyboard */,
-				30DF9F222460374400BB21F2 /* Assets.xcassets */,
 				30DF9F242460374400BB21F2 /* LaunchScreen.storyboard */,
-				30DF9F272460374400BB21F2 /* Info.plist */,
 			);
 			path = BaseballGame;
 			sourceTree = "<group>";
@@ -139,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DF9F1E2460374100BB21F2 /* MainViewController.swift in Sources */,
+				30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */,
 				30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */,
 				30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */,
 			);
