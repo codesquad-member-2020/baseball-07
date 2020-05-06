@@ -8,11 +8,16 @@
 
 import UIKit
 
-class GameListTableDataSource: NSObject, UITableViewDataSource, ViewModelBinding {
-    typealias Key = GameList
+class GameListTableDataSource: NSObject, UITableViewDataSource {
+    
+    private var gameList: GameList
+    
+    init(gameList: GameList) {
+        self.gameList = gameList
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return gameList.games.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -20,7 +25,5 @@ class GameListTableDataSource: NSObject, UITableViewDataSource, ViewModelBinding
 
         return cell
     }
-    
-    
     
 }

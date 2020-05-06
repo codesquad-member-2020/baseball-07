@@ -10,5 +10,5 @@ import Foundation
 
 protocol ViewModelBinding {
     associatedtype Key
-    func perform(bind:@escaping (Key) -> ())
+    func performBind(changed handler:@escaping (Key) -> ())
 }
