@@ -25,7 +25,4 @@ class ParticipantLabel: UILabel {
         self.textColor = .black
     }
     
-    func set(text: String) {
-        self.text = text
-    }
 }

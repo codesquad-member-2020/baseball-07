@@ -8,7 +8,9 @@
 
 import UIKit
 
-class GameListTableDataSource: NSObject, UITableViewDataSource {
+class GameListTableDataSource: NSObject, UITableViewDataSource, ViewModelBinding {
+    typealias Key = GameList
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }

@@ -39,7 +39,4 @@ class GameListTableViewCell: UITableViewCell {
         constraints.forEach { $0.isActive = true }
     }
     
-    func set(gameRoomNumber number: Int) {
-        gameTitle.text! += String(number)
-    }
 }

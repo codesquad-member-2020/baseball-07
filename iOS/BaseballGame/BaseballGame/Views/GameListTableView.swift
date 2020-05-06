@@ -9,7 +9,7 @@
 import UIKit
 
 class GameListTableView: UITableView {
-
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: .insetGrouped)
         self.translatesAutoresizingMaskIntoConstraints = false
