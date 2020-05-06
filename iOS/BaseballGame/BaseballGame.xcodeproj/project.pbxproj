@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3007CEBA24627E9A008D67E8 /* GameListTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3007CEB924627E9A008D67E8 /* GameListTitle.swift */; };
-		301EE3CC2462501100774D71 /* GameListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CB2462501100774D71 /* GameListCollectionView.swift */; };
-		301EE3CE2462505600774D71 /* GameListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CD2462505600774D71 /* GameListCollectionViewCell.swift */; };
+		3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3007CEBC2462A3E3008D67E8 /* GameListTableDataSource.swift */; };
+		301EE3CC2462501100774D71 /* GameListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CB2462501100774D71 /* GameListTableView.swift */; };
+		301EE3CE2462505600774D71 /* GameListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CD2462505600774D71 /* GameListTableViewCell.swift */; };
 		301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CF246252ED00774D71 /* GameListCardView.swift */; };
 		301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3D12462544400774D71 /* ParticipantLabel.swift */; };
 		301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3D324625CEF00774D71 /* VersusLabel.swift */; };
@@ -25,8 +26,9 @@
 
 /* Begin PBXFileReference section */
 		3007CEB924627E9A008D67E8 /* GameListTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTitle.swift; sourceTree = "<group>"; };
-		301EE3CB2462501100774D71 /* GameListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCollectionView.swift; sourceTree = "<group>"; };
-		301EE3CD2462505600774D71 /* GameListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCollectionViewCell.swift; sourceTree = "<group>"; };
+		3007CEBC2462A3E3008D67E8 /* GameListTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTableDataSource.swift; sourceTree = "<group>"; };
+		301EE3CB2462501100774D71 /* GameListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTableView.swift; sourceTree = "<group>"; };
+		301EE3CD2462505600774D71 /* GameListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTableViewCell.swift; sourceTree = "<group>"; };
 		301EE3CF246252ED00774D71 /* GameListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCardView.swift; sourceTree = "<group>"; };
 		301EE3D12462544400774D71 /* ParticipantLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantLabel.swift; sourceTree = "<group>"; };
 		301EE3D324625CEF00774D71 /* VersusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusLabel.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3007CEBB24629CF5008D67E8 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				3007CEBC2462A3E3008D67E8 /* GameListTableDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
 		30CF5B4E24604FA800F80E1F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,8 +85,9 @@
 		30CF5B552460590100F80E1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				301EE3CB2462501100774D71 /* GameListCollectionView.swift */,
+				301EE3CB2462501100774D71 /* GameListTableView.swift */,
 				301EE3CF246252ED00774D71 /* GameListCardView.swift */,
+				3007CEBB24629CF5008D67E8 /* DataSources */,
 				30CF5B562460590500F80E1F /* Components */,
 			);
 			path = Views;
@@ -85,7 +96,7 @@
 		30CF5B562460590500F80E1F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				301EE3CD2462505600774D71 /* GameListCollectionViewCell.swift */,
+				301EE3CD2462505600774D71 /* GameListTableViewCell.swift */,
 				301EE3D324625CEF00774D71 /* VersusLabel.swift */,
 				301EE3D12462544400774D71 /* ParticipantLabel.swift */,
 				3007CEB924627E9A008D67E8 /* GameListTitle.swift */,
@@ -194,7 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				301EE3CE2462505600774D71 /* GameListCollectionViewCell.swift in Sources */,
+				301EE3CE2462505600774D71 /* GameListTableViewCell.swift in Sources */,
 				301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */,
 				301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */,
 				30DF9F1E2460374100BB21F2 /* ViewController.swift in Sources */,
@@ -202,8 +213,9 @@
 				3007CEBA24627E9A008D67E8 /* GameListTitle.swift in Sources */,
 				301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */,
 				30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */,
-				301EE3CC2462501100774D71 /* GameListCollectionView.swift in Sources */,
+				301EE3CC2462501100774D71 /* GameListTableView.swift in Sources */,
 				30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */,
+				3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */,
 				30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

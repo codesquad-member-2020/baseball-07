@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameListCollectionViewCell: UICollectionViewCell {
+class GameListTableViewCell: UITableViewCell {
     
     private let gameCard = GameListCardView()
     private let gameTitle: UILabel = {
@@ -19,9 +19,8 @@ class GameListCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureConstraints()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: "GameListTableViewCell")
     }
     
     required init?(coder: NSCoder) {

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class GameListCollectionView: UICollectionView {
+class GameListTableView: UITableView {
 
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
-        
+    override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: .insetGrouped)
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {

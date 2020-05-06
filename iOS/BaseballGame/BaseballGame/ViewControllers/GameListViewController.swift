@@ -11,11 +11,19 @@ import UIKit
 final class GameListViewController: UIViewController {
     
     private let gameListTitle = GameListTitle()
-    private let gameListCollectionView = GameListCollectionView()
+    private let gameListTableView = GameListTableView()
+    private let gameListDataSource = GameListTableDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubViews()
         configureConstraints()
+        gameListTableView.dataSource = gameListDataSource
+    }
+    
+    private func addSubViews() {
+        self.view.addSubview(gameListTitle)
+        self.view.addSubview(gameListTableView)
     }
     
     private func configureConstraints() {
@@ -23,9 +31,9 @@ final class GameListViewController: UIViewController {
             gameListTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             gameListTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30),
             
-            gameListCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            gameListCollectionView.topAnchor.constraint(equalTo: gameListTitle.bottomAnchor, constant: 20),
-            gameListCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20),
+            gameListTableView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            gameListTableView.topAnchor.constraint(equalTo: gameListTitle.bottomAnchor, constant: 20),
+            gameListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -20),
         ]
         constraints.forEach { $0.isActive = true }
     }
