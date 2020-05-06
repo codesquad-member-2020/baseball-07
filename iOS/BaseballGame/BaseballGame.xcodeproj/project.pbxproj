@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3007CEBA24627E9A008D67E8 /* GameListTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3007CEB924627E9A008D67E8 /* GameListTitle.swift */; };
 		301EE3CC2462501100774D71 /* GameListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CB2462501100774D71 /* GameListCollectionView.swift */; };
 		301EE3CE2462505600774D71 /* GameListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CD2462505600774D71 /* GameListCollectionViewCell.swift */; };
 		301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CF246252ED00774D71 /* GameListCardView.swift */; };
@@ -14,7 +15,6 @@
 		301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3D324625CEF00774D71 /* VersusLabel.swift */; };
 		30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B512460501800F80E1F /* GithubLoginViewController.swift */; };
 		30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B53246057D500F80E1F /* GameListViewController.swift */; };
-		30CF5B58246059F400F80E1F /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B57246059F400F80E1F /* GameListView.swift */; };
 		30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F192460374100BB21F2 /* AppDelegate.swift */; };
 		30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F1B2460374100BB21F2 /* SceneDelegate.swift */; };
 		30DF9F1E2460374100BB21F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F1D2460374100BB21F2 /* ViewController.swift */; };
@@ -24,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3007CEB924627E9A008D67E8 /* GameListTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTitle.swift; sourceTree = "<group>"; };
 		301EE3CB2462501100774D71 /* GameListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCollectionView.swift; sourceTree = "<group>"; };
 		301EE3CD2462505600774D71 /* GameListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCollectionViewCell.swift; sourceTree = "<group>"; };
 		301EE3CF246252ED00774D71 /* GameListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCardView.swift; sourceTree = "<group>"; };
@@ -31,7 +32,6 @@
 		301EE3D324625CEF00774D71 /* VersusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusLabel.swift; sourceTree = "<group>"; };
 		30CF5B512460501800F80E1F /* GithubLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginViewController.swift; sourceTree = "<group>"; };
 		30CF5B53246057D500F80E1F /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
-		30CF5B57246059F400F80E1F /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 		30DF9F162460374100BB21F2 /* BaseballGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseballGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DF9F192460374100BB21F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30DF9F1B2460374100BB21F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				301EE3CB2462501100774D71 /* GameListCollectionView.swift */,
+				301EE3CF246252ED00774D71 /* GameListCardView.swift */,
 				30CF5B562460590500F80E1F /* Components */,
-				30CF5B57246059F400F80E1F /* GameListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -86,9 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				301EE3CD2462505600774D71 /* GameListCollectionViewCell.swift */,
-				301EE3CF246252ED00774D71 /* GameListCardView.swift */,
 				301EE3D324625CEF00774D71 /* VersusLabel.swift */,
 				301EE3D12462544400774D71 /* ParticipantLabel.swift */,
+				3007CEB924627E9A008D67E8 /* GameListTitle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 				301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */,
 				30DF9F1E2460374100BB21F2 /* ViewController.swift in Sources */,
 				30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */,
-				30CF5B58246059F400F80E1F /* GameListView.swift in Sources */,
+				3007CEBA24627E9A008D67E8 /* GameListTitle.swift in Sources */,
 				301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */,
 				30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */,
 				301EE3CC2462501100774D71 /* GameListCollectionView.swift in Sources */,

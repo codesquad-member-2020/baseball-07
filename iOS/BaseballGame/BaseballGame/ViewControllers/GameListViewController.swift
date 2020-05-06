@@ -8,8 +8,10 @@
 
 import UIKit
 
-class GameListViewController: UIViewController {
+final class GameListViewController: UIViewController {
 
+    private let gameListCollectionView = GameListCollectionView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
