@@ -1,6 +1,13 @@
+CREATE TABLE user
+(
+    email varchar(256) primary key
+);
+
 CREATE TABLE game
 (
     id bigint auto_increment primary key,
+    home_team_user varchar(256) references user(email),
+    away_team_user varchar(256) references  user(email)
 );
 
 CREATE TABLE team
