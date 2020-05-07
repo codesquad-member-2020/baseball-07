@@ -12,13 +12,13 @@ final class GameListViewController: UIViewController {
     
     private let gameListTitle = GameListTitle()
     private let gameListTableView = GameListTableView()
-    private let gameListDataSource = GameListTableDataSource()
+//    private let gameListDataSource = GameListTableDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
         configureConstraints()
-        gameListTableView.dataSource = gameListDataSource
+//        gameListTableView.dataSource = gameListDataSource
     }
     
     private func addSubViews() {

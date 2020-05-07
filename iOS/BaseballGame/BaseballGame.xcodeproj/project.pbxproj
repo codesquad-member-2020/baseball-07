@@ -17,6 +17,8 @@
 		3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038B8D12462B9F400AE0BF8 /* ViewModelBinding.swift */; };
 		3038B8D52462D2AC00AE0BF8 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038B8D42462D2AC00AE0BF8 /* GameList.swift */; };
 		3051CE032462D62F004A8175 /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE022462D62F004A8175 /* GameListViewModel.swift */; };
+		3051CE062463AE49004A8175 /* NetworkDispacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE052463AE49004A8175 /* NetworkDispacher.swift */; };
+		3051CE082463AEB4004A8175 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE072463AEB4004A8175 /* Request.swift */; };
 		30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B512460501800F80E1F /* GithubLoginViewController.swift */; };
 		30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B53246057D500F80E1F /* GameListViewController.swift */; };
 		30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F192460374100BB21F2 /* AppDelegate.swift */; };
@@ -38,6 +40,8 @@
 		3038B8D12462B9F400AE0BF8 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		3038B8D42462D2AC00AE0BF8 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		3051CE022462D62F004A8175 /* GameListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
+		3051CE052463AE49004A8175 /* NetworkDispacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispacher.swift; sourceTree = "<group>"; };
+		3051CE072463AEB4004A8175 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		30CF5B512460501800F80E1F /* GithubLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginViewController.swift; sourceTree = "<group>"; };
 		30CF5B53246057D500F80E1F /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		30DF9F162460374100BB21F2 /* BaseballGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseballGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +88,15 @@
 				3007CEBC2462A3E3008D67E8 /* GameListTableDataSource.swift */,
 			);
 			path = DataSources;
+			sourceTree = "<group>";
+		};
+		3051CE042462E59C004A8175 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3051CE052463AE49004A8175 /* NetworkDispacher.swift */,
+				3051CE072463AEB4004A8175 /* Request.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		30CF5B4E24604FA800F80E1F /* ViewControllers */ = {
@@ -145,6 +158,7 @@
 		30DF9F182460374100BB21F2 /* BaseballGame */ = {
 			isa = PBXGroup;
 			children = (
+				3051CE042462E59C004A8175 /* Network */,
 				3007CEBB24629CF5008D67E8 /* ViewModels */,
 				3051CE012462D602004A8175 /* DataSources */,
 				3038B8D32462D19900AE0BF8 /* Models */,
@@ -233,8 +247,10 @@
 				301EE3CE2462505600774D71 /* GameListTableViewCell.swift in Sources */,
 				301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */,
 				301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */,
+				3051CE062463AE49004A8175 /* NetworkDispacher.swift in Sources */,
 				30DF9F1E2460374100BB21F2 /* ViewController.swift in Sources */,
 				30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */,
+				3051CE082463AEB4004A8175 /* Request.swift in Sources */,
 				3051CE032462D62F004A8175 /* GameListViewModel.swift in Sources */,
 				3038B8D52462D2AC00AE0BF8 /* GameList.swift in Sources */,
 				3007CEBA24627E9A008D67E8 /* GameListTitle.swift in Sources */,
