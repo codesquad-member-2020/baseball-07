@@ -19,6 +19,18 @@ final class GameListViewController: UIViewController {
         addSubViews()
         configureConstraints()
 //        gameListTableView.dataSource = gameListDataSource
+       
+        let gameListRequest = MockGameListRequest()
+        let mockDispatcher = NetworkDispatcher()
+        let task = NetworkTask(dispatcher: mockDispatcher)
+        task.perform(request: gameListRequest, dataType: GameList.self) { result in
+            switch result {
+            case .success(let decodedData):
+                print("뷰모델에 넣어주고 할일 해 ")
+            case .failure(let error):
+                print("error 알럿 띄워쥬기")
+            }
+        }
     }
     
     private func addSubViews() {
