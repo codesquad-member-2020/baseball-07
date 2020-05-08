@@ -21,8 +21,8 @@ class GameListTitle: UILabel {
     }
     
     private func configure() {
-        self.textColor = #colorLiteral(red: 0.03420990258, green: 0.3064265625, blue: 0.8684168782, alpha: 1)
-        self.font = UIFont.boldSystemFont(ofSize: 40)
+        self.textColor = #colorLiteral(red: 0.1489628325, green: 0.3782476166, blue: 0.8519194162, alpha: 1)
+        self.font = UIFont(name: "HelveticaNeue-Bold", size: 40)
         self.text = "GAME LIST"
     }
 }

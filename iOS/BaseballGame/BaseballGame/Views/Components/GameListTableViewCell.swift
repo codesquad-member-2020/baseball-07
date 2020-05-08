@@ -38,7 +38,7 @@ class GameListTableViewCell: UITableViewCell {
     
     private func configureConstraints() {
         let constraints = [
-            gameTitle.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 4),
+            gameTitle.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 20),
             gameTitle.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 4),
             
             gameCard.topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 4),

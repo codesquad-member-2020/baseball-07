@@ -27,7 +27,7 @@ class GameListCardView: UIView {
     }
     
     private func configureBackgroundColor() {
-        self.backgroundColor = #colorLiteral(red: 1, green: 0.730245653, blue: 0, alpha: 1)
+        self.backgroundColor = #colorLiteral(red: 1, green: 0.808927669, blue: 0.1954725032, alpha: 1)
     }
     
     private func addSubViews() {
