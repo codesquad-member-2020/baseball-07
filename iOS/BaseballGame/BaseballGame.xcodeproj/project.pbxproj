@@ -20,6 +20,7 @@
 		3051CE082463AEB4004A8175 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE072463AEB4004A8175 /* Request.swift */; };
 		3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE0C2463CB2F004A8175 /* NetworkTask.swift */; };
 		3051CE112463DAE7004A8175 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE102463DAE7004A8175 /* NetworkError.swift */; };
+		30780051246557ED00CD8FBB /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30780050246557ED00CD8FBB /* NetworkIndicator.swift */; };
 		30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B512460501800F80E1F /* GithubLoginViewController.swift */; };
 		30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B53246057D500F80E1F /* GameListViewController.swift */; };
 		30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F192460374100BB21F2 /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 		3051CE072463AEB4004A8175 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		3051CE0C2463CB2F004A8175 /* NetworkTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkTask.swift; path = BaseballGame/Models/NetworkTask.swift; sourceTree = SOURCE_ROOT; };
 		3051CE102463DAE7004A8175 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = BaseballGame/Models/NetworkError.swift; sourceTree = SOURCE_ROOT; };
+		30780050246557ED00CD8FBB /* NetworkIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicator.swift; sourceTree = "<group>"; };
 		30CF5B512460501800F80E1F /* GithubLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginViewController.swift; sourceTree = "<group>"; };
 		30CF5B53246057D500F80E1F /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		30DF9F162460374100BB21F2 /* BaseballGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseballGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 				301EE3D324625CEF00774D71 /* VersusLabel.swift */,
 				301EE3D12462544400774D71 /* ParticipantLabel.swift */,
 				3007CEB924627E9A008D67E8 /* GameListTitle.swift */,
+				30780050246557ED00CD8FBB /* NetworkIndicator.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */,
 				30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */,
 				301EE3CC2462501100774D71 /* GameListTableView.swift in Sources */,
+				30780051246557ED00CD8FBB /* NetworkIndicator.swift in Sources */,
 				3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */,
 				3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */,
 				30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */,
