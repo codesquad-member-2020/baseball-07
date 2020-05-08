@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ESD-9M-weV">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Github Login View Controller-->
+        <scene sceneID="0vo-1d-txZ">
+            <objects>
+                <viewController storyboardIdentifier="GithubLoginViewController" modalPresentationStyle="fullScreen" id="c52-Wt-onZ" customClass="GithubLoginViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xGv-KN-r2P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="V0f-gZ-9fC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HfU-H9-Dnl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033" y="48"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="p0Q-Jg-Vds">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="JNY-Oe-QbO" customClass="MainViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CfX-r2-dDW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2U8-2Y-HN4">
+                                <rect key="frame" x="83" y="324" width="248" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2U8-2Y-HN4" secondAttribute="height" multiplier="1:1" id="iHc-1W-z0t"/>
+                                </constraints>
+                                <state key="normal" image="99"/>
+                                <connections>
+                                    <action selector="goGithubLogin:" destination="JNY-Oe-QbO" eventType="touchUpInside" id="OWh-37-WHY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97082072500000005" green="0.71868944170000004" blue="0.19592404369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2U8-2Y-HN4" firstAttribute="centerX" secondItem="CfX-r2-dDW" secondAttribute="centerX" id="194-G8-MyP"/>
+                            <constraint firstItem="2U8-2Y-HN4" firstAttribute="width" secondItem="CfX-r2-dDW" secondAttribute="width" multiplier="0.6" id="VBH-0L-LRG"/>
+                            <constraint firstItem="2U8-2Y-HN4" firstAttribute="centerY" secondItem="CfX-r2-dDW" secondAttribute="centerY" id="lB3-ei-ghf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qj1-ur-olK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Hd-NY-SAB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292.75362318840581" y="47.544642857142854"/>
+        </scene>
+        <!--Game List View Controller-->
+        <scene sceneID="NE6-oY-dTm">
+            <objects>
+                <viewController storyboardIdentifier="GameListViewController" id="ESD-9M-weV" customClass="GameListViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TKY-kJ-IUr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="GameListTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2LY-EF-sho" customClass="GameListTableView" customModule="BaseballGame" customModuleProvider="target">
+                                <rect key="frame" x="20" y="195" width="374" height="649"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GameListTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameListTableViewCell" id="Blh-ss-RXt" customClass="GameListTableViewCell" customModule="BaseballGame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Blh-ss-RXt" id="seA-ua-Pal">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FDc-uG-whv"/>
+                    </view>
+                    <connections>
+                        <outlet property="gameListTableView" destination="2LY-EF-sho" id="ogf-xL-5Iu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uwE-1C-PI3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1779.7101449275365" y="47.544642857142854"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="99" width="73" height="73"/>
+    </resources>
+</document>
