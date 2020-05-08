@@ -21,10 +21,19 @@ class GameListTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: "GameListTableViewCell")
+        configure()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        configure()
+    }
+    
+    private func configure() {
+        self.contentView.addSubview(gameTitle)
+        self.contentView.addSubview(gameCard)
+        
+        configureConstraints()
     }
     
     private func configureConstraints() {
@@ -35,8 +44,14 @@ class GameListTableViewCell: UITableViewCell {
             gameCard.topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 4),
             gameCard.leadingAnchor.constraint(equalTo: gameTitle.leadingAnchor),
             gameCard.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -4),
+            gameCard.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
         ]
         constraints.forEach { $0.isActive = true }
     }
-    
+   
+    func configureCell(gameInfo: GameInfo) {
+        gameTitle.text! += "\(gameInfo.id)"
+        gameCard.setHomeTeam(gameInfo.home_team.name)
+        gameCard.setVisitingTeam(gameInfo.away_team.name)
+    }
 }

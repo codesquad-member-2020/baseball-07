@@ -19,6 +19,7 @@ class GameListCardView: UIView {
         configureBackgroundColor()
         addSubViews()
         configureConstraints()
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {
@@ -40,16 +41,27 @@ class GameListCardView: UIView {
             versus.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             versus.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
+            visitingTeam.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             visitingTeam.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            visitingTeam.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width/10),
-            visitingTeam.trailingAnchor.constraint(equalTo: versus.leadingAnchor, constant: self.frame.width/10),
-            
+            visitingTeam.trailingAnchor.constraint(equalTo: versus.leadingAnchor, constant: -10),
+            visitingTeam.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+
+            homeTeam.topAnchor.constraint(equalTo: visitingTeam.topAnchor),
             homeTeam.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            homeTeam.leadingAnchor.constraint(equalTo: versus.trailingAnchor, constant: self.frame.width/10),
-            homeTeam.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: self.frame.width/10),
+            homeTeam.leadingAnchor.constraint(equalTo: versus.trailingAnchor, constant: 10),
+            homeTeam.bottomAnchor.constraint(equalTo: visitingTeam.bottomAnchor),
         ]
         
         constraints.forEach { $0.isActive = true }
     }
+    
+    func setHomeTeam(_ text: String) {
+        homeTeam.text = text
+    }
+    
+    func setVisitingTeam(_ text: String) {
+        visitingTeam.text = text
+    }
+    
     
 }

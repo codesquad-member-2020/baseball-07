@@ -21,7 +21,7 @@ class VersusLabel: UILabel {
     }
     
     private func configure() {
-        self.font = UIFont.boldSystemFont(ofSize: 18)
+        self.font = UIFont.boldSystemFont(ofSize: 20)
         self.textColor = .darkGray
         self.text = "VS"
     }

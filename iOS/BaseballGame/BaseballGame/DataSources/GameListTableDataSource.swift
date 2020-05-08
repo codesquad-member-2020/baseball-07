@@ -10,19 +10,20 @@ import UIKit
 
 class GameListTableDataSource: NSObject, UITableViewDataSource {
     
-    private var gameList: GameList
+    private let gameListViewModel: GameListViewModel
     
-    init(gameList: GameList) {
-        self.gameList = gameList
+    init(gameListViewModel: GameListViewModel) {
+        self.gameListViewModel = gameListViewModel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gameList.games.count
+        return 3
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameListTableViewCell", for: indexPath) as! GameListTableViewCell
-
+       
         return cell
     }
     

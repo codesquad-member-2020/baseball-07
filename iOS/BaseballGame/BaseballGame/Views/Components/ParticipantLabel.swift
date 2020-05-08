@@ -21,7 +21,7 @@ class ParticipantLabel: UILabel {
     }
     
     private func configure() {
-        self.font = UIFont.boldSystemFont(ofSize: 20)
+        self.font = UIFont.boldSystemFont(ofSize: 25)
         self.textColor = .black
     }
     

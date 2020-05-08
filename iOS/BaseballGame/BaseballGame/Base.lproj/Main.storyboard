@@ -81,6 +81,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="FDc-uG-whv"/>
                     </view>
+                    <connections>
+                        <outlet property="gameListTableView" destination="2LY-EF-sho" id="ogf-xL-5Iu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwE-1C-PI3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
