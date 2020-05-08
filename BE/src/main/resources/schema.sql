@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS game;
+DROP TABLE IF EXISTS team;
+DROP TABLE IF EXISTS game_has_team;
+DROP TABLE IF EXISTS player;
+DROP TABLE IF EXISTS action;
+DROP TABLE IF EXISTS player_has_action;
+
 CREATE TABLE user
 (
     email varchar(256) primary key
@@ -5,9 +13,9 @@ CREATE TABLE user
 
 CREATE TABLE game
 (
-    id bigint auto_increment primary key,
-    home_team_user varchar(256) references user(email),
-    away_team_user varchar(256) references  user(email)
+    id             bigint auto_increment primary key,
+    home_team_user varchar(256) references user (email),
+    away_team_user varchar(256) references user (email)
 );
 
 CREATE TABLE team
