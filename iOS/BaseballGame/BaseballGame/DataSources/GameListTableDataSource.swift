@@ -9,21 +9,21 @@
 import UIKit
 
 class GameListTableDataSource: NSObject, UITableViewDataSource {
+        
+    private var gameList: GameList
     
-    private let gameListViewModel: GameListViewModel
-    
-    init(gameListViewModel: GameListViewModel) {
-        self.gameListViewModel = gameListViewModel
+    init(gameList: GameList) {
+        self.gameList = gameList
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return gameList.games.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameListTableViewCell", for: indexPath) as! GameListTableViewCell
-       
+       cell.configureCell(gameInfo: gameList.games[indexPath.row])
         return cell
     }
     

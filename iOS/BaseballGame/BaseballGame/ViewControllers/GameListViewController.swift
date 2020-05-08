@@ -12,7 +12,7 @@ final class GameListViewController: UIViewController {
     
     private let gameListTitle = GameListTitle()
     @IBOutlet var gameListTableView: GameListTableView!
-    private var gameListViewModel = GameListViewModel() { _ in }
+    private var gameListDataSource: GameListTableDataSource!
     
     private let gameListRequest = MockGameListRequest()
     private let dispatcher = NetworkDispatcher()
@@ -25,7 +25,6 @@ final class GameListViewController: UIViewController {
     }
     
     private func configure() {
-        gameListTableView.dataSource = self.gameListViewModel
         gameListTableView.register(GameListTableViewCell.self, forCellReuseIdentifier: "GameListTableViewCell")
         
         self.view.addSubview(gameListTitle)
@@ -55,7 +54,8 @@ final class GameListViewController: UIViewController {
             switch result {
             case .success(let decodedData):
                 DispatchQueue.main.async {
-                    self.gameListViewModel.set(gameList: decodedData as! GameList)
+                    self.gameListDataSource = GameListTableDataSource(gameList: decodedData as! GameList)
+                    self.gameListTableView.dataSource = self.gameListDataSource
                     self.gameListTableView.reloadData()
                 }
             case .failure(let error):
