@@ -18,25 +18,34 @@ final class GameListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        networkIndicator.startAnimating()
         requestData()
     }
     
     private func configure() {
-        let width = view.frame.width / 8
-        networkIndicator = NetworkIndicator(frame: CGRect(x: view.center.x - width / 2, y: view.center.y - width / 2, width: width, height: width), image: UIImage(named: "99.png"))
         gameListTableView.register(GameListTableViewCell.self, forCellReuseIdentifier: "GameListTableViewCell")
-        
+        configureIndicator()
+        configureSubviews()
+        configureConstraints()
+    }
+    
+    private func configureIndicator() {
+        let width = view.frame.width / 8
+        networkIndicator = NetworkIndicator(frame: CGRect(x: view.center.x - width / 2,
+                                                          y: view.center.y - width / 2,
+                                                          width: width,
+                                                          height: width),
+                                            image: UIImage(named: "99.png"))
+        networkIndicator.startAnimating()
+    }
+    
+    private func configureSubviews() {
         self.view.addSubview(gameListTitle)
         self.view.addSubview(gameListTableView)
         self.view.addSubview(networkIndicator)
-        
-        configureConstraints()
     }
     
     private func configureConstraints() {
         gameListTableView.translatesAutoresizingMaskIntoConstraints = false
-        
         let constraints = [
             gameListTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             gameListTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
@@ -59,7 +68,6 @@ final class GameListViewController: UIViewController {
                 self.networkIndicator.stopAnimating()
             }
         }
-        
     }
     
 }
