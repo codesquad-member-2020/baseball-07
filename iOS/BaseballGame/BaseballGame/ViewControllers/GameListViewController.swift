@@ -75,7 +75,7 @@ final class GameListViewController: UIViewController {
     }
 
     private func requestData() {
-        NetworkUseCase.requestFakeGameList { decodedData in
+        NetworkUseCase.requestGameListStub { decodedData in
             DispatchQueue.main.async {
                 self.gameListDataSource = GameListTableDataSource(gameList: decodedData as! GameList)
                 self.gameListTableView.dataSource = self.gameListDataSource
