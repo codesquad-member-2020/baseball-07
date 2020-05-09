@@ -16,7 +16,7 @@ struct NetworkUseCase {
             case .success(let decodedData):
                 handler(decodedData)
             case .failure(let error):
-                print("\(error) 알럿 띄워쥬기")
+                NotificationCenter.default.post(name: .networkError, object: nil, userInfo: ["error":error])
             }
         }
     }

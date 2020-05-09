@@ -26,6 +26,7 @@ final class GameListViewController: UIViewController {
         configureIndicator()
         configureSubviews()
         configureConstraints()
+        configureObservers()
     }
     
     private func configureIndicator() {
@@ -59,6 +60,20 @@ final class GameListViewController: UIViewController {
         constraints.forEach { $0.isActive = true }
     }
     
+    private func configureObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showErrorAlert(_:)), name: .networkError, object: nil)
+    }
+    
+    @objc private func showErrorAlert(_ notification: Notification) {
+        guard let error = notification.userInfo?["error"] as? Error else { return }
+        let alert = AppDelegate.errorAlert
+        alert.set(message: error as! NetworkError)
+        alert.makeDefaultAction {
+            self.requestData()
+        }
+        present(alert, animated: true)
+    }
+
     private func requestData() {
         NetworkUseCase.requestFakeGameList { decodedData in
             DispatchQueue.main.async {
