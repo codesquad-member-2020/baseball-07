@@ -20,6 +20,8 @@
 		3051CE082463AEB4004A8175 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE072463AEB4004A8175 /* Request.swift */; };
 		3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE0C2463CB2F004A8175 /* NetworkTask.swift */; };
 		3051CE112463DAE7004A8175 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE102463DAE7004A8175 /* NetworkError.swift */; };
+		30780051246557ED00CD8FBB /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30780050246557ED00CD8FBB /* NetworkIndicator.swift */; };
+		309014C5246681FD003786BE /* ExtendedNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309014C4246681FD003786BE /* ExtendedNotificationName.swift */; };
 		30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B512460501800F80E1F /* GithubLoginViewController.swift */; };
 		30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B53246057D500F80E1F /* GameListViewController.swift */; };
 		30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F192460374100BB21F2 /* AppDelegate.swift */; };
@@ -28,6 +30,8 @@
 		30DF9F212460374100BB21F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F1F2460374100BB21F2 /* Main.storyboard */; };
 		30DF9F232460374400BB21F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F222460374400BB21F2 /* Assets.xcassets */; };
 		30DF9F262460374400BB21F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F242460374400BB21F2 /* LaunchScreen.storyboard */; };
+		30F02BD52466793C00F3A066 /* NetworkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD42466793C00F3A066 /* NetworkUseCase.swift */; };
+		30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD624667E6500F3A066 /* ErrorAlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +47,9 @@
 		3051CE052463AE49004A8175 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		3051CE072463AEB4004A8175 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		3051CE0C2463CB2F004A8175 /* NetworkTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkTask.swift; path = BaseballGame/Models/NetworkTask.swift; sourceTree = SOURCE_ROOT; };
-		3051CE102463DAE7004A8175 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = BaseballGame/Models/NetworkError.swift; sourceTree = SOURCE_ROOT; };
+		3051CE102463DAE7004A8175 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = BaseballGame/Utilities/ErrorHandling/NetworkError.swift; sourceTree = SOURCE_ROOT; };
+		30780050246557ED00CD8FBB /* NetworkIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicator.swift; sourceTree = "<group>"; };
+		309014C4246681FD003786BE /* ExtendedNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedNotificationName.swift; sourceTree = "<group>"; };
 		30CF5B512460501800F80E1F /* GithubLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginViewController.swift; sourceTree = "<group>"; };
 		30CF5B53246057D500F80E1F /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		30DF9F162460374100BB21F2 /* BaseballGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseballGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +60,8 @@
 		30DF9F222460374400BB21F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30DF9F252460374400BB21F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30DF9F272460374400BB21F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30F02BD42466793C00F3A066 /* NetworkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUseCase.swift; sourceTree = "<group>"; };
+		30F02BD624667E6500F3A066 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +105,7 @@
 				3051CE052463AE49004A8175 /* NetworkDispatcher.swift */,
 				3051CE072463AEB4004A8175 /* Request.swift */,
 				3051CE0C2463CB2F004A8175 /* NetworkTask.swift */,
-				3051CE102463DAE7004A8175 /* NetworkError.swift */,
+				30F02BD42466793C00F3A066 /* NetworkUseCase.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -105,9 +113,18 @@
 		3051CE0B2463CAF4004A8175 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				30F02BD824667EAE00F3A066 /* ErrorHandling */,
 				3051CE042462E59C004A8175 /* Network */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		309014C3246681EA003786BE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				309014C4246681FD003786BE /* ExtendedNotificationName.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		30CF5B4E24604FA800F80E1F /* ViewControllers */ = {
@@ -146,6 +163,7 @@
 				301EE3D324625CEF00774D71 /* VersusLabel.swift */,
 				301EE3D12462544400774D71 /* ParticipantLabel.swift */,
 				3007CEB924627E9A008D67E8 /* GameListTitle.swift */,
+				30780050246557ED00CD8FBB /* NetworkIndicator.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -169,6 +187,7 @@
 		30DF9F182460374100BB21F2 /* BaseballGame */ = {
 			isa = PBXGroup;
 			children = (
+				309014C3246681EA003786BE /* Extensions */,
 				3051CE0B2463CAF4004A8175 /* Utilities */,
 				3007CEBB24629CF5008D67E8 /* ViewModels */,
 				3051CE012462D602004A8175 /* DataSources */,
@@ -182,6 +201,15 @@
 				30DF9F242460374400BB21F2 /* LaunchScreen.storyboard */,
 			);
 			path = BaseballGame;
+			sourceTree = "<group>";
+		};
+		30F02BD824667EAE00F3A066 /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				3051CE102463DAE7004A8175 /* NetworkError.swift */,
+				30F02BD624667E6500F3A066 /* ErrorAlertController.swift */,
+			);
+			path = ErrorHandling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,14 +293,18 @@
 				3038B8D52462D2AC00AE0BF8 /* GameList.swift in Sources */,
 				3007CEBA24627E9A008D67E8 /* GameListTitle.swift in Sources */,
 				301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */,
+				309014C5246681FD003786BE /* ExtendedNotificationName.swift in Sources */,
+				30F02BD52466793C00F3A066 /* NetworkUseCase.swift in Sources */,
 				30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */,
 				301EE3CC2462501100774D71 /* GameListTableView.swift in Sources */,
+				30780051246557ED00CD8FBB /* NetworkIndicator.swift in Sources */,
 				3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */,
 				3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */,
 				30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */,
 				3051CE112463DAE7004A8175 /* NetworkError.swift in Sources */,
 				3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */,
 				30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */,
+				30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

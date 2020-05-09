@@ -28,3 +28,7 @@ extension Request {
 final class MockGameListRequest: Request {
     var path: String = "https://a2ce38a7-8dc6-4960-847e-fd40393fe743.mock.pstmn.io/games"
 }
+
+final class MockGameRoomEmptyRequest: Request {
+    var path: String = "http://www.mocky.io/v2/5eb66cd13100005700699a06"
+}

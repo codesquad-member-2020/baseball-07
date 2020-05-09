@@ -22,3 +22,10 @@ struct TeamInfo: Codable {
     var id: Int
     var name: String
 }
+
+struct GameRoomEmpty: Codable {
+    var homeTeamEmpty: Bool
+    var homeTeam: String
+    var awayTeamEmpty: Bool
+    var awayTeam: String
+}
