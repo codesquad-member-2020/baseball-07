@@ -13,13 +13,8 @@ final class GameListViewController: UIViewController {
     private let gameListTitle = GameListTitle()
     @IBOutlet var gameListTableView: GameListTableView!
     private var gameListDataSource: GameListTableDataSource!
-    
-    private let gameListRequest = MockGameListRequest()
-    private let dispatcher = NetworkDispatcher()
-    private lazy var task = NetworkTask(dispatcher: dispatcher)
-    
     private var networkIndicator: NetworkIndicator!
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -29,8 +24,8 @@ final class GameListViewController: UIViewController {
     
     private func configure() {
         let width = view.frame.width / 8
+        networkIndicator = NetworkIndicator(frame: CGRect(x: view.center.x - width / 2, y: view.center.y - width / 2, width: width, height: width), image: UIImage(named: "99.png"))
         gameListTableView.register(GameListTableViewCell.self, forCellReuseIdentifier: "GameListTableViewCell")
-        networkIndicator = NetworkIndicator(frame: CGRect(x: view.center.x - width / 2, y: view.center.y - width / 2, width: width, height: width ), image: UIImage(named: "99.png"))
         
         self.view.addSubview(gameListTitle)
         self.view.addSubview(gameListTableView)
@@ -56,19 +51,15 @@ final class GameListViewController: UIViewController {
     }
     
     private func requestData() {
-        task.perform(request: gameListRequest, dataType: GameList.self) { result in
-            switch result {
-            case .success(let decodedData):
-                DispatchQueue.main.async {
-                    self.gameListDataSource = GameListTableDataSource(gameList: decodedData as! GameList)
-                    self.gameListTableView.dataSource = self.gameListDataSource
-                    self.gameListTableView.reloadData()
-                    self.networkIndicator.stopAnimating()
-                }
-            case .failure(let error):
-                print("\(error) 알럿 띄워쥬기")
+        NetworkUseCase.requestFakeGameList { decodedData in
+            DispatchQueue.main.async {
+                self.gameListDataSource = GameListTableDataSource(gameList: decodedData as! GameList)
+                self.gameListTableView.dataSource = self.gameListDataSource
+                self.gameListTableView.reloadData()
+                self.networkIndicator.stopAnimating()
             }
         }
+        
     }
     
 }
