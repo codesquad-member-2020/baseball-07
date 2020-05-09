@@ -9,11 +9,11 @@
 import UIKit
 
 class GameHeaderView: UIView {
-    let visitingTeamName = GameListTitle()
-    let visitingTeamScore = GameListTitle()
+    let visitingTeamName = GameListTitleLabel()
+    let visitingTeamScore = GameListTitleLabel()
     
-    let homeTeamName = GameListTitle()
-    let homeTeamScore = GameListTitle()
+    let homeTeamName = GameListTitleLabel()
+    let homeTeamScore = GameListTitleLabel()
     
     let versus = VersusLabel()
     let inningInfo = UILabel()

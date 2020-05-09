@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameListTitle: UILabel {
+class GameListTitleLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

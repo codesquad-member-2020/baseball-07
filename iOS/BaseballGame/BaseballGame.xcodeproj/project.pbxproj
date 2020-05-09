@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3007CEBA24627E9A008D67E8 /* GameListTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3007CEB924627E9A008D67E8 /* GameListTitle.swift */; };
+		3007CEBA24627E9A008D67E8 /* GameListTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3007CEB924627E9A008D67E8 /* GameListTitleLabel.swift */; };
 		3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3007CEBC2462A3E3008D67E8 /* GameListTableDataSource.swift */; };
 		301EE3CC2462501100774D71 /* GameListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CB2462501100774D71 /* GameListTableView.swift */; };
 		301EE3CE2462505600774D71 /* GameListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CD2462505600774D71 /* GameListTableViewCell.swift */; };
@@ -38,7 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3007CEB924627E9A008D67E8 /* GameListTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTitle.swift; sourceTree = "<group>"; };
+		3007CEB924627E9A008D67E8 /* GameListTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTitleLabel.swift; sourceTree = "<group>"; };
 		3007CEBC2462A3E3008D67E8 /* GameListTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTableDataSource.swift; sourceTree = "<group>"; };
 		301EE3CB2462501100774D71 /* GameListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTableView.swift; sourceTree = "<group>"; };
 		301EE3CD2462505600774D71 /* GameListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +95,26 @@
 				3038B8D42462D2AC00AE0BF8 /* GameList.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3048B81A2466E55300800C52 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				301EE3D324625CEF00774D71 /* VersusLabel.swift */,
+				301EE3D12462544400774D71 /* ParticipantLabel.swift */,
+				3007CEB924627E9A008D67E8 /* GameListTitleLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		3048B81B2466E57000800C52 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				301EE3CF246252ED00774D71 /* GameListCardView.swift */,
+				301EE3CB2462501100774D71 /* GameListTableView.swift */,
+				309014CA2466C7CC003786BE /* GameHeaderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3051CE012462D602004A8175 /* DataSources */ = {
@@ -157,8 +177,7 @@
 		30CF5B552460590100F80E1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				301EE3CB2462501100774D71 /* GameListTableView.swift */,
-				301EE3CF246252ED00774D71 /* GameListCardView.swift */,
+				3048B81B2466E57000800C52 /* Views */,
 				30CF5B562460590500F80E1F /* Components */,
 			);
 			path = Views;
@@ -167,12 +186,9 @@
 		30CF5B562460590500F80E1F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3048B81A2466E55300800C52 /* Labels */,
 				301EE3CD2462505600774D71 /* GameListTableViewCell.swift */,
-				301EE3D324625CEF00774D71 /* VersusLabel.swift */,
-				301EE3D12462544400774D71 /* ParticipantLabel.swift */,
-				3007CEB924627E9A008D67E8 /* GameListTitle.swift */,
 				30780050246557ED00CD8FBB /* NetworkIndicator.swift */,
-				309014CA2466C7CC003786BE /* GameHeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -300,7 +316,7 @@
 				30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */,
 				3051CE082463AEB4004A8175 /* Request.swift in Sources */,
 				3038B8D52462D2AC00AE0BF8 /* GameList.swift in Sources */,
-				3007CEBA24627E9A008D67E8 /* GameListTitle.swift in Sources */,
+				3007CEBA24627E9A008D67E8 /* GameListTitleLabel.swift in Sources */,
 				301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */,
 				309014C5246681FD003786BE /* ExtendedNotificationName.swift in Sources */,
 				30F02BD52466793C00F3A066 /* NetworkUseCase.swift in Sources */,
