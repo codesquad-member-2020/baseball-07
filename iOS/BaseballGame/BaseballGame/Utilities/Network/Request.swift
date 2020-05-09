@@ -30,5 +30,5 @@ final class MockGameListRequest: Request {
 }
 
 final class MockGameRoomEmptyRequest: Request {
-    var path: String = ""
+    var path: String = "http://www.mocky.io/v2/5eb66cd13100005700699a06"
 }

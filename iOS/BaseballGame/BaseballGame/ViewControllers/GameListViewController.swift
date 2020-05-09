@@ -22,6 +22,7 @@ final class GameListViewController: UIViewController {
     }
     
     private func configure() {
+        gameListTableView.delegate = self
         gameListTableView.register(GameListTableViewCell.self, forCellReuseIdentifier: "GameListTableViewCell")
         configureIndicator()
         configureSubviews()
@@ -73,7 +74,7 @@ final class GameListViewController: UIViewController {
         }
         present(alert, animated: true)
     }
-
+    
     private func requestData() {
         NetworkUseCase.requestGameListStub { decodedData in
             DispatchQueue.main.async {
@@ -89,6 +90,51 @@ final class GameListViewController: UIViewController {
 
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //server에 해당 방 비었는지 요청 후 true / false 로 받아 true일때 알럿 띄워 홈/원정 선택 후 방 입장..
+        NetworkUseCase.requestGameRoomEmptyInfoStub { decodedData in
+            DispatchQueue.main.async {
+                self.judge(decodedData as! GameRoomEmpty)
+            }
+        }
     }
+    
+    private func judge(_ gameRoomEmpty: GameRoomEmpty) {
+        if !gameRoomEmpty.homeTeamEmpty, !gameRoomEmpty.awayTeamEmpty {
+            roomFullAlert()
+        }else {
+            makeActionSheet(homeTeam: gameRoomEmpty.homeTeamEmpty ? gameRoomEmpty.homeTeam : nil, visitingTeam: gameRoomEmpty.awayTeamEmpty ? gameRoomEmpty.awayTeam : nil)
+        }
+    }
+    
+    private func roomFullAlert() {
+        let alert = UIAlertController(title: "알림", message: "방이 꽉찼어요", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { _ in })
+        present(alert, animated: true)
+    }
+    
+    private func makeActionSheet(homeTeam hName: String?, visitingTeam vName: String?) {
+        let actionSheet = UIAlertController(title: "입장", message: "팀을 선택해주세요", preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { _ in }
+        
+        if let homeTeamName = hName {
+            let homeTeam = UIAlertAction(title: homeTeamName, style: .default) { _ in
+                self.moveToNext(teamName: homeTeamName)
+            }
+            actionSheet.addAction(homeTeam)
+        }
+        
+        if let visitingTeamName = vName {
+            let visitingTeam = UIAlertAction(title: visitingTeamName, style: .default) { _ in
+                self.moveToNext(teamName: visitingTeamName)
+            }
+            actionSheet.addAction(visitingTeam)
+        }
+        
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true)
+    }
+    
+    private func moveToNext(teamName: String) {
+        
+    }
+    
 }
