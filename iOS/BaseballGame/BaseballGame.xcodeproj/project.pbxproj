@@ -30,6 +30,7 @@
 		30DF9F232460374400BB21F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F222460374400BB21F2 /* Assets.xcassets */; };
 		30DF9F262460374400BB21F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F242460374400BB21F2 /* LaunchScreen.storyboard */; };
 		30F02BD52466793C00F3A066 /* NetworkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD42466793C00F3A066 /* NetworkUseCase.swift */; };
+		30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD624667E6500F3A066 /* ErrorAlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +46,7 @@
 		3051CE052463AE49004A8175 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		3051CE072463AEB4004A8175 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		3051CE0C2463CB2F004A8175 /* NetworkTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkTask.swift; path = BaseballGame/Models/NetworkTask.swift; sourceTree = SOURCE_ROOT; };
-		3051CE102463DAE7004A8175 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = BaseballGame/Models/NetworkError.swift; sourceTree = SOURCE_ROOT; };
+		3051CE102463DAE7004A8175 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = BaseballGame/Utilities/ErrorHandling/NetworkError.swift; sourceTree = SOURCE_ROOT; };
 		30780050246557ED00CD8FBB /* NetworkIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicator.swift; sourceTree = "<group>"; };
 		30CF5B512460501800F80E1F /* GithubLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginViewController.swift; sourceTree = "<group>"; };
 		30CF5B53246057D500F80E1F /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		30DF9F252460374400BB21F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30DF9F272460374400BB21F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30F02BD42466793C00F3A066 /* NetworkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUseCase.swift; sourceTree = "<group>"; };
+		30F02BD624667E6500F3A066 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +103,6 @@
 				3051CE052463AE49004A8175 /* NetworkDispatcher.swift */,
 				3051CE072463AEB4004A8175 /* Request.swift */,
 				3051CE0C2463CB2F004A8175 /* NetworkTask.swift */,
-				3051CE102463DAE7004A8175 /* NetworkError.swift */,
 				30F02BD42466793C00F3A066 /* NetworkUseCase.swift */,
 			);
 			path = Network;
@@ -110,6 +111,7 @@
 		3051CE0B2463CAF4004A8175 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				30F02BD824667EAE00F3A066 /* ErrorHandling */,
 				3051CE042462E59C004A8175 /* Network */,
 			);
 			path = Utilities;
@@ -188,6 +190,15 @@
 				30DF9F242460374400BB21F2 /* LaunchScreen.storyboard */,
 			);
 			path = BaseballGame;
+			sourceTree = "<group>";
+		};
+		30F02BD824667EAE00F3A066 /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				3051CE102463DAE7004A8175 /* NetworkError.swift */,
+				30F02BD624667E6500F3A066 /* ErrorAlertController.swift */,
+			);
+			path = ErrorHandling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +292,7 @@
 				3051CE112463DAE7004A8175 /* NetworkError.swift in Sources */,
 				3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */,
 				30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */,
+				30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
