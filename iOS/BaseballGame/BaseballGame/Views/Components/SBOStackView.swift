@@ -45,42 +45,21 @@ class SBOStackView: UIStackView {
         return circle
     }()
     
-    lazy private var strikeCircleStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .center
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.spacing = 2
-        for _ in 0...3 {
-            stackView.addArrangedSubview(strikeCircle)
-            strikeCircle.isHidden = true
-        }
+    lazy private var strikeCircleStack: CircleStackView = {
+        let stackView = CircleStackView()
+        stackView.add(circleView: strikeCircle)
         return stackView
     }()
     
-    lazy private var ballCircleStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .center
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.spacing = 2
-        for _ in 0...3 {
-            stackView.addArrangedSubview(ballCircle)
-            ballCircle.isHidden = true
-        }
+    lazy private var ballCircleStack: CircleStackView = {
+        let stackView = CircleStackView()
+        stackView.add(circleView: ballCircle)
         return stackView
     }()
     
-    lazy private var outCircleStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .center
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.spacing = 2
-        for _ in 0...3 {
-            stackView.addArrangedSubview(outCircle)
-            outCircle.isHidden = true
-        }
+    lazy private var outCircleStack: CircleStackView = {
+        let stackView = CircleStackView()
+        stackView.add(circleView: outCircle)
         return stackView
     }()
     
