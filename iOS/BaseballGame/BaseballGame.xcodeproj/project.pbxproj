@@ -38,6 +38,7 @@
 		30DF9F262460374400BB21F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F242460374400BB21F2 /* LaunchScreen.storyboard */; };
 		30F02BD52466793C00F3A066 /* NetworkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD42466793C00F3A066 /* NetworkUseCase.swift */; };
 		30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD624667E6500F3A066 /* ErrorAlertController.swift */; };
+		30FE85322467C9BD004CDE13 /* LabelCircleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		30DF9F272460374400BB21F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30F02BD42466793C00F3A066 /* NetworkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUseCase.swift; sourceTree = "<group>"; };
 		30F02BD624667E6500F3A066 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
+		30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCircleStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,11 +194,10 @@
 		30CF5B562460590500F80E1F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				30FE85302467C9A2004CDE13 /* StackViews */,
 				3048B81A2466E55300800C52 /* Labels */,
 				301EE3CD2462505600774D71 /* GameListTableViewCell.swift */,
-				30310AEB2467C5E30045402A /* CircleStackView.swift */,
 				30780050246557ED00CD8FBB /* NetworkIndicator.swift */,
-				30310AE72467BEC00045402A /* SBOStackView.swift */,
 				30310AE92467BF0E0045402A /* CircleView.swift */,
 			);
 			path = Components;
@@ -244,6 +245,16 @@
 				30F02BD624667E6500F3A066 /* ErrorAlertController.swift */,
 			);
 			path = ErrorHandling;
+			sourceTree = "<group>";
+		};
+		30FE85302467C9A2004CDE13 /* StackViews */ = {
+			isa = PBXGroup;
+			children = (
+				30310AEB2467C5E30045402A /* CircleStackView.swift */,
+				30310AE72467BEC00045402A /* SBOStackView.swift */,
+				30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */,
+			);
+			path = StackViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +351,7 @@
 				309014C72466C392003786BE /* PlayViewController.swift in Sources */,
 				3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */,
 				30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */,
+				30FE85322467C9BD004CDE13 /* LabelCircleStackView.swift in Sources */,
 				309014C92466C3AA003786BE /* ScoresViewController.swift in Sources */,
 				3051CE112463DAE7004A8175 /* NetworkError.swift in Sources */,
 				3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */,
