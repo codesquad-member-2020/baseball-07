@@ -14,6 +14,8 @@
 		301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CF246252ED00774D71 /* GameListCardView.swift */; };
 		301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3D12462544400774D71 /* ParticipantLabel.swift */; };
 		301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3D324625CEF00774D71 /* VersusLabel.swift */; };
+		30310AE82467BEC00045402A /* SBOStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30310AE72467BEC00045402A /* SBOStackView.swift */; };
+		30310AEA2467BF0E0045402A /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30310AE92467BF0E0045402A /* CircleView.swift */; };
 		3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038B8D12462B9F400AE0BF8 /* ViewModelBinding.swift */; };
 		3038B8D52462D2AC00AE0BF8 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038B8D42462D2AC00AE0BF8 /* GameList.swift */; };
 		3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE052463AE49004A8175 /* NetworkDispatcher.swift */; };
@@ -45,6 +47,8 @@
 		301EE3CF246252ED00774D71 /* GameListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCardView.swift; sourceTree = "<group>"; };
 		301EE3D12462544400774D71 /* ParticipantLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantLabel.swift; sourceTree = "<group>"; };
 		301EE3D324625CEF00774D71 /* VersusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusLabel.swift; sourceTree = "<group>"; };
+		30310AE72467BEC00045402A /* SBOStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBOStackView.swift; sourceTree = "<group>"; };
+		30310AE92467BF0E0045402A /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		3038B8D12462B9F400AE0BF8 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		3038B8D42462D2AC00AE0BF8 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		3051CE052463AE49004A8175 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				3048B81A2466E55300800C52 /* Labels */,
 				301EE3CD2462505600774D71 /* GameListTableViewCell.swift */,
 				30780050246557ED00CD8FBB /* NetworkIndicator.swift */,
+				30310AE72467BEC00045402A /* SBOStackView.swift */,
+				30310AE92467BF0E0045402A /* CircleView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */,
 				301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */,
 				3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */,
+				30310AE82467BEC00045402A /* SBOStackView.swift in Sources */,
 				30DF9F1E2460374100BB21F2 /* ViewController.swift in Sources */,
 				30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */,
 				3051CE082463AEB4004A8175 /* Request.swift in Sources */,
@@ -325,6 +332,7 @@
 				30780051246557ED00CD8FBB /* NetworkIndicator.swift in Sources */,
 				309014CB2466C7CC003786BE /* GameHeaderView.swift in Sources */,
 				3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */,
+				30310AEA2467BF0E0045402A /* CircleView.swift in Sources */,
 				309014C72466C392003786BE /* PlayViewController.swift in Sources */,
 				3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */,
 				30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */,
