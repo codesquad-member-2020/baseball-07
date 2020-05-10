@@ -14,7 +14,6 @@
 		301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3CF246252ED00774D71 /* GameListCardView.swift */; };
 		301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3D12462544400774D71 /* ParticipantLabel.swift */; };
 		301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3D324625CEF00774D71 /* VersusLabel.swift */; };
-		30310AE82467BEC00045402A /* SBOStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30310AE72467BEC00045402A /* SBOStackView.swift */; };
 		30310AEA2467BF0E0045402A /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30310AE92467BF0E0045402A /* CircleView.swift */; };
 		30310AEC2467C5E30045402A /* CircleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30310AEB2467C5E30045402A /* CircleStackView.swift */; };
 		3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038B8D12462B9F400AE0BF8 /* ViewModelBinding.swift */; };
@@ -38,7 +37,6 @@
 		30DF9F262460374400BB21F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F242460374400BB21F2 /* LaunchScreen.storyboard */; };
 		30F02BD52466793C00F3A066 /* NetworkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD42466793C00F3A066 /* NetworkUseCase.swift */; };
 		30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD624667E6500F3A066 /* ErrorAlertController.swift */; };
-		30FE85322467C9BD004CDE13 /* LabelCircleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */; };
 		30FE85342467D641004CDE13 /* GameFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85332467D641004CDE13 /* GameFieldView.swift */; };
 		30FE85362467DD4A004CDE13 /* SBOView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85352467DD4A004CDE13 /* SBOView.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +49,6 @@
 		301EE3CF246252ED00774D71 /* GameListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCardView.swift; sourceTree = "<group>"; };
 		301EE3D12462544400774D71 /* ParticipantLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantLabel.swift; sourceTree = "<group>"; };
 		301EE3D324625CEF00774D71 /* VersusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusLabel.swift; sourceTree = "<group>"; };
-		30310AE72467BEC00045402A /* SBOStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBOStackView.swift; sourceTree = "<group>"; };
 		30310AE92467BF0E0045402A /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		30310AEB2467C5E30045402A /* CircleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleStackView.swift; sourceTree = "<group>"; };
 		3038B8D12462B9F400AE0BF8 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
@@ -77,7 +74,6 @@
 		30DF9F272460374400BB21F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30F02BD42466793C00F3A066 /* NetworkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUseCase.swift; sourceTree = "<group>"; };
 		30F02BD624667E6500F3A066 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
-		30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCircleStackView.swift; sourceTree = "<group>"; };
 		30FE85332467D641004CDE13 /* GameFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFieldView.swift; sourceTree = "<group>"; };
 		30FE85352467DD4A004CDE13 /* SBOView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBOView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,8 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				30310AEB2467C5E30045402A /* CircleStackView.swift */,
-				30310AE72467BEC00045402A /* SBOStackView.swift */,
-				30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */,
 			);
 			path = StackViews;
 			sourceTree = "<group>";
@@ -339,7 +333,6 @@
 				301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */,
 				30310AEC2467C5E30045402A /* CircleStackView.swift in Sources */,
 				3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */,
-				30310AE82467BEC00045402A /* SBOStackView.swift in Sources */,
 				30DF9F1E2460374100BB21F2 /* ViewController.swift in Sources */,
 				30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */,
 				3051CE082463AEB4004A8175 /* Request.swift in Sources */,
@@ -358,7 +351,6 @@
 				309014C72466C392003786BE /* PlayViewController.swift in Sources */,
 				3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */,
 				30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */,
-				30FE85322467C9BD004CDE13 /* LabelCircleStackView.swift in Sources */,
 				309014C92466C3AA003786BE /* ScoresViewController.swift in Sources */,
 				3051CE112463DAE7004A8175 /* NetworkError.swift in Sources */,
 				3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */,

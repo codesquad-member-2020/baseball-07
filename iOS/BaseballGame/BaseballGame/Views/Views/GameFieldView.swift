@@ -10,7 +10,7 @@ import UIKit
 
 class GameFieldView: UIView {
 
-    private let sboStackView = SBOStackView()
+    private let sboView = SBOView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,17 +24,17 @@ class GameFieldView: UIView {
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = #colorLiteral(red: 0.2715155955, green: 0.6766338832, blue: 0.3527343206, alpha: 1)
-        self.addSubview(sboStackView)
+        self.addSubview(sboView)
         configureConstraints()
     }
     
     private func configureConstraints() {
         let constraints = [
-            sboStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            sboStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            sboStackView.widthAnchor.constraint(equalToConstant: 200),
+            sboView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+            sboView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            sboView.widthAnchor.constraint(equalToConstant: 200),
             
-            sboStackView.heightAnchor.constraint(equalToConstant: 150),
+            sboView.heightAnchor.constraint(equalToConstant: 150),
         ]
         
         constraints.forEach { $0.isActive = true }
