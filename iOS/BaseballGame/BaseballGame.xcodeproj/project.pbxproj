@@ -39,6 +39,7 @@
 		30F02BD52466793C00F3A066 /* NetworkUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD42466793C00F3A066 /* NetworkUseCase.swift */; };
 		30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD624667E6500F3A066 /* ErrorAlertController.swift */; };
 		30FE85322467C9BD004CDE13 /* LabelCircleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */; };
+		30FE85342467D641004CDE13 /* GameFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85332467D641004CDE13 /* GameFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		30F02BD42466793C00F3A066 /* NetworkUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUseCase.swift; sourceTree = "<group>"; };
 		30F02BD624667E6500F3A066 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCircleStackView.swift; sourceTree = "<group>"; };
+		30FE85332467D641004CDE13 /* GameFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				301EE3CF246252ED00774D71 /* GameListCardView.swift */,
 				301EE3CB2462501100774D71 /* GameListTableView.swift */,
 				309014CA2466C7CC003786BE /* GameHeaderView.swift */,
+				30FE85332467D641004CDE13 /* GameFieldView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				309014C92466C3AA003786BE /* ScoresViewController.swift in Sources */,
 				3051CE112463DAE7004A8175 /* NetworkError.swift in Sources */,
 				3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */,
+				30FE85342467D641004CDE13 /* GameFieldView.swift in Sources */,
 				30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */,
 				30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */,
 			);
