@@ -9,9 +9,7 @@
 import UIKit
 
 class CircleStackView: UIStackView {
-    
-    private let circleView = CircleView()
-    
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -22,18 +20,11 @@ class CircleStackView: UIStackView {
     }
     
     private func configure() {
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.alignment = .center
         self.axis = .horizontal
         self.distribution = .fillEqually
         self.spacing = 2
-        
-        for _ in 0...3 {
-            self.addArrangedSubview(circleView)
-            circleView.isHidden = true
-        }
     }
-    
-    func set(circleViewColor: UIColor) {
-        circleView.set(color: circleViewColor)
-    }
+   
 }

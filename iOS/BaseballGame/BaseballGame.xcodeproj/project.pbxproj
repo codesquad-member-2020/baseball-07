@@ -40,6 +40,7 @@
 		30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD624667E6500F3A066 /* ErrorAlertController.swift */; };
 		30FE85322467C9BD004CDE13 /* LabelCircleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */; };
 		30FE85342467D641004CDE13 /* GameFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85332467D641004CDE13 /* GameFieldView.swift */; };
+		30FE85362467DD4A004CDE13 /* SBOView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85352467DD4A004CDE13 /* SBOView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		30F02BD624667E6500F3A066 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		30FE85312467C9BD004CDE13 /* LabelCircleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCircleStackView.swift; sourceTree = "<group>"; };
 		30FE85332467D641004CDE13 /* GameFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFieldView.swift; sourceTree = "<group>"; };
+		30FE85352467DD4A004CDE13 /* SBOView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBOView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				301EE3CD2462505600774D71 /* GameListTableViewCell.swift */,
 				30780050246557ED00CD8FBB /* NetworkIndicator.swift */,
 				30310AE92467BF0E0045402A /* CircleView.swift */,
+				30FE85352467DD4A004CDE13 /* SBOView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				309014CB2466C7CC003786BE /* GameHeaderView.swift in Sources */,
 				3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */,
 				30310AEA2467BF0E0045402A /* CircleView.swift in Sources */,
+				30FE85362467DD4A004CDE13 /* SBOView.swift in Sources */,
 				309014C72466C392003786BE /* PlayViewController.swift in Sources */,
 				3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */,
 				30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 class SBOStackView: UIStackView {
-
+    
     private let strikeCircleStack: CircleStackView = {
         let stackView = CircleStackView()
         stackView.set(circleViewColor: #colorLiteral(red: 0, green: 0.2772572788, blue: 0.712305679, alpha: 1))
@@ -49,7 +49,7 @@ class SBOStackView: UIStackView {
         return stackView
     }()
     
-   override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
@@ -59,6 +59,12 @@ class SBOStackView: UIStackView {
     }
     
     private func configure() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.alignment = .center
+        self.axis = .vertical
+        self.distribution = .fillEqually
+        self.spacing = 2
         self.addArrangedSubview(strikeLabelCircleStack)
         self.addArrangedSubview(ballLabelCircleStack)
         self.addArrangedSubview(outLabelCircleStack)
