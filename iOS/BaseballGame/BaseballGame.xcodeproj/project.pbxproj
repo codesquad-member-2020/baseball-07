@@ -16,6 +16,7 @@
 		301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301EE3D324625CEF00774D71 /* VersusLabel.swift */; };
 		30310AE82467BEC00045402A /* SBOStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30310AE72467BEC00045402A /* SBOStackView.swift */; };
 		30310AEA2467BF0E0045402A /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30310AE92467BF0E0045402A /* CircleView.swift */; };
+		30310AEC2467C5E30045402A /* CircleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30310AEB2467C5E30045402A /* CircleStackView.swift */; };
 		3038B8D22462B9F400AE0BF8 /* ViewModelBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038B8D12462B9F400AE0BF8 /* ViewModelBinding.swift */; };
 		3038B8D52462D2AC00AE0BF8 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038B8D42462D2AC00AE0BF8 /* GameList.swift */; };
 		3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE052463AE49004A8175 /* NetworkDispatcher.swift */; };
@@ -49,6 +50,7 @@
 		301EE3D324625CEF00774D71 /* VersusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusLabel.swift; sourceTree = "<group>"; };
 		30310AE72467BEC00045402A /* SBOStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBOStackView.swift; sourceTree = "<group>"; };
 		30310AE92467BF0E0045402A /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		30310AEB2467C5E30045402A /* CircleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleStackView.swift; sourceTree = "<group>"; };
 		3038B8D12462B9F400AE0BF8 /* ViewModelBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBinding.swift; sourceTree = "<group>"; };
 		3038B8D42462D2AC00AE0BF8 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		3051CE052463AE49004A8175 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				3048B81A2466E55300800C52 /* Labels */,
 				301EE3CD2462505600774D71 /* GameListTableViewCell.swift */,
+				30310AEB2467C5E30045402A /* CircleStackView.swift */,
 				30780050246557ED00CD8FBB /* NetworkIndicator.swift */,
 				30310AE72467BEC00045402A /* SBOStackView.swift */,
 				30310AE92467BF0E0045402A /* CircleView.swift */,
@@ -317,6 +320,7 @@
 				301EE3CE2462505600774D71 /* GameListTableViewCell.swift in Sources */,
 				301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */,
 				301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */,
+				30310AEC2467C5E30045402A /* CircleStackView.swift in Sources */,
 				3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */,
 				30310AE82467BEC00045402A /* SBOStackView.swift in Sources */,
 				30DF9F1E2460374100BB21F2 /* ViewController.swift in Sources */,
