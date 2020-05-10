@@ -10,6 +10,8 @@ import UIKit
 
 class LabelCircleStackView: UIStackView {
    
+    private let label = VersusLabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -26,4 +28,7 @@ class LabelCircleStackView: UIStackView {
         self.spacing = 2
     }
 
+    func set(text: String) {
+        label.text = text
+    }
 }

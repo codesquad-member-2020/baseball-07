@@ -9,25 +9,7 @@
 import UIKit
 
 class SBOStackView: UIStackView {
-    
-    private let strike: VersusLabel = {
-        let label = VersusLabel()
-        label.text = "S"
-        return label
-    }()
-    
-    private let ball: VersusLabel = {
-        let label = VersusLabel()
-        label.text = "B"
-        return label
-    }()
-    
-    private let out: VersusLabel = {
-        let label = VersusLabel()
-        label.text = "O"
-        return label
-    }()
-    
+
     private let strikeCircleStack: CircleStackView = {
         let stackView = CircleStackView()
         stackView.set(circleViewColor: #colorLiteral(red: 0, green: 0.2772572788, blue: 0.712305679, alpha: 1))
@@ -48,21 +30,21 @@ class SBOStackView: UIStackView {
     
     lazy private var strikeLabelCircleStack: LabelCircleStackView = {
         let stackView = LabelCircleStackView()
-        stackView.addArrangedSubview(strike)
+        stackView.addArrangedSubview(stackView.set(text: "S"))
         stackView.addArrangedSubview(strikeCircleStack)
         return stackView
     }()
     
     lazy private var ballLabelCircleStack: LabelCircleStackView = {
         let stackView = LabelCircleStackView()
-        stackView.addArrangedSubview(ball)
+        stackView.addArrangedSubview(stackView.set(text: "B"))
         stackView.addArrangedSubview(ballCircleStack)
         return stackView
     }()
     
     lazy private var outLabelCircleStack: LabelCircleStackView = {
         let stackView = LabelCircleStackView()
-        stackView.addArrangedSubview(out)
+        stackView.addArrangedSubview(stackView.set(text: "O"))
         stackView.addArrangedSubview(outCircleStack)
         return stackView
     }()
