@@ -11,6 +11,7 @@ import UIKit
 class PlayViewController: UIViewController {
 
     private let gameHeaderView = GameHeaderView()
+    private let gameFieldView = GameFieldView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,7 @@ class PlayViewController: UIViewController {
  
     private func configure() {
         self.view.addSubview(gameHeaderView)
-        gameHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(gameFieldView)
         configureConstraints()
     }
     
@@ -29,6 +30,11 @@ class PlayViewController: UIViewController {
         gameHeaderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5),
         gameHeaderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
         gameHeaderView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 8),
+        
+        gameFieldView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+        gameFieldView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+        gameFieldView.topAnchor.constraint(equalTo: gameHeaderView.bottomAnchor, constant: 5),
+        gameFieldView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 3),
         ]
         constraints.forEach { $0.isActive = true }
     }

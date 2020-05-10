@@ -26,6 +26,7 @@ class LabelCircleStackView: UIStackView {
         self.axis = .horizontal
         self.distribution = .fillProportionally
         self.spacing = 2
+        self.addArrangedSubview(label)
     }
 
     func set(text: String) {

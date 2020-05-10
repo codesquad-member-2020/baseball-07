@@ -30,21 +30,21 @@ class SBOStackView: UIStackView {
     
     lazy private var strikeLabelCircleStack: LabelCircleStackView = {
         let stackView = LabelCircleStackView()
-        stackView.addArrangedSubview(stackView.set(text: "S"))
+        stackView.set(text: "S")
         stackView.addArrangedSubview(strikeCircleStack)
         return stackView
     }()
     
     lazy private var ballLabelCircleStack: LabelCircleStackView = {
         let stackView = LabelCircleStackView()
-        stackView.addArrangedSubview(stackView.set(text: "B"))
+        stackView.set(text: "B")
         stackView.addArrangedSubview(ballCircleStack)
         return stackView
     }()
     
     lazy private var outLabelCircleStack: LabelCircleStackView = {
         let stackView = LabelCircleStackView()
-        stackView.addArrangedSubview(stackView.set(text: "O"))
+        stackView.set(text: "O")
         stackView.addArrangedSubview(outCircleStack)
         return stackView
     }()

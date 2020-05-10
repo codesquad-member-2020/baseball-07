@@ -30,6 +30,7 @@ class GameHeaderView: UIView {
     }
     
     private func configure() {
+        self.translatesAutoresizingMaskIntoConstraints = false
         temp()
         configureVersus()
         configureScore()
