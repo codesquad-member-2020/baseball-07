@@ -23,7 +23,7 @@ class GameFieldView: UIView {
     
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = #colorLiteral(red: 0.2715155955, green: 0.6766338832, blue: 0.3527343206, alpha: 1)
+        self.backgroundColor = #colorLiteral(red: 0.324877588, green: 0.8050840736, blue: 0.475931323, alpha: 1)
         self.addSubview(sboView)
         configureConstraints()
     }
@@ -32,12 +32,12 @@ class GameFieldView: UIView {
         let constraints = [
             sboView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
             sboView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            sboView.widthAnchor.constraint(equalToConstant: 200),
-            
-            sboView.heightAnchor.constraint(equalToConstant: 150),
         ]
-        
         constraints.forEach { $0.isActive = true }
     }
     
+    func configure(frame: CGRect) {
+        sboView.widthAnchor.constraint(equalToConstant: frame.width / 3).isActive = true
+        sboView.heightAnchor.constraint(equalToConstant: frame.height / 10).isActive = true
+    }
 }

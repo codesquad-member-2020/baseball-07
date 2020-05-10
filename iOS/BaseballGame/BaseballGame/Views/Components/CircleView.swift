@@ -21,13 +21,15 @@ class CircleView: UIView {
     
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.layer.cornerRadius = self.frame.size.width/2
+        self.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        self.layer.cornerRadius = 9
         self.clipsToBounds = true
         
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.borderWidth = 2.0
     }
-    
+ 
     func set(color: UIColor) {
         self.layer.borderColor = color.cgColor
         self.backgroundColor = color

@@ -21,9 +21,9 @@ class CircleStackView: UIStackView {
     
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.alignment = .center
+        self.alignment = .leading
         self.axis = .horizontal
-        self.distribution = .fillEqually
+        self.distribution = .fill
         self.spacing = 2
     }
    
