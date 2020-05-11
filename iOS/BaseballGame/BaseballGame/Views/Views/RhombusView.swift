@@ -16,12 +16,16 @@ class RhombusView: UIView {
     init(frame: CGRect, color: UIColor) {
         super.init(frame: frame)
         self.color = color
-        self.backgroundColor = .clear
+        configure()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
+    }
+    
+    private func configure() {
+        self.backgroundColor = .clear
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func draw(_ rect: CGRect) {
