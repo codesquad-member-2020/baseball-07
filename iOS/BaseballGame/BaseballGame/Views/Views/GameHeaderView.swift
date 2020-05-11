@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class GameHeaderView: UIView {
     let visitingTeamName = GameListTitleLabel()
     let visitingTeamScore = GameListTitleLabel()
@@ -28,7 +29,7 @@ class GameHeaderView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
+     
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
         temp()
@@ -61,7 +62,7 @@ class GameHeaderView: UIView {
     }
     
     private func configureInningInfo() {
-        inningInfo.font = UIFont.boldSystemFont(ofSize: 18)
+        inningInfo.font = UIFont.boldSystemFont(ofSize: 16)
         inningInfo.textColor = .darkGray
     }
     
@@ -71,8 +72,8 @@ class GameHeaderView: UIView {
     }
     
     private func configureTurnBar() {
-        homeTeamTurn.backgroundColor = #colorLiteral(red: 0.9930995107, green: 0.7436458176, blue: 0.2065552208, alpha: 1)
-        visitingTeamTurn.backgroundColor = #colorLiteral(red: 0.9930995107, green: 0.7436458176, blue: 0.2065552208, alpha: 1)
+        homeTeamTurn.backgroundColor = UIColor(named: "Yellow")
+        visitingTeamTurn.backgroundColor = UIColor(named: "Yellow")
     }
     
     private func configureSubviews() {
@@ -94,35 +95,35 @@ class GameHeaderView: UIView {
         
         let constraints = [
             versus.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            versus.heightAnchor.constraint(equalToConstant: 30),
+            versus.topAnchor.constraint(equalTo: self.topAnchor, constant: 40),
             
             inningInfo.centerXAnchor.constraint(equalTo: versus.centerXAnchor),
-            inningInfo.topAnchor.constraint(equalTo: versus.bottomAnchor, constant: 10),
+            inningInfo.topAnchor.constraint(equalTo: versus.bottomAnchor, constant: 4),
             inningInfo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             
-            visitingTeamScore.trailingAnchor.constraint(equalTo: inningInfo.leadingAnchor, constant: -10),
-            visitingTeamScore.bottomAnchor.constraint(equalTo: visitingTeamName.bottomAnchor),
+            visitingTeamScore.trailingAnchor.constraint(equalTo: inningInfo.leadingAnchor, constant: -15),
+            visitingTeamScore.bottomAnchor.constraint(equalTo: versus.bottomAnchor),
             
             visitingTeamName.trailingAnchor.constraint(equalTo: visitingTeamScore.leadingAnchor, constant: -8),
             visitingTeamName.centerYAnchor.constraint(equalTo: versus.centerYAnchor),
-            
+            visitingTeamName.bottomAnchor.constraint(equalTo: versus.bottomAnchor),
+
             visitingTeamTurn.leadingAnchor.constraint(equalTo: visitingTeamName.leadingAnchor),
             visitingTeamTurn.trailingAnchor.constraint(equalTo: visitingTeamScore.trailingAnchor),
             visitingTeamTurn.heightAnchor.constraint(equalToConstant: 5.0),
-            visitingTeamTurn.topAnchor.constraint(equalTo: visitingTeamName.bottomAnchor, constant: 6),
-            visitingTeamTurn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+            visitingTeamTurn.topAnchor.constraint(equalTo: inningInfo.topAnchor),
             
-            homeTeamScore.leadingAnchor.constraint(equalTo: inningInfo.trailingAnchor, constant: 10),
-            homeTeamScore.bottomAnchor.constraint(equalTo: homeTeamName.bottomAnchor),
+            homeTeamScore.leadingAnchor.constraint(equalTo: inningInfo.trailingAnchor, constant: 15),
+            homeTeamScore.bottomAnchor.constraint(equalTo: versus.bottomAnchor),
             
             homeTeamName.leadingAnchor.constraint(equalTo: homeTeamScore.trailingAnchor, constant: 8),
             homeTeamName.centerYAnchor.constraint(equalTo: versus.centerYAnchor),
-            
+            homeTeamName.bottomAnchor.constraint(equalTo: versus.bottomAnchor),
+
             homeTeamTurn.leadingAnchor.constraint(equalTo: homeTeamScore.leadingAnchor),
             homeTeamTurn.trailingAnchor.constraint(equalTo: homeTeamName.trailingAnchor),
             homeTeamTurn.heightAnchor.constraint(equalToConstant: 5.0),
-            homeTeamTurn.topAnchor.constraint(equalTo: homeTeamName.bottomAnchor, constant: 6),
-            homeTeamTurn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+            homeTeamTurn.topAnchor.constraint(equalTo: inningInfo.topAnchor),
         ]
         
         constraints.forEach { $0.isActive = true }
