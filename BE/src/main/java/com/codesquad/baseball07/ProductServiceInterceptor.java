@@ -1,5 +1,6 @@
 package com.codesquad.baseball07;
 
+import com.codesquad.baseball07.service.LoginService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -10,6 +11,12 @@ import java.io.IOException;
 
 @Component
 public class ProductServiceInterceptor implements HandlerInterceptor {
+
+    private final LoginService loginService;
+
+    public ProductServiceInterceptor(LoginService loginService) {
+        this.loginService = loginService;
+    }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
@@ -26,6 +33,6 @@ public class ProductServiceInterceptor implements HandlerInterceptor {
                 cookieValue = cookie.getValue();
             }
         }
-        return cookieValue != null;
+        return loginService.isValidAuthToken(cookieValue);
     }
 }

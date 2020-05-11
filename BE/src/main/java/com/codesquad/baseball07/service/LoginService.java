@@ -41,8 +41,10 @@ public class LoginService {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    public Boolean isExistUser(String email) {
-        return userDao.isExists(email);
+    public Boolean isValidAuthToken(String jwtToken) {
+        String userId = Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(JWT_SECRET.getBytes())).build().parseClaimsJws(jwtToken).getBody().getId();
+        System.out.println(userId);
+        return isExistUser(userId);
     }
 
     public String authenticate(String code) {
@@ -53,6 +55,10 @@ public class LoginService {
             this.join(userId);
         }
         return generateJwtToken(userId);
+    }
+
+    private Boolean isExistUser(String userId) {
+        return userDao.isExists(userId);
     }
 
     private String generateJwtToken(String userId) {
@@ -75,7 +81,7 @@ public class LoginService {
     }
 
     private GithubToken getToken(String code) {
-        String url = String.format("https://github.com/login/oauth/access_token?client_id=%s&client_secret=%s&redirect_uri=%s&code=%s", CLIENT_ID, CLIENT_SECRET, REDIRECT_URI ,code);
+        String url = String.format("https://github.com/login/oauth/access_token?client_id=%s&client_secret=%s&redirect_uri=%s&code=%s", CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, code);
         GithubToken githubToken = this.restTemplate.getForObject(url, GithubToken.class);
         return githubToken;
     }
