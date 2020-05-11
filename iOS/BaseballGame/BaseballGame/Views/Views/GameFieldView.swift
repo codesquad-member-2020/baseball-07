@@ -35,9 +35,4 @@ class GameFieldView: UIView {
         ]
         constraints.forEach { $0.isActive = true }
     }
-    
-    func configure(frame: CGRect) {
-        sboView.widthAnchor.constraint(equalToConstant: frame.width / 3).isActive = true
-        sboView.heightAnchor.constraint(equalToConstant: frame.height / 10).isActive = true
-    }
 }

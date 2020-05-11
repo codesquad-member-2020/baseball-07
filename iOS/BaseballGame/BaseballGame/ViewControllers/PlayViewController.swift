@@ -37,6 +37,5 @@ class PlayViewController: UIViewController {
         gameFieldView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 3),
         ]
         constraints.forEach { $0.isActive = true }
-        gameFieldView.configure(frame: self.view.frame)
     }
 }

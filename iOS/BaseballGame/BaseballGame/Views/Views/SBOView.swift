@@ -34,26 +34,20 @@ class SBOView: UIView {
         return label
     }()
     
-    private let strikeCircleStack = CircleStackView()
-    private let ballCircleStack = CircleStackView()
-    private let outCircleStack = CircleStackView()
-    
-    private let strikeCircle: CircleView = {
-       let circle = CircleView()
-        circle.set(color: #colorLiteral(red: 0.006796875347, green: 0.2596735749, blue: 0.8284620876, alpha: 1))
-        return circle
+    private let strikeCircleStack: CircleStackView = {
+       let stack = CircleStackView()
+        stack.set(color: #colorLiteral(red: 0.006796875347, green: 0.2596735749, blue: 0.8284620876, alpha: 1))
+        return stack
     }()
-    
-    private let ballCircle: CircleView = {
-        let circle = CircleView()
-        circle.set(color: #colorLiteral(red: 1, green: 0.5717964641, blue: 0, alpha: 1))
-        return circle
+    private let ballCircleStack: CircleStackView = {
+       let stack = CircleStackView()
+        stack.set(color: #colorLiteral(red: 1, green: 0.5717964641, blue: 0, alpha: 1))
+        return stack
     }()
-    
-    private let outCircle: CircleView = {
-       let circle = CircleView()
-        circle.set(color: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1))
-        return circle
+    private let outCircleStack: CircleStackView = {
+       let stack = CircleStackView()
+        stack.set(color: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1))
+        return stack
     }()
     
     override init(frame: CGRect) {
@@ -79,10 +73,6 @@ class SBOView: UIView {
         self.addSubview(outCircleStack)
         
         configureConstraints()
-        
-        add(circle: strikeCircle, to: strikeCircleStack)
-        add(circle: ballCircle, to: ballCircleStack)
-        add(circle: outCircle, to: outCircleStack)
     }
     
     private func configureConstraints() {
@@ -90,11 +80,11 @@ class SBOView: UIView {
         let constraints = [
             strike.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
             strike.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
+            strike.heightAnchor.constraint(equalTo: strikeCircleStack.heightAnchor),
             
             strikeCircleStack.topAnchor.constraint(equalTo: strike.topAnchor),
             strikeCircleStack.leadingAnchor.constraint(equalTo: strike.trailingAnchor, constant: 4),
             strikeCircleStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
-            strikeCircleStack.bottomAnchor.constraint(equalTo: strike.bottomAnchor),
             
             ball.topAnchor.constraint(equalTo: strike.bottomAnchor, constant: 4),
             ball.leadingAnchor.constraint(equalTo: strike.leadingAnchor),
@@ -106,7 +96,6 @@ class SBOView: UIView {
             
             out.topAnchor.constraint(equalTo: ball.bottomAnchor, constant: 4),
             out.leadingAnchor.constraint(equalTo: ball.leadingAnchor),
-            out.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
             
             outCircleStack.topAnchor.constraint(equalTo: out.topAnchor),
             outCircleStack.leadingAnchor.constraint(equalTo: out.trailingAnchor, constant: 4),
@@ -115,11 +104,4 @@ class SBOView: UIView {
         ]
         constraints.forEach { $0.isActive = true }
     }
-    
-    private func add(circle: CircleView, to stackView: CircleStackView) {
-        for _ in 0...3 {
-            stackView.addArrangedSubview(circle)
-        }
-    }
-  
 }

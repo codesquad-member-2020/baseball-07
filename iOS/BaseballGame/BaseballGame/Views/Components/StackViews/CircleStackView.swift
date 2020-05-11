@@ -10,6 +10,10 @@ import UIKit
 
 class CircleStackView: UIStackView {
    
+    private let firstCircle = CircleView()
+    private let secondCircle = CircleView()
+    private let thirdCircle = CircleView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -23,8 +27,17 @@ class CircleStackView: UIStackView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.alignment = .leading
         self.axis = .horizontal
-        self.distribution = .fill
+        self.distribution = .fillProportionally
         self.spacing = 2
+        addSubviews()
+    }
+    
+    private func addSubviews() {
+        [firstCircle, secondCircle, thirdCircle].forEach { self.addArrangedSubview($0) }
+    }
+    
+    func set(color: UIColor) {
+        [firstCircle, secondCircle, thirdCircle].forEach { $0.set(color: color) }
     }
    
 }

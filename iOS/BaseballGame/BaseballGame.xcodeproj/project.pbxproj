@@ -122,6 +122,8 @@
 				301EE3CB2462501100774D71 /* GameListTableView.swift */,
 				309014CA2466C7CC003786BE /* GameHeaderView.swift */,
 				30FE85332467D641004CDE13 /* GameFieldView.swift */,
+				30310AE92467BF0E0045402A /* CircleView.swift */,
+				30FE85352467DD4A004CDE13 /* SBOView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,8 +201,6 @@
 				3048B81A2466E55300800C52 /* Labels */,
 				301EE3CD2462505600774D71 /* GameListTableViewCell.swift */,
 				30780050246557ED00CD8FBB /* NetworkIndicator.swift */,
-				30310AE92467BF0E0045402A /* CircleView.swift */,
-				30FE85352467DD4A004CDE13 /* SBOView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
