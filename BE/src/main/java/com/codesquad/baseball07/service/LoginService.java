@@ -43,7 +43,6 @@ public class LoginService {
 
     public Boolean isValidAuthToken(String jwtToken) {
         String userId = Jwts.parserBuilder().setSigningKey(Keys.hmacShaKeyFor(JWT_SECRET.getBytes())).build().parseClaimsJws(jwtToken).getBody().getId();
-        System.out.println(userId);
         return isExistUser(userId);
     }
 
