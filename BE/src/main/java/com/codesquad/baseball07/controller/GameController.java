@@ -1,8 +1,10 @@
 package com.codesquad.baseball07.controller;
 
 import com.codesquad.baseball07.dto.Game;
+import com.codesquad.baseball07.dto.GameDto;
 import com.codesquad.baseball07.service.GameService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,5 +22,10 @@ public class GameController {
     @GetMapping("/games")
     public Map<String, List<Game>> games() {
         return gameService.getAll();
+    }
+
+    @GetMapping("/games/{gameId}")
+    public GameDto getGameForEntry(@PathVariable("gameId") Long gameId) {
+        return gameService.getGameForEntry(gameId);
     }
 }
