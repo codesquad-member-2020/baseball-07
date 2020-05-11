@@ -3,6 +3,8 @@ package com.codesquad.baseball07.service;
 import com.codesquad.baseball07.dao.UserDao;
 import com.codesquad.baseball07.dto.GithubToken;
 import com.codesquad.baseball07.dto.User;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -11,6 +13,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import javax.crypto.SecretKey;
 
 @Service
 public class LoginService {
@@ -28,15 +32,24 @@ public class LoginService {
         return userDao.isExists(email);
     }
 
-
     public String authenticate(String code) {
         GithubToken token = this.getToken(code);
         String userId = this.getUserId(token);
         Boolean isExistUser = userDao.isExists(userId);
         if (!isExistUser) {
-            userDao.createUser(userId);
+            this.join(userId);
         }
-        return "";
+        return generateJwtToken(userId);
+    }
+
+    private String generateJwtToken(String userId) {
+        String secretKey = "secretKeyhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaaaaaaaaasssaksfhaldkfsldkfjsldkfjsldkgjabalksnflal;sfm;aslfm;aslf;aslfa;sfknk";
+        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
+        return Jwts.builder().setId(userId).signWith(key).compact();
+    }
+
+    private void join(String userId) {
+        userDao.createUser(userId);
     }
 
     private String getUserId(GithubToken githubToken) {
