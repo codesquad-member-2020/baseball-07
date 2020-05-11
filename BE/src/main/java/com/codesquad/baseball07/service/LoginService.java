@@ -6,6 +6,7 @@ import com.codesquad.baseball07.dto.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,6 +24,18 @@ public class LoginService {
     private UserDao userDao;
 
     private final RestTemplate restTemplate;
+
+    @Value("${clientId}")
+    private String CLIENT_ID;
+
+    @Value("${clientSecret}")
+    private String CLIENT_SECRET;
+
+    @Value("${jwtSecret}")
+    private String JWT_SECRET;
+
+    @Value("${redirectUri}")
+    private String REDIRECT_URI;
 
     public LoginService(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
@@ -43,8 +56,7 @@ public class LoginService {
     }
 
     private String generateJwtToken(String userId) {
-        String secretKey = "secretKeyhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaaaaaaaaasssaksfhaldkfsldkfjsldkfjsldkgjabalksnflal;sfm;aslfm;aslf;aslfa;sfknk";
-        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
+        SecretKey key = Keys.hmacShaKeyFor(JWT_SECRET.getBytes());
         return Jwts.builder().setId(userId).signWith(key).compact();
     }
 
@@ -63,7 +75,7 @@ public class LoginService {
     }
 
     private GithubToken getToken(String code) {
-        String url = "https://github.com/login/oauth/access_token?client_id=47a4d1cd4bb8a7e40f49&client_secret=afd20e493072956c324b366a3e774a79fa979394&redirect_uri=http://localhost:8080/login&code=" + code;
+        String url = String.format("https://github.com/login/oauth/access_token?client_id=%s&client_secret=%s&redirect_uri=%s&code=%s", CLIENT_ID, CLIENT_SECRET, REDIRECT_URI ,code);
         GithubToken githubToken = this.restTemplate.getForObject(url, GithubToken.class);
         return githubToken;
     }
