@@ -1,5 +1,5 @@
 //
-//  RhombusView.swift
+//  HomeView.swift
 //  BaseballGame
 //
 //  Created by delma on 2020/05/11.
@@ -8,13 +8,10 @@
 
 import UIKit
 
-class RhombusView: UIView {
+class HomeView: UIView {
 
-    private var color: UIColor!
-
-    init(frame: CGRect, color: UIColor) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.color = color
         configure()
     }
     
@@ -28,16 +25,18 @@ class RhombusView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        let rhombusPath = UIBezierPath()
+        let homePath = UIBezierPath()
         let widthPoint = rect.width / 2
         let heightPoint = rect.height / 2
         let startPoint = CGPoint(x: widthPoint, y: 0)
-        rhombusPath.move(to: startPoint)
-        rhombusPath.addLine(to: CGPoint(x: rect.width, y: heightPoint))
-        rhombusPath.addLine(to: CGPoint(x: widthPoint, y: rect.height))
-        rhombusPath.addLine(to: CGPoint(x: 0, y: heightPoint))
-        self.color.setFill()
-        rhombusPath.fill()
+        homePath.move(to: startPoint)
+        homePath.addLine(to: CGPoint(x: rect.width, y: heightPoint))
+        homePath.addLine(to: CGPoint(x: rect.width, y: rect.height))
+        homePath.addLine(to: CGPoint(x: widthPoint, y: rect.height))
+        homePath.addLine(to: CGPoint(x: 0, y: rect.height))
+        homePath.addLine(to: CGPoint(x: 0, y: heightPoint))
+        UIColor.white.setFill()
+        homePath.fill()
     }
 
 }
