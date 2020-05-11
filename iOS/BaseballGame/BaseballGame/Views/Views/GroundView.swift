@@ -14,6 +14,7 @@ class GroundView: UIView {
     private let firstBase = RhombusView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
     private let secondBase = RhombusView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
     private let thirdBase = RhombusView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+    private let homeView = HomeView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +35,7 @@ class GroundView: UIView {
         self.addSubview(firstBase)
         self.addSubview(secondBase)
         self.addSubview(thirdBase)
+        self.addSubview(homeView)
         
         configureConstraints()
     }
@@ -50,14 +52,20 @@ class GroundView: UIView {
             thirdBase.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1),
             thirdBase.heightAnchor.constraint(equalTo: thirdBase.widthAnchor),
             
-            firstBase.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: firstBase.frame.height / 2 ),
+            homeView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1),
+            homeView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.15),
+            
+            firstBase.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             firstBase.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-            secondBase.topAnchor.constraint(equalTo: self.topAnchor, constant: secondBase.frame.height / 2),
+            secondBase.topAnchor.constraint(equalTo: self.topAnchor),
             secondBase.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
-            thirdBase.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -(thirdBase.frame.width / 2)),
+            thirdBase.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             thirdBase.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            homeView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            homeView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
             rhombusView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             rhombusView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
