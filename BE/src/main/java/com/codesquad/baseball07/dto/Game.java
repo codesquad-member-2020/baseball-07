@@ -8,10 +8,8 @@ public class Game {
 
     private Long id;
 
-    @JsonProperty("home_team")
     private Team homeTeam;
 
-    @JsonProperty("away_team")
     private Team awayTeam;
 
     public Long getId() {
