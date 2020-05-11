@@ -35,24 +35,27 @@ CREATE TABLE game_has_team
 
 CREATE TABLE player
 (
-    id          bigint primary key,
+    id          bigint auto_increment primary key,
     team_id     bigint references team (id),
     match_order int,
+    position    varchar(45),
     name        varchar(45)
 );
 
-CREATE TABLE action
+CREATE TABLE ball
 (
-    id     bigint,
+    id     bigint auto_increment primary key,
     result varchar(45)
 );
 
-CREATE TABLE player_has_action
+CREATE TABLE pitching_record
 (
-    player_id bigint references player (id),
-    action_id bigint references action (id),
-    game_id   bigint references game (id),
+    player bigint references player (id),
+    ball bigint references ball (id),
     inning    int,
     turn      varchar(45),
-    count     int
+    count     int,
+    player_key int,
+    ball_key int,
+    primary key (player, ball)
 );
