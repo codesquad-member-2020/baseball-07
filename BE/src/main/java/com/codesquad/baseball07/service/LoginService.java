@@ -29,7 +29,7 @@ public class LoginService {
     }
 
 
-    public String join(String code) {
+    public String authenticate(String code) {
         GithubToken token = this.getToken(code);
         String userId = this.getUserId(token);
         Boolean isExistUser = userDao.isExists(userId);

@@ -16,6 +16,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public void login(@RequestParam String code) {
-        this.loginService.join(code);
+        this.loginService.authenticate(code);
     }
 }
