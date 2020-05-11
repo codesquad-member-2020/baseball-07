@@ -1,8 +1,8 @@
 package com.codesquad.baseball07.dao;
 
-import com.codesquad.baseball07.dto.Game;
+import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.dto.GameDto;
-import com.codesquad.baseball07.dto.Team;
+import com.codesquad.baseball07.entity.Team;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 

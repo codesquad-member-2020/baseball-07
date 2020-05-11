@@ -1,7 +1,7 @@
 package com.codesquad.baseball07.service;
 
 import com.codesquad.baseball07.dao.GameDao;
-import com.codesquad.baseball07.dto.Game;
+import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.dto.GameDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

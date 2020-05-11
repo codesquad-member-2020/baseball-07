@@ -1,7 +1,10 @@
-package com.codesquad.baseball07.dto;
+package com.codesquad.baseball07.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringJoiner;
 
 public class Team {
@@ -14,6 +17,9 @@ public class Team {
 
     @JsonIgnore
     private Long gameId;
+
+    @MappedCollection(idColumn = "action_id")
+    private List<Player> playerList = new ArrayList<>();
 
     public Team() {
     }
