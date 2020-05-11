@@ -1,6 +1,7 @@
 package com.codesquad.baseball07.dao;
 
 import com.codesquad.baseball07.dto.Game;
+import com.codesquad.baseball07.dto.GameDto;
 import com.codesquad.baseball07.dto.Team;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @Repository
 public class GameDao {
+
     private final JdbcTemplate jdbcTemplate;
 
     public GameDao(DataSource dataSource) {
@@ -20,7 +22,13 @@ public class GameDao {
     }
 
     public List<Game> getAll() {
-        String sql = "select game.id as game_id, team.id as team_id, game_has_team.position, team.name as team_name from game_has_team join game on game_has_team.game_id = game.id join team on game_has_team.team_id = team.id";
+        String sql = "select game.id as game_id," +
+                " team.id as team_id," +
+                " game_has_team.position," +
+                " team.name as team_name" +
+                " from game_has_team " +
+                "join game on game_has_team.game_id = game.id " +
+                "join team on game_has_team.team_id = team.id";
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
         List<Team> teams = new ArrayList<>();
 
@@ -56,5 +64,16 @@ public class GameDao {
         });
 
         return new ArrayList<>(games.values());
+    }
+
+    public GameDto getGameForEntry(Long gameId) {
+        String sql = "SELECT game.id, GROUP_CONCAT(CONCAT_WS(',', `valid`, `name`) SEPARATOR ',')  as valid FROM GAME " +
+                "join game_has_team on game_has_team.game_id = game.id " +
+                "join team on team.id = game_has_team.team_id " +
+                "where game.id = ? group by game.id";
+
+        return jdbcTemplate.queryForObject(sql,
+                (rs, rowNum) -> new GameDto(rs.getString("valid")),
+                gameId);
     }
 }
