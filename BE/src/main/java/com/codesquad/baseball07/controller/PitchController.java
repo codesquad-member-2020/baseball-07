@@ -1,4 +1,4 @@
-package com.codesquad.baseball07.api;
+package com.codesquad.baseball07.controller;
 
 import com.codesquad.baseball07.response.ResponseData;
 import com.codesquad.baseball07.service.PitchService;
