@@ -36,7 +36,6 @@ class GroundView: UIView {
         self.addSubview(secondBase)
         self.addSubview(thirdBase)
         self.addSubview(homeView)
-        
         configureConstraints()
     }
     
@@ -70,7 +69,7 @@ class GroundView: UIView {
             rhombusView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             rhombusView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             rhombusView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
-            rhombusView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9)
+            rhombusView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
         ]
         constraints.forEach{ $0.isActive = true }
     }

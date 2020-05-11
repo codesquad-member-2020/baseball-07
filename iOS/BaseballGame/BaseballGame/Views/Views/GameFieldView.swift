@@ -12,7 +12,8 @@ class GameFieldView: UIView {
     
     private let sboView = SBOView()
     private let groundView = GroundView()
-    
+    private let pitch = PitchButton()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -27,6 +28,8 @@ class GameFieldView: UIView {
         self.backgroundColor = UIColor(named: "Green")
         self.addSubview(sboView)
         self.addSubview(groundView)
+        self.addSubview(pitch)
+
         configureConstraints()
     }
     
@@ -39,6 +42,11 @@ class GameFieldView: UIView {
             groundView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             groundView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
             groundView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
+            
+            pitch.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            pitch.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            pitch.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2),
+            pitch.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.15),
         ]
         constraints.forEach { $0.isActive = true }
     }
