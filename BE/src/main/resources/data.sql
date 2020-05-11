@@ -1,11 +1,7 @@
-INSERT INTO user(email)
-VALUES ('koo@gmail.com');
-INSERT INTO user(email)
-VALUES ('ellie@gmail.com');
-INSERT INTO user(email)
-VALUES ('sedin@gmail.com');
-INSERT INTO user(email)
-VALUES ('mocha@gmail.com');
+INSERT INTO user(id)
+VALUES ('ellie');
+INSERT INTO user(id)
+VALUES ('mocha');
 
 
 INSERT INTO team (id, name)
@@ -23,7 +19,7 @@ VALUES (6, 'Dodgers');
 
 
 INSERT INTO game (id, home_team_user, away_team_user)
-VALUES (1, 'koo@gmail.com', 'ellie@gmail.com');
+VALUES (1, 'mocha', 'ellie');
 INSERT INTO game (id, home_team_user, away_team_user)
 VALUES (2, null, null);
 INSERT INTO game (id, home_team_user, away_team_user)
