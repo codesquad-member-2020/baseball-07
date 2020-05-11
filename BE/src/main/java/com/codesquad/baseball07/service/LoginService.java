@@ -28,6 +28,17 @@ public class LoginService {
         return userDao.isExists(email);
     }
 
+
+    public String join(String code) {
+        GithubToken token = this.getToken(code);
+        String userId = this.getUserId(token);
+        Boolean isExistUser = userDao.isExists(userId);
+        if (!isExistUser) {
+            userDao.createUser(userId);
+        }
+        return "";
+    }
+
     private String getUserId(GithubToken githubToken) {
         String url = "https://api.github.com/user";
         HttpHeaders headers = new HttpHeaders();
@@ -42,15 +53,5 @@ public class LoginService {
         String url = "https://github.com/login/oauth/access_token?client_id=47a4d1cd4bb8a7e40f49&client_secret=afd20e493072956c324b366a3e774a79fa979394&redirect_uri=http://localhost:8080/login&code=" + code;
         GithubToken githubToken = this.restTemplate.getForObject(url, GithubToken.class);
         return githubToken;
-    }
-
-    public String join(String code) {
-        GithubToken token = this.getToken(code);
-        String userId = this.getUserId(token);
-        Boolean isExistUser = userDao.isExists(userId);
-        if (!isExistUser) {
-            userDao.createUser(userId);
-        }
-        return "";
     }
 }
