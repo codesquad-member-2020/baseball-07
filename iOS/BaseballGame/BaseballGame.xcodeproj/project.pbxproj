@@ -27,6 +27,7 @@
 		3071872924696050002B1983 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071872824696050002B1983 /* HomeView.swift */; };
 		3071872B246962FD002B1983 /* PitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071872A246962FD002B1983 /* PitchButton.swift */; };
 		3071872D2469760D002B1983 /* OnePlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071872C2469760D002B1983 /* OnePlayerInfoView.swift */; };
+		3071872F2469800E002B1983 /* NowTurnPlayerInfoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071872E2469800E002B1983 /* NowTurnPlayerInfoStackView.swift */; };
 		30780051246557ED00CD8FBB /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30780050246557ED00CD8FBB /* NetworkIndicator.swift */; };
 		309014C5246681FD003786BE /* ExtendedNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309014C4246681FD003786BE /* ExtendedNotificationName.swift */; };
 		309014C72466C392003786BE /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309014C62466C392003786BE /* PlayViewController.swift */; };
@@ -67,6 +68,7 @@
 		3071872824696050002B1983 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3071872A246962FD002B1983 /* PitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchButton.swift; sourceTree = "<group>"; };
 		3071872C2469760D002B1983 /* OnePlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePlayerInfoView.swift; sourceTree = "<group>"; };
+		3071872E2469800E002B1983 /* NowTurnPlayerInfoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowTurnPlayerInfoStackView.swift; sourceTree = "<group>"; };
 		30780050246557ED00CD8FBB /* NetworkIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkIndicator.swift; sourceTree = "<group>"; };
 		309014C4246681FD003786BE /* ExtendedNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedNotificationName.swift; sourceTree = "<group>"; };
 		309014C62466C392003786BE /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				30310AEB2467C5E30045402A /* CircleStackView.swift */,
+				3071872E2469800E002B1983 /* NowTurnPlayerInfoStackView.swift */,
 			);
 			path = StackViews;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */,
 				30FE85342467D641004CDE13 /* GameFieldView.swift in Sources */,
 				30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */,
+				3071872F2469800E002B1983 /* NowTurnPlayerInfoStackView.swift in Sources */,
 				30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
