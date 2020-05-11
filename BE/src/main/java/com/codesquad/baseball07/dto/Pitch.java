@@ -2,7 +2,7 @@ package com.codesquad.baseball07.dto;
 
 import com.codesquad.baseball07.entity.Player;
 
-public class PitchDTO {
+public class Pitch {
 
     private Player pitcher;
     private Player hitter;
