@@ -1,6 +1,4 @@
-package com.codesquad.baseball07.dto;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.codesquad.baseball07.entity;
 
 import java.util.StringJoiner;
 
