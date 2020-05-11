@@ -29,7 +29,6 @@ class PlayViewController: UIViewController {
         gameHeaderView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
         gameHeaderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 5),
         gameHeaderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -5),
-        gameHeaderView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 8),
         
         gameFieldView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
         gameFieldView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),

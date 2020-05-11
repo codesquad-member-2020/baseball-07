@@ -50,7 +50,7 @@ class GameHeaderView: UIView {
     }
     
     private func configureVersus() {
-        versus.font = UIFont(name: "HelveticaNeue-Bold", size: 24)
+        versus.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
     }
     
     private func configureScore() {
@@ -63,7 +63,6 @@ class GameHeaderView: UIView {
     
     private func configureInningInfo() {
         inningInfo.font = UIFont.boldSystemFont(ofSize: 16)
-        inningInfo.textColor = .darkGray
     }
     
     private func configureTeamName() {
@@ -95,11 +94,11 @@ class GameHeaderView: UIView {
         
         let constraints = [
             versus.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            versus.topAnchor.constraint(equalTo: self.topAnchor, constant: 40),
+            versus.topAnchor.constraint(equalTo: self.topAnchor, constant: 30),
             
             inningInfo.centerXAnchor.constraint(equalTo: versus.centerXAnchor),
             inningInfo.topAnchor.constraint(equalTo: versus.bottomAnchor, constant: 4),
-            inningInfo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            inningInfo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
             
             visitingTeamScore.trailingAnchor.constraint(equalTo: inningInfo.leadingAnchor, constant: -15),
             visitingTeamScore.bottomAnchor.constraint(equalTo: versus.bottomAnchor),
