@@ -1,14 +1,12 @@
 package com.codesquad.baseball07.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class PitchingRecord {
 
     private Long Ball;
@@ -17,19 +15,16 @@ public class PitchingRecord {
 
     private String turn;
 
-    private int count;
+    private int ballCount;
 
-    public PitchingRecord(Long action) {
-        this.Ball = action;
+    private int turnAtBatCount;
+
+    private int hitCount;
+
+    private boolean strikeOut;
+
+    public PitchingRecord(Long ballId) {
+        this.Ball = ballId;
     }
 
-    @Override
-    public String toString() {
-        return "PitchingRecord{" +
-                "ball=" + Ball +
-                ", inning=" + inning +
-                ", turn='" + turn + '\'' +
-                ", count=" + count +
-                '}';
-    }
 }

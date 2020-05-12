@@ -1,15 +1,14 @@
 package com.codesquad.baseball07.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
+
+import java.util.Random;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Ball {
 
     @Id
@@ -17,15 +16,29 @@ public class Ball {
 
     private String result;
 
-    public Ball(String result) {
-        this.result = result;
+    public Ball() {
+        this.result = randomBall();
     }
 
-    @Override
-    public String toString() {
-        return "Ball{" +
-                "id=" + id +
-                ", result='" + result + '\'' +
-                '}';
+    private String randomBall() {
+        Random rand = new Random();
+        int random = rand.nextInt(4);
+        String randomBall = "";
+        switch (random) {
+            case 0:
+                randomBall = "BALL";
+                break;
+            case 1:
+                randomBall = "STRIKE";
+                break;
+            case 2:
+                randomBall = "HIT";
+                break;
+            case 3:
+                randomBall = "OUT";
+                break;
+        }
+
+        return randomBall;
     }
 }

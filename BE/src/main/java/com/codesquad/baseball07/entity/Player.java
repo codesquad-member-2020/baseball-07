@@ -1,9 +1,6 @@
 package com.codesquad.baseball07.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
@@ -13,6 +10,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Player {
 
     @Id
@@ -32,23 +30,12 @@ public class Player {
         this.name = name;
     }
 
-    public void addPitchingRecord(Ball ball, int inning, String turn, int count) {
-        PitchingRecord record = new PitchingRecord(ball.getId(), inning, turn, count);
+    public void addPitchingRecord(Ball ball, int inning, String turn, int ballCount, int turnAtBatCount, int hitCount, boolean strikeOut) {
+        PitchingRecord record = new PitchingRecord(ball.getId(), inning, turn, ballCount, turnAtBatCount, hitCount, strikeOut);
         pitchingRecords.add(record);
     }
 
     public void cleanPitchingRecord() {
         pitchingRecords.clear();
-    }
-
-    @Override
-    public String toString() {
-        return "Player{" +
-                "id=" + id +
-                ", matchOrder=" + matchOrder +
-                ", position='" + position + '\'' +
-                ", name='" + name + '\'' +
-                ", pitchingRecords=" + pitchingRecords +
-                '}';
     }
 }
