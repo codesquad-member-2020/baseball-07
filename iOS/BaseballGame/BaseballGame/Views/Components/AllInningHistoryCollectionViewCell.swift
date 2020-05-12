@@ -41,10 +41,10 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     private func configureConstraints() {
         let constraints = [
             nowTurnPlayerInfoView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 22),
-            nowTurnPlayerInfoView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            nowTurnPlayerInfoView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            nowTurnPlayerInfoView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 26),
+            nowTurnPlayerInfoView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -26),
             
-            playHistoryTableView.topAnchor.constraint(equalTo: nowTurnPlayerInfoView.bottomAnchor, constant: 16),
+            playHistoryTableView.topAnchor.constraint(equalTo: nowTurnPlayerInfoView.bottomAnchor, constant: 28),
             playHistoryTableView.leadingAnchor.constraint(equalTo: self.nowTurnPlayerInfoView.leadingAnchor),
             playHistoryTableView.trailingAnchor.constraint(equalTo: nowTurnPlayerInfoView.trailingAnchor),
             playHistoryTableView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
@@ -68,6 +68,7 @@ extension AllInningHistoryCollectionViewCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayHistoryTableViewCell", for: indexPath) as! PlayHistoryTableViewCell
+        if indexPath.section == 0 { cell.setCircleColor() }
         return cell
     }
     

@@ -14,7 +14,7 @@ class PlayHistoryTableViewCell: UITableViewCell {
   
     private let circleView: CircleView = {
        let view = CircleView()
-        view.set(color: UIColor(named: "Yellow"))
+        view.set(color: .lightGray)
         return view
     }()
     
@@ -90,5 +90,11 @@ class PlayHistoryTableViewCell: UITableViewCell {
         
     }
     
-
+    func setCircleColor() {
+        circleView.set(color: UIColor(named: "Yellow"))
+    }
+    
+    override func prepareForReuse() {
+        circleView.set(color: .lightGray)
+    }
 }
