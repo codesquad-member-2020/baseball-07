@@ -14,6 +14,7 @@ class PlayViewController: UIViewController {
     private let gameFieldView = GameFieldView()
     private var inningCollectionView: InningCollectionView!
     private let inningDataSource = InningCollectionViewDataSource()
+    private let inningDelegate = InningCollectionViewDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class PlayViewController: UIViewController {
         inningCollectionView = InningCollectionView(frame: .zero, collectionViewLayout: layout)
         inningCollectionView.register(InningCollectionViewCell.self, forCellWithReuseIdentifier: InningCollectionViewCell.identifier)
         inningCollectionView.dataSource = inningDataSource
-        inningCollectionView.delegate = self
+        inningCollectionView.delegate = inningDelegate
     }
     
     private func configureSubViews() {
@@ -62,18 +63,4 @@ class PlayViewController: UIViewController {
         ]
         constraints.forEach { $0.isActive = true }
     }
-}
-
-extension PlayViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! InningCollectionViewCell
-        cell.selected()
-        // TODO: - 하단에 뷰 생성해서 걔한테 [1회] 셀이 선택되었다는 거 알려줘야 함
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? InningCollectionViewCell else { return }
-        cell.deselected()
-    }
-    
 }
