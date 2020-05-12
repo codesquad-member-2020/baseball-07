@@ -21,6 +21,8 @@
 		30464AF1246A504F003D74E7 /* InningCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464AF0246A504F003D74E7 /* InningCollectionView.swift */; };
 		30464AF3246A50CE003D74E7 /* InningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464AF2246A50CE003D74E7 /* InningCollectionViewCell.swift */; };
 		30464AF5246A8F46003D74E7 /* PlayInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464AF4246A8F46003D74E7 /* PlayInfoView.swift */; };
+		30464AF9246A920D003D74E7 /* PlayHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464AF8246A920D003D74E7 /* PlayHistoryTableView.swift */; };
+		30464AFB246A980B003D74E7 /* PlayHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464AFA246A980B003D74E7 /* PlayHistoryTableViewCell.swift */; };
 		3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE052463AE49004A8175 /* NetworkDispatcher.swift */; };
 		3051CE082463AEB4004A8175 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE072463AEB4004A8175 /* Request.swift */; };
 		3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE0C2463CB2F004A8175 /* NetworkTask.swift */; };
@@ -65,6 +67,8 @@
 		30464AF0246A504F003D74E7 /* InningCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningCollectionView.swift; sourceTree = "<group>"; };
 		30464AF2246A50CE003D74E7 /* InningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningCollectionViewCell.swift; sourceTree = "<group>"; };
 		30464AF4246A8F46003D74E7 /* PlayInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayInfoView.swift; sourceTree = "<group>"; };
+		30464AF8246A920D003D74E7 /* PlayHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayHistoryTableView.swift; sourceTree = "<group>"; };
+		30464AFA246A980B003D74E7 /* PlayHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		3051CE052463AE49004A8175 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		3051CE072463AEB4004A8175 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		3051CE0C2463CB2F004A8175 /* NetworkTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkTask.swift; path = BaseballGame/Models/NetworkTask.swift; sourceTree = SOURCE_ROOT; };
@@ -148,6 +152,7 @@
 				3071872C2469760D002B1983 /* OnePlayerInfoView.swift */,
 				30464AF0246A504F003D74E7 /* InningCollectionView.swift */,
 				30464AF4246A8F46003D74E7 /* PlayInfoView.swift */,
+				30464AF8246A920D003D74E7 /* PlayHistoryTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 				30780050246557ED00CD8FBB /* NetworkIndicator.swift */,
 				3071872A246962FD002B1983 /* PitchButton.swift */,
 				30464AF2246A50CE003D74E7 /* InningCollectionViewCell.swift */,
+				30464AFA246A980B003D74E7 /* PlayHistoryTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -359,11 +365,13 @@
 				301EE3CE2462505600774D71 /* GameListTableViewCell.swift in Sources */,
 				3071872524691B7A002B1983 /* RhombusView.swift in Sources */,
 				301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */,
+				30464AFB246A980B003D74E7 /* PlayHistoryTableViewCell.swift in Sources */,
 				30464AF3246A50CE003D74E7 /* InningCollectionViewCell.swift in Sources */,
 				3071872D2469760D002B1983 /* OnePlayerInfoView.swift in Sources */,
 				301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */,
 				30310AEC2467C5E30045402A /* CircleStackView.swift in Sources */,
 				3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */,
+				30464AF9246A920D003D74E7 /* PlayHistoryTableView.swift in Sources */,
 				30DF9F1E2460374100BB21F2 /* ViewController.swift in Sources */,
 				30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */,
 				3051CE082463AEB4004A8175 /* Request.swift in Sources */,
