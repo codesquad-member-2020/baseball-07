@@ -9,5 +9,35 @@
 </head>
 <body>
 <a href="https://github.com/login/oauth/authorize?client_id=47a4d1cd4bb8a7e40f49&redirect_uri=http://localhost:8080/login&scope?user:email">login</a>
+<button class="get">games 받아오기 test</button>
+<script>
+
+    document.querySelector(".get").addEventListener("click", (e) => {
+        fetchGames();
+    });
+
+    const fetchGames = () => {
+         fetch('http://localhost:8080/games', {
+             mode: 'no-cors'
+         })
+            .then(
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Looks like there was a problem. Status Code: ' +
+                            response.status);
+                        return;
+                    }
+
+                    response.json().then(function (data) {
+                        console.log(data);
+                    });
+                }
+            )
+            .catch(function (err) {
+                console.log('Fetch Error :-S', err);
+            });
+    }
+
+</script>
 </body>
 </html>
