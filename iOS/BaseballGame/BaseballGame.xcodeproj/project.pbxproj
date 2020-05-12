@@ -20,6 +20,7 @@
 		3038B8D52462D2AC00AE0BF8 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038B8D42462D2AC00AE0BF8 /* GameList.swift */; };
 		30464AF1246A504F003D74E7 /* InningCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464AF0246A504F003D74E7 /* InningCollectionView.swift */; };
 		30464AF3246A50CE003D74E7 /* InningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464AF2246A50CE003D74E7 /* InningCollectionViewCell.swift */; };
+		30464AF5246A8F46003D74E7 /* PlayInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464AF4246A8F46003D74E7 /* PlayInfoView.swift */; };
 		3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE052463AE49004A8175 /* NetworkDispatcher.swift */; };
 		3051CE082463AEB4004A8175 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE072463AEB4004A8175 /* Request.swift */; };
 		3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE0C2463CB2F004A8175 /* NetworkTask.swift */; };
@@ -63,6 +64,7 @@
 		3038B8D42462D2AC00AE0BF8 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		30464AF0246A504F003D74E7 /* InningCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningCollectionView.swift; sourceTree = "<group>"; };
 		30464AF2246A50CE003D74E7 /* InningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningCollectionViewCell.swift; sourceTree = "<group>"; };
+		30464AF4246A8F46003D74E7 /* PlayInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayInfoView.swift; sourceTree = "<group>"; };
 		3051CE052463AE49004A8175 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		3051CE072463AEB4004A8175 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		3051CE0C2463CB2F004A8175 /* NetworkTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkTask.swift; path = BaseballGame/Models/NetworkTask.swift; sourceTree = SOURCE_ROOT; };
@@ -145,6 +147,7 @@
 				30718726246927F0002B1983 /* GroundView.swift */,
 				3071872C2469760D002B1983 /* OnePlayerInfoView.swift */,
 				30464AF0246A504F003D74E7 /* InningCollectionView.swift */,
+				30464AF4246A8F46003D74E7 /* PlayInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				3007CEBA24627E9A008D67E8 /* GameListTitleLabel.swift in Sources */,
 				30718727246927F0002B1983 /* GroundView.swift in Sources */,
 				301EE3D424625CEF00774D71 /* VersusLabel.swift in Sources */,
+				30464AF5246A8F46003D74E7 /* PlayInfoView.swift in Sources */,
 				3071872924696050002B1983 /* HomeView.swift in Sources */,
 				309014C5246681FD003786BE /* ExtendedNotificationName.swift in Sources */,
 				30F02BD52466793C00F3A066 /* NetworkUseCase.swift in Sources */,
