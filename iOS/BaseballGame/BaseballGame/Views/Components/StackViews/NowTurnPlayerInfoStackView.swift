@@ -46,13 +46,10 @@ class NowTurnPlayerInfoStackView: UIStackView {
 
     private func configureConstraints() {
         let constraints = [
-            pitcher.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
             pitcher.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
             
-            separator.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
             separator.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
             
-            hitter.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
             hitter.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
         ]
         

@@ -73,7 +73,6 @@ class OnePlayerInfoView: UIView {
             role.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 4),
             role.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
             
-            playerName.leadingAnchor.constraint(equalTo: role.trailingAnchor, constant: 14),
             playerName.topAnchor.constraint(equalTo: role.topAnchor),
             
             info.leadingAnchor.constraint(equalTo: playerName.trailingAnchor, constant: 14),
