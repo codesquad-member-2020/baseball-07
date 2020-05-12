@@ -1,5 +1,6 @@
 package com.codesquad.baseball07.dao;
 
+import com.codesquad.baseball07.dto.EntryDto;
 import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.dto.GameDto;
 import com.codesquad.baseball07.entity.Team;
@@ -67,13 +68,22 @@ public class GameDao {
     }
 
     public GameDto getGameForEntry(Long gameId) {
-        String sql = "SELECT game.id, GROUP_CONCAT(CONCAT_WS(',', `valid`, `name`) SEPARATOR ',')  as valid FROM GAME " +
-                "join game_has_team on game_has_team.game_id = game.id " +
-                "join team on team.id = game_has_team.team_id " +
-                "where game.id = ? group by game.id";
+        String sql = "SELECT game.id, GROUP_CONCAT(CONCAT_WS(',', `valid`, `name`) SEPARATOR ',')  AS valid FROM GAME " +
+                "JOIN game_has_team ON game_has_team.game_id = game.id " +
+                "JOIN team ON team.id = game_has_team.team_id " +
+                "WHERE game.id = ? GROUP BY game.id";
 
         return jdbcTemplate.queryForObject(sql,
                 (rs, rowNum) -> new GameDto(rs.getString("valid")),
                 gameId);
+    }
+
+    public EntryDto enterGame(Long gameId, String teamName) {
+        String sql = "SELECT game_has_team.valid FROM game_has_team " +
+                "JOIN team ON team.id = game_has_team.team_id " +
+                "WHERE game_has_team.game_id = ? AND team.name = ?";
+
+        return jdbcTemplate.queryForObject(sql,
+                (rs, rowNum) -> new EntryDto(rs.getBoolean("valid")), gameId, teamName);
     }
 }
