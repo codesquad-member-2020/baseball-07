@@ -45,20 +45,26 @@ class InningCollectionViewCell: UICollectionViewCell {
         constraints.forEach { $0.isActive = true}
     }
     
+    override func prepareForReuse() {
+        deselected()
+    }
+    
     func set(inning: Int) {
         self.inning.text = "\(inning) 회"
     }
     
     func selected() {
-        if self.isSelected {
-            inning.textColor = UIColor(named: "Navy")
-            inning.backgroundColor = .white
-            self.backgroundColor = .white
-        }else {
-            inning.textColor = .white
-            inning.backgroundColor = UIColor(named: "Navy")
-            self.backgroundColor = UIColor(named: "Navy")
-        }
+        inning.textColor = UIColor(named: "Navy")
+        inning.backgroundColor = .white
+        self.backgroundColor = .white
+        
     }
+    
+    func deselected() {
+        inning.textColor = .white
+        inning.backgroundColor = UIColor(named: "Navy")
+        self.backgroundColor = UIColor(named: "Navy")
+    }
+    
     
 }

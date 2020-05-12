@@ -28,7 +28,7 @@ class PlayViewController: UIViewController {
     private func configureCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 46, height: 30)
+        layout.itemSize = CGSize(width: view.frame.width / 3, height: 30)
         layout.scrollDirection = .horizontal
         inningCollectionView = InningCollectionView(frame: .zero, collectionViewLayout: layout)
         inningCollectionView.register(InningCollectionViewCell.self, forCellWithReuseIdentifier: InningCollectionViewCell.identifier)
@@ -73,7 +73,9 @@ extension PlayViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InningCollectionViewCell", for: indexPath) as! InningCollectionViewCell
         cell.set(inning: indexPath.row + 1)
-       
+        guard let selected = collectionView.indexPathsForSelectedItems else { return cell }
+        guard let selectedIndexPath = selected.first else { return cell }
+        if selectedIndexPath == indexPath { cell.selected() } else { cell.deselected() }
         return cell
     }
     
@@ -88,8 +90,8 @@ extension PlayViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! InningCollectionViewCell
-        cell.selected()
+        guard let cell = collectionView.cellForItem(at: indexPath) as? InningCollectionViewCell else { return }
+        cell.deselected()
     }
     
 }
