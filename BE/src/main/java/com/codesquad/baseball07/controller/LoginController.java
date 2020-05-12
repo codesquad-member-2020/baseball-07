@@ -1,13 +1,14 @@
 package com.codesquad.baseball07.controller;
 
 import com.codesquad.baseball07.service.LoginService;
+import org.springframework.http.ResponseCookie;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
@@ -29,11 +30,10 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public RedirectView login(@RequestParam String code, HttpServletResponse httpServletResponse) {
+    public RedirectView login(@RequestParam String code, HttpServletResponse httpServletResponse, HttpServletRequest request) {
         String jws = this.loginService.authenticate(code);
-        Cookie cookie = new Cookie(loginService.getCookieName(), jws);
-        cookie.setPath("/");
-        httpServletResponse.addCookie(cookie);
+        ResponseCookie responseCookie = ResponseCookie.from(loginService.getCookieName(), jws).domain(request.getHeader("host")).sameSite("None").secure(true).path("/").build();
+        httpServletResponse.addHeader("Set-Cookie", responseCookie.toString());
 
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl(loginService.getFrontMainUri());
