@@ -20,6 +20,14 @@ public class LoginController {
         this.loginService = loginService;
     }
 
+    @GetMapping("/github-login")
+    public RedirectView githubLogin() {
+        String redirectUri = loginService.getRedirectUri();
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl(redirectUri);
+        return redirectView;
+    }
+
     @GetMapping("/login")
     public RedirectView login(@RequestParam String code, HttpServletResponse httpServletResponse) {
         String jws = this.loginService.authenticate(code);
@@ -27,7 +35,7 @@ public class LoginController {
         httpServletResponse.addCookie(cookie);
 
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("http://localhost:8080");
+        redirectView.setUrl(loginService.getFrontMainUri());
         return redirectView;
     }
 }

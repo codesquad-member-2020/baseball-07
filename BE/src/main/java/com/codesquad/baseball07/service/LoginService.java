@@ -37,6 +37,9 @@ public class LoginService {
     @Value("${redirectUri}")
     private String REDIRECT_URI;
 
+    @Value("${frontMainUri}")
+    private String FRONT_MAIN_URI;
+
     public LoginService(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
@@ -58,6 +61,14 @@ public class LoginService {
 
     public String getCookieName() {
         return "auth-token";
+    }
+
+    public String getFrontMainUri() {
+        return this.FRONT_MAIN_URI;
+    }
+
+    public String getRedirectUri() {
+        return String.format("https://github.com/login/oauth/authorize?client_id=%s&redirect_uri=%s&scope?user:email", CLIENT_ID, REDIRECT_URI);
     }
 
     private Boolean isExistUser(String userId) {
