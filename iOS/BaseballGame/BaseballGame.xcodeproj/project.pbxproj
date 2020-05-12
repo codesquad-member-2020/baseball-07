@@ -27,6 +27,7 @@
 		30464B00246AAC42003D74E7 /* InningCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464AFF246AAC42003D74E7 /* InningCollectionViewDelegate.swift */; };
 		30464B02246AAFBA003D74E7 /* AllInningHistoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464B01246AAFBA003D74E7 /* AllInningHistoryCollectionView.swift */; };
 		30464B04246AAFEA003D74E7 /* AllInningHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464B03246AAFEA003D74E7 /* AllInningHistoryCollectionViewCell.swift */; };
+		30464B06246AB4C7003D74E7 /* AllInningHistoryCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30464B05246AB4C7003D74E7 /* AllInningHistoryCollectionViewDataSource.swift */; };
 		3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE052463AE49004A8175 /* NetworkDispatcher.swift */; };
 		3051CE082463AEB4004A8175 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE072463AEB4004A8175 /* Request.swift */; };
 		3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3051CE0C2463CB2F004A8175 /* NetworkTask.swift */; };
@@ -77,6 +78,7 @@
 		30464AFF246AAC42003D74E7 /* InningCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InningCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		30464B01246AAFBA003D74E7 /* AllInningHistoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllInningHistoryCollectionView.swift; sourceTree = "<group>"; };
 		30464B03246AAFEA003D74E7 /* AllInningHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllInningHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		30464B05246AB4C7003D74E7 /* AllInningHistoryCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllInningHistoryCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		3051CE052463AE49004A8175 /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
 		3051CE072463AEB4004A8175 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		3051CE0C2463CB2F004A8175 /* NetworkTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkTask.swift; path = BaseballGame/Models/NetworkTask.swift; sourceTree = SOURCE_ROOT; };
@@ -179,6 +181,7 @@
 			children = (
 				3007CEBC2462A3E3008D67E8 /* GameListTableDataSource.swift */,
 				30464AFC246AAB5E003D74E7 /* InningCollectionViewDataSource.swift */,
+				30464B05246AB4C7003D74E7 /* AllInningHistoryCollectionViewDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				30464B04246AAFEA003D74E7 /* AllInningHistoryCollectionViewCell.swift in Sources */,
 				3071872B246962FD002B1983 /* PitchButton.swift in Sources */,
 				301EE3CE2462505600774D71 /* GameListTableViewCell.swift in Sources */,
+				30464B06246AB4C7003D74E7 /* AllInningHistoryCollectionViewDataSource.swift in Sources */,
 				3071872524691B7A002B1983 /* RhombusView.swift in Sources */,
 				301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */,
 				30464AFB246A980B003D74E7 /* PlayHistoryTableViewCell.swift in Sources */,

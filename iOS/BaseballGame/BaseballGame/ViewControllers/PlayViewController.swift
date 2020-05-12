@@ -12,9 +12,13 @@ class PlayViewController: UIViewController {
     
     private let gameHeaderView = GameHeaderView()
     private let gameFieldView = GameFieldView()
+    
     private var inningCollectionView: InningCollectionView!
     private let inningDataSource = InningCollectionViewDataSource()
     private let inningDelegate = InningCollectionViewDelegate()
+    
+    private var inningHistoryCollectionView: AllInningHistoryCollectionView!
+    private let inningHistoryDataSource = AllInningHistoryCollectionViewDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +26,13 @@ class PlayViewController: UIViewController {
     }
     
     private func configure() {
-        configureCollectionView()
+        configureInningCollectionView()
+        configureInningHistoryCollectionView()
         configureSubViews()
         configureConstraints()
     }
     
-    private func configureCollectionView() {
+    private func configureInningCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: view.frame.width / 3, height: 30)
@@ -38,10 +43,22 @@ class PlayViewController: UIViewController {
         inningCollectionView.delegate = inningDelegate
     }
     
+    private func configureInningHistoryCollectionView() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height / 2)
+        layout.scrollDirection = .horizontal
+        
+        inningHistoryCollectionView = AllInningHistoryCollectionView(frame: .zero, collectionViewLayout: layout)
+        inningHistoryCollectionView.register(AllInningHistoryCollectionViewCell.self, forCellWithReuseIdentifier: AllInningHistoryCollectionViewCell.identifier)
+        inningHistoryCollectionView.dataSource = inningHistoryDataSource
+    }
+    
     private func configureSubViews() {
         self.view.addSubview(gameHeaderView)
         self.view.addSubview(gameFieldView)
         self.view.addSubview(inningCollectionView)
+        self.view.addSubview(inningHistoryCollectionView)
     }
     
     private func configureConstraints() {
@@ -60,6 +77,10 @@ class PlayViewController: UIViewController {
             inningCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             inningCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.06),
             
+            inningHistoryCollectionView.topAnchor.constraint(equalTo: inningCollectionView.bottomAnchor, constant: 4),
+            inningHistoryCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 4),
+            inningHistoryCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -4),
+            inningHistoryCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -4),
         ]
         constraints.forEach { $0.isActive = true }
     }
