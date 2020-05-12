@@ -11,7 +11,7 @@ import UIKit
 class InningCollectionViewCell: UICollectionViewCell {
     static let identifier = "InningCollectionViewCell"
     private let inning: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.textColor = .white
         label.backgroundColor = UIColor(named: "Navy")
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
@@ -50,7 +50,15 @@ class InningCollectionViewCell: UICollectionViewCell {
     }
     
     func selected() {
-        inning.textColor = UIColor(named: "Navy")
-        inning.backgroundColor = .clear
+        if self.isSelected {
+            inning.textColor = UIColor(named: "Navy")
+            inning.backgroundColor = .white
+            self.backgroundColor = .white
+        }else {
+            inning.textColor = .white
+            inning.backgroundColor = UIColor(named: "Navy")
+            self.backgroundColor = UIColor(named: "Navy")
+        }
     }
+    
 }
