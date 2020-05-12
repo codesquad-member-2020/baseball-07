@@ -1,6 +1,7 @@
 package com.codesquad.baseball07.controller;
 
 import com.codesquad.baseball07.dto.EntryDto;
+import com.codesquad.baseball07.dto.ResultDto;
 import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.dto.GameDto;
 import com.codesquad.baseball07.service.GameService;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -36,5 +38,10 @@ public class GameController {
     @PatchMapping("/games/{gameId}/{teamName}")
     public EntryDto enterGame(@PathVariable("gameId") Long gameId, @PathVariable("teamName") String teamName) {
         return gameService.enterGame(gameId, teamName);
+    }
+
+    @PostMapping("/games/{gameId}/{teamName}")
+    public ResultDto pitchBall(@PathVariable("gameId") Long gameId, @PathVariable("teamName") String teamName) {
+        return gameService.pitch(gameId, teamName);
     }
 }
