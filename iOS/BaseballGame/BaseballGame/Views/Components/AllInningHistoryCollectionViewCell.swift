@@ -8,8 +8,7 @@
 
 import UIKit
 
-class AllInningHistoryCollectionViewCell: UICollectionViewCell, UITableViewDataSource {
-
+class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "AllInningHistoryCollectionViewCell"
     private let nowTurnPlayerInfoView = NowTurnPlayerInfoStackView()
@@ -26,6 +25,7 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell, UITableViewDataS
     
     private func configure() {
         playHistoryTableView.register(PlayHistoryTableViewCell.self, forCellReuseIdentifier: PlayHistoryTableViewCell.identifier)
+        playHistoryTableView.delegate = self
         playHistoryTableView.dataSource = self
         playHistoryTableView.separatorStyle = .none
         configureSubViews()
@@ -53,14 +53,34 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell, UITableViewDataS
         
     }
     
+}
+
+extension AllInningHistoryCollectionViewCell: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: - 각각의 데이터 넣어줘야함.
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayHistoryTableViewCell", for: indexPath) as! PlayHistoryTableViewCell
-        
         return cell
     }
+    
+    
+}
+
+extension AllInningHistoryCollectionViewCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "\(section+1) 타자 류현진"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
 }
