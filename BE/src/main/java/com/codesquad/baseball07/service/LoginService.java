@@ -56,6 +56,10 @@ public class LoginService {
         return generateJwtToken(userId);
     }
 
+    public String getCookieName() {
+        return "auth-token";
+    }
+
     private Boolean isExistUser(String userId) {
         return userDao.isExists(userId);
     }
