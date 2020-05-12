@@ -21,10 +21,11 @@ public class ProductServiceInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
         Cookie[] cookies = request.getCookies();
-        String cookieName = "auth-token";
+        String cookieName = loginService.getCookieName();
         String cookieValue = null;
 
         if (cookies == null) {
+            response.sendError(401, "사용자 인증이 필요합니다.");
             return false;
         }
 
@@ -33,6 +34,10 @@ public class ProductServiceInterceptor implements HandlerInterceptor {
                 cookieValue = cookie.getValue();
             }
         }
-        return loginService.isValidAuthToken(cookieValue);
+        if(loginService.isValidAuthToken(cookieValue)) {
+            return true;
+        }
+        response.sendError(401, "사용자 인증이 필요합니다.");
+        return false;
     }
 }
