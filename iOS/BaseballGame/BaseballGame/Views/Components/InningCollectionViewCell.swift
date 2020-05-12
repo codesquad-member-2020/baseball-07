@@ -40,8 +40,8 @@ class InningCollectionViewCell: UICollectionViewCell {
         constraints.forEach { $0.isActive = true}
     }
     
-    func set(inning: String) {
-        self.inning.text = inning
+    func set(inning: Int) {
+        self.inning.text = "\(inning) 회"
     }
     
     func selected() {
