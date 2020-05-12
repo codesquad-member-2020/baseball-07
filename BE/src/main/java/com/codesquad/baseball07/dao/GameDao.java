@@ -1,6 +1,8 @@
 package com.codesquad.baseball07.dao;
 
 import com.codesquad.baseball07.dto.EntryDto;
+import com.codesquad.baseball07.dto.ResultDto;
+import com.codesquad.baseball07.entity.Ball;
 import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.dto.GameDto;
 import com.codesquad.baseball07.entity.Team;
@@ -85,5 +87,12 @@ public class GameDao {
 
         return jdbcTemplate.queryForObject(sql,
                 (rs, rowNum) -> new EntryDto(rs.getBoolean("valid")), gameId, teamName);
+    }
+
+    public ResultDto createBall(Long gameId, String teamName) {
+        Ball ball = new Ball();
+        this.jdbcTemplate.update("insert into ball (result) values (?)", ball.getResult());
+
+        return null;
     }
 }
