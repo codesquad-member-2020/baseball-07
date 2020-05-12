@@ -24,6 +24,10 @@ public class ProductServiceInterceptor implements HandlerInterceptor {
         String cookieName = loginService.getCookieName();
         String cookieValue = null;
 
+        if (request.getMethod().equals("OPTIONS")) {
+            return true;
+        }
+
         if (cookies == null) {
             response.sendError(401, "사용자 인증이 필요합니다.");
             return false;
