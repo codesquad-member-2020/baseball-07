@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
@@ -30,9 +29,9 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public RedirectView login(@RequestParam String code, HttpServletResponse httpServletResponse, HttpServletRequest request) {
+    public RedirectView login(@RequestParam String code, HttpServletResponse httpServletResponse) {
         String jws = this.loginService.authenticate(code);
-        ResponseCookie responseCookie = ResponseCookie.from(loginService.getCookieName(), jws).domain(request.getHeader("host")).sameSite("None").secure(true).path("/").build();
+        ResponseCookie responseCookie = ResponseCookie.from(loginService.getCookieName(), jws).domain("13.125.173.210").sameSite("None").secure(true).path("/").build();
         httpServletResponse.addHeader("Set-Cookie", responseCookie.toString());
 
         RedirectView redirectView = new RedirectView();
