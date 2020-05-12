@@ -17,7 +17,7 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell, UITableViewDataS
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -25,7 +25,10 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell, UITableViewDataS
     }
     
     private func configure() {
+        playHistoryTableView.register(PlayHistoryTableViewCell.self, forCellReuseIdentifier: PlayHistoryTableViewCell.identifier)
         playHistoryTableView.dataSource = self
+        playHistoryTableView.separatorStyle = .none
+        configureSubViews()
     }
     
     private func configureSubViews() {
@@ -37,11 +40,11 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell, UITableViewDataS
     
     private func configureConstraints() {
         let constraints = [
-            nowTurnPlayerInfoView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 4),
+            nowTurnPlayerInfoView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 22),
             nowTurnPlayerInfoView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             nowTurnPlayerInfoView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             
-            playHistoryTableView.topAnchor.constraint(equalTo: nowTurnPlayerInfoView.bottomAnchor, constant: 4),
+            playHistoryTableView.topAnchor.constraint(equalTo: nowTurnPlayerInfoView.bottomAnchor, constant: 16),
             playHistoryTableView.leadingAnchor.constraint(equalTo: self.nowTurnPlayerInfoView.leadingAnchor),
             playHistoryTableView.trailingAnchor.constraint(equalTo: nowTurnPlayerInfoView.trailingAnchor),
             playHistoryTableView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
@@ -60,5 +63,4 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell, UITableViewDataS
         
         return cell
     }
-    
 }

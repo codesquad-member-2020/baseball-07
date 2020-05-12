@@ -45,12 +45,13 @@ class PlayViewController: UIViewController {
     
     private func configureInningHistoryCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height / 2)
         layout.scrollDirection = .horizontal
-        
+        layout.minimumLineSpacing = 0
         inningHistoryCollectionView = AllInningHistoryCollectionView(frame: .zero, collectionViewLayout: layout)
         inningHistoryCollectionView.register(AllInningHistoryCollectionViewCell.self, forCellWithReuseIdentifier: AllInningHistoryCollectionViewCell.identifier)
+        inningHistoryCollectionView.isPagingEnabled = true
         inningHistoryCollectionView.dataSource = inningHistoryDataSource
     }
     
@@ -78,9 +79,10 @@ class PlayViewController: UIViewController {
             inningCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.06),
             
             inningHistoryCollectionView.topAnchor.constraint(equalTo: inningCollectionView.bottomAnchor, constant: 4),
-            inningHistoryCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 4),
-            inningHistoryCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -4),
+            inningHistoryCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            inningHistoryCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             inningHistoryCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -4),
+            inningHistoryCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ]
         constraints.forEach { $0.isActive = true }
     }
