@@ -13,6 +13,7 @@ class PlayViewController: UIViewController {
     private let gameHeaderView = GameHeaderView()
     private let gameFieldView = GameFieldView()
     private var inningCollectionView: InningCollectionView!
+    private let inningDataSource = InningCollectionViewDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class PlayViewController: UIViewController {
         layout.scrollDirection = .horizontal
         inningCollectionView = InningCollectionView(frame: .zero, collectionViewLayout: layout)
         inningCollectionView.register(InningCollectionViewCell.self, forCellWithReuseIdentifier: InningCollectionViewCell.identifier)
-        inningCollectionView.dataSource = self
+        inningCollectionView.dataSource = inningDataSource
         inningCollectionView.delegate = self
     }
     
@@ -61,25 +62,6 @@ class PlayViewController: UIViewController {
         ]
         constraints.forEach { $0.isActive = true }
     }
-}
-
-extension PlayViewController: UICollectionViewDataSource {
-    // TODO: - 각 회차별 정보 가지고 있는 모델 필요. 연장전 갈수도 있으므로 셀 추가되어야 함.
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InningCollectionViewCell", for: indexPath) as! InningCollectionViewCell
-        cell.set(inning: indexPath.row + 1)
-        guard let selected = collectionView.indexPathsForSelectedItems else { return cell }
-        guard let selectedIndexPath = selected.first else { return cell }
-        if selectedIndexPath == indexPath { cell.selected() } else { cell.deselected() }
-        return cell
-    }
-    
-    
 }
 
 extension PlayViewController: UICollectionViewDelegate {
