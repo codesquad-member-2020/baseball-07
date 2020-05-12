@@ -9,16 +9,20 @@
 import UIKit
 
 class InningCollectionViewCell: UICollectionViewCell {
+    static let identifier = "InningCollectionViewCell"
     private let inning: UILabel = {
        let label = UILabel()
         label.textColor = .white
         label.backgroundColor = UIColor(named: "Navy")
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -27,15 +31,16 @@ class InningCollectionViewCell: UICollectionViewCell {
     
     private func configure() {
         self.contentView.addSubview(inning)
+        self.backgroundColor = UIColor(named: "Navy")
+        self.layer.cornerRadius = 10.0
+        self.layer.masksToBounds = true
         configureConstraints()
     }
     
     private func configureConstraints() {
         let constraints = [
-            inning.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 4),
-            inning.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 4),
-            inning.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -4),
-            inning.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
+            inning.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            inning.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
         ]
         constraints.forEach { $0.isActive = true}
     }

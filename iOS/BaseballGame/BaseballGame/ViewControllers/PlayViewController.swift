@@ -12,7 +12,7 @@ class PlayViewController: UIViewController {
     
     private let gameHeaderView = GameHeaderView()
     private let gameFieldView = GameFieldView()
-    private let inningCollectionView = InningCollectionView()
+    private var inningCollectionView: InningCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,21 +20,26 @@ class PlayViewController: UIViewController {
     }
     
     private func configure() {
-        configureSubViews()
         configureCollectionView()
+        configureSubViews()
         configureConstraints()
+    }
+    
+    private func configureCollectionView() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 46, height: 30)
+        layout.scrollDirection = .horizontal
+        inningCollectionView = InningCollectionView(frame: .zero, collectionViewLayout: layout)
+        inningCollectionView.register(InningCollectionViewCell.self, forCellWithReuseIdentifier: InningCollectionViewCell.identifier)
+        inningCollectionView.dataSource = self
+        inningCollectionView.delegate = self
     }
     
     private func configureSubViews() {
         self.view.addSubview(gameHeaderView)
         self.view.addSubview(gameFieldView)
         self.view.addSubview(inningCollectionView)
-    }
-    
-    private func configureCollectionView() {
-        inningCollectionView.register(InningCollectionViewCell.self, forCellWithReuseIdentifier: "InningCollectionViewCell")
-        inningCollectionView.dataSource = self
-        inningCollectionView.delegate = self
     }
     
     private func configureConstraints() {
@@ -47,6 +52,11 @@ class PlayViewController: UIViewController {
             gameFieldView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             gameFieldView.topAnchor.constraint(equalTo: gameHeaderView.bottomAnchor, constant: 5),
             gameFieldView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 3),
+            
+            inningCollectionView.topAnchor.constraint(equalTo: gameFieldView.bottomAnchor),
+            inningCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            inningCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            inningCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.06),
             
         ]
         constraints.forEach { $0.isActive = true }
