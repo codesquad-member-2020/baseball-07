@@ -50,12 +50,15 @@ CREATE TABLE ball
 
 CREATE TABLE pitching_record
 (
-    player bigint references player (id),
-    ball bigint references ball (id),
-    inning    int,
-    turn      varchar(45),
-    count     int,
-    player_key int,
-    ball_key int,
+    player bigint       references player (id),
+    ball bigint         references ball (id),
+    inning              int,
+    turn                varchar(45),
+    ball_count          int,
+    turn_at_bat_count   int,
+    hit_count           int,
+    strike_out          boolean,
+    player_key          int,
+    ball_key            int,
     primary key (player, ball)
 );
