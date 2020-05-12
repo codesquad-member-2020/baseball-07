@@ -32,6 +32,7 @@ public class LoginController {
     public RedirectView login(@RequestParam String code, HttpServletResponse httpServletResponse) {
         String jws = this.loginService.authenticate(code);
         Cookie cookie = new Cookie(loginService.getCookieName(), jws);
+        cookie.setPath("/");
         httpServletResponse.addCookie(cookie);
 
         RedirectView redirectView = new RedirectView();
