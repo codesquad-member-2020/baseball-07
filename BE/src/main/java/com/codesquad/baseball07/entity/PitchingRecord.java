@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class PitchingRecord {
 
-    private Long Ball;
+    private Long ball;
 
     private int inning;
 
@@ -24,7 +24,7 @@ public class PitchingRecord {
     private boolean strikeOut;
 
     public PitchingRecord(Long ballId) {
-        this.Ball = ballId;
+        this.ball = ballId;
     }
 
 }

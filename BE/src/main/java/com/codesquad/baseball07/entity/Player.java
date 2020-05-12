@@ -24,8 +24,15 @@ public class Player {
 
     private List<PitchingRecord> pitchingRecords = new ArrayList<>();
 
-    public Player(int order, String position, String name) {
-        this.matchOrder = order;
+    public Player(int matchOrder, String position, String name) {
+        this.matchOrder = matchOrder;
+        this.position = position;
+        this.name = name;
+    }
+
+    public Player(Long id, int matchOrder, String position, String name) {
+        this.id = id;
+        this.matchOrder = matchOrder;
         this.position = position;
         this.name = name;
     }
