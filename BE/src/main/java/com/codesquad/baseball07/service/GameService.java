@@ -1,6 +1,7 @@
 package com.codesquad.baseball07.service;
 
 import com.codesquad.baseball07.dao.GameDao;
+import com.codesquad.baseball07.dto.EntryDto;
 import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.dto.GameDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,9 @@ public class GameService {
 
     public GameDto getGameForEntry(Long gameId) {
         return gameDao.getGameForEntry(gameId);
+    }
+
+    public EntryDto enterGame(Long gameId, String teamName) {
+        return gameDao.enterGame(gameId, teamName);
     }
 }
