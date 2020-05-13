@@ -17,9 +17,12 @@
     });
 
     const fetchGames = () => {
-         fetch('http://localhost:8080/games', {
-             mode: 'no-cors'
-         })
+        fetch('http://localhost:8080/games', {
+            mode: 'cors',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            }
+        })
             .then(
                 function (response) {
                     if (response.status !== 200) {
