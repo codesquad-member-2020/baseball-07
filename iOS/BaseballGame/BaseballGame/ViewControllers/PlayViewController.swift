@@ -35,11 +35,18 @@ class PlayViewController: UIViewController {
     
     private func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(moveInningInfoCell(_:)), name: .selectInningCell, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveInningCell(_:)), name: .swipeCell, object: nil)
+
     }
 
     @objc private func moveInningInfoCell(_ notification: Notification) {
         guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
         inningHistoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+    }
+    
+    @objc private func moveInningCell(_ notification: Notification) {
+        guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
+        inningCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
     }
     
     private func configureInningCollectionView() {
