@@ -21,7 +21,7 @@ CREATE TABLE game
 CREATE TABLE team
 (
     id   bigint auto_increment primary key,
-    name varchar(45),
+    name varchar(45)
 );
 
 CREATE TABLE game_has_team
