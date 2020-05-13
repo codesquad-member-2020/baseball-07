@@ -9,7 +9,6 @@
 import Foundation
 
 struct MockPitchUseCase {
-    
     private let task = NetworkTask(dispatcher: NetworkDispatcher())
     
     class MockPitchRequest: Request {

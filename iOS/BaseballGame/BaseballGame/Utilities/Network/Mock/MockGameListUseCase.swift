@@ -8,10 +8,14 @@
 
 import Foundation
 
-struct NetworkUseCase {
-    typealias handler = (Any) -> Void
+struct MockGameListUseCase {
+    private let task = NetworkTask(dispatcher: NetworkDispatcher())
+
+    class MockGameListRequest: Request {
+        var path: String = EndPoints.fakeGameList    
+    }
     
-    static func requestGameListStub(handler: @escaping handler) {
+    static func requestGameListStub(handler: @escaping (Any) -> Void) {
         let task = NetworkTask(dispatcher: NetworkDispatcher())
         task.perform(request: MockGameListRequest(), dataType: GameList.self) { result in
             switch result {

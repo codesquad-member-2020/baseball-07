@@ -9,7 +9,6 @@
 import Foundation
 
 struct MockGameRoomInfoUseCase {
-    
       private let task = NetworkTask(dispatcher: NetworkDispatcher())
       
       class MockGameRoomRequest: Request {
