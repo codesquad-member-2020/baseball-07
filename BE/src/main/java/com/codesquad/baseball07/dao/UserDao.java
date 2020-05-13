@@ -15,7 +15,7 @@ public class UserDao {
     }
 
     public Boolean isExists(String userId) {
-        String sql = "SELECT CASE WHEN EXISTS(SELECT * FROM USER WHERE id = ?) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END";
+        String sql = "SELECT CASE WHEN EXISTS(SELECT * FROM USER WHERE id = ?) THEN TRUE ELSE FALSE END";
 
         return jdbcTemplate.queryForObject(sql, new Object[]{userId}, Boolean.class);
     }
