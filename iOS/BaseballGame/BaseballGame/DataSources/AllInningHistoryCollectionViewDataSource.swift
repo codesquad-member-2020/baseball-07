@@ -17,6 +17,4 @@ class AllInningHistoryCollectionViewDataSource: NSObject, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllInningHistoryCollectionViewCell", for: indexPath) as! AllInningHistoryCollectionViewCell
         return cell
     }
-    
-
 }

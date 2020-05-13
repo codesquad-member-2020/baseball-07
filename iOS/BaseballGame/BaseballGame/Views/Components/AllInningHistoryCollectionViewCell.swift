@@ -71,8 +71,6 @@ extension AllInningHistoryCollectionViewCell: UITableViewDataSource {
         if indexPath.section == 0 { cell.setCircleColor() }
         return cell
     }
-    
-    
 }
 
 extension AllInningHistoryCollectionViewCell: UITableViewDelegate {
@@ -83,5 +81,4 @@ extension AllInningHistoryCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
 }

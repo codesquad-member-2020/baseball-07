@@ -30,6 +30,16 @@ class PlayViewController: UIViewController {
         configureInningHistoryCollectionView()
         configureSubViews()
         configureConstraints()
+        configureObserver()
+    }
+    
+    private func configureObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(moveInningInfoCell(_:)), name: .selectInningCell, object: nil)
+    }
+
+    @objc private func moveInningInfoCell(_ notification: Notification) {
+        guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
+        inningHistoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
     }
     
     private func configureInningCollectionView() {
@@ -53,6 +63,7 @@ class PlayViewController: UIViewController {
         inningHistoryCollectionView.register(AllInningHistoryCollectionViewCell.self, forCellWithReuseIdentifier: AllInningHistoryCollectionViewCell.identifier)
         inningHistoryCollectionView.isPagingEnabled = true
         inningHistoryCollectionView.dataSource = inningHistoryDataSource
+        inningHistoryCollectionView.delegate = self
     }
     
     private func configureSubViews() {
@@ -85,5 +96,13 @@ class PlayViewController: UIViewController {
             inningHistoryCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ]
         constraints.forEach { $0.isActive = true }
+    }
+}
+
+extension PlayViewController: UICollectionViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard let indexPath = inningHistoryCollectionView.indexPathsForVisibleItems.first else { return }
+        NotificationCenter.default.post(name: .swipeCell, object: nil, userInfo: ["indexPath":indexPath])
+
     }
 }
