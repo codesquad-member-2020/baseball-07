@@ -46,7 +46,13 @@ class PlayViewController: UIViewController {
     
     @objc private func moveInningCell(_ notification: Notification) {
         guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
-        inningCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+        guard let cell = inningCollectionView.cellForItem(at: indexPath) as? InningCollectionViewCell else { return }
+        inningCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+        inningCollectionView.visibleCells.forEach {
+            guard let visibleCell = $0 as? InningCollectionViewCell else { return }
+            visibleCell.deselected()
+        }
+        cell.selected()
     }
     
     private func configureInningCollectionView() {
@@ -110,6 +116,5 @@ extension PlayViewController: UICollectionViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard let indexPath = inningHistoryCollectionView.indexPathsForVisibleItems.first else { return }
         NotificationCenter.default.post(name: .swipeCell, object: nil, userInfo: ["indexPath":indexPath])
-
     }
 }
