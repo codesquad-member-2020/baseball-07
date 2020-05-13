@@ -35,6 +35,7 @@ public class GameService {
     }
 
     public ResultDto pitch(Long gameId, String teamName) {
-        return gameDao.createBall(gameId, teamName, new Ball());
+        gameDao.saveBall(gameId, teamName, new Ball());
+        return gameDao.getResult();
     }
 }
