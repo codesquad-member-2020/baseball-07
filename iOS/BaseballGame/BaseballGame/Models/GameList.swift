@@ -21,6 +21,7 @@ struct GameInfo: Codable {
 struct TeamInfo: Codable {
     var id: Int
     var name: String
+    var score: Int?
 }
 
 struct GameRoomEmpty: Codable {

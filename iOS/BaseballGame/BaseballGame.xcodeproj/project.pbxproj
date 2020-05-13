@@ -42,7 +42,8 @@
 		309014C72466C392003786BE /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309014C62466C392003786BE /* PlayViewController.swift */; };
 		309014C92466C3AA003786BE /* ScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309014C82466C3AA003786BE /* ScoresViewController.swift */; };
 		309014CB2466C7CC003786BE /* GameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309014CA2466C7CC003786BE /* GameHeaderView.swift */; };
-		30BD2D02246C25670015135D /* PitchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D01246C25670015135D /* PitchResult.swift */; };
+		30BD2D02246C25670015135D /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D01246C25670015135D /* Pitch.swift */; };
+		30BD2D04246C29F00015135D /* PlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D03246C29F00015135D /* PlayInfo.swift */; };
 		30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B512460501800F80E1F /* GithubLoginViewController.swift */; };
 		30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B53246057D500F80E1F /* GameListViewController.swift */; };
 		30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F192460374100BB21F2 /* AppDelegate.swift */; };
@@ -93,7 +94,8 @@
 		309014C62466C392003786BE /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		309014C82466C3AA003786BE /* ScoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresViewController.swift; sourceTree = "<group>"; };
 		309014CA2466C7CC003786BE /* GameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHeaderView.swift; sourceTree = "<group>"; };
-		30BD2D01246C25670015135D /* PitchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchResult.swift; sourceTree = "<group>"; };
+		30BD2D01246C25670015135D /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
+		30BD2D03246C29F00015135D /* PlayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayInfo.swift; sourceTree = "<group>"; };
 		30CF5B512460501800F80E1F /* GithubLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginViewController.swift; sourceTree = "<group>"; };
 		30CF5B53246057D500F80E1F /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		30DF9F162460374100BB21F2 /* BaseballGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseballGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				3038B8D42462D2AC00AE0BF8 /* GameList.swift */,
-				30BD2D01246C25670015135D /* PitchResult.swift */,
+				30BD2D01246C25670015135D /* Pitch.swift */,
+				30BD2D03246C29F00015135D /* PlayInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -414,7 +417,7 @@
 				301EE3CC2462501100774D71 /* GameListTableView.swift in Sources */,
 				30780051246557ED00CD8FBB /* NetworkIndicator.swift in Sources */,
 				309014CB2466C7CC003786BE /* GameHeaderView.swift in Sources */,
-				30BD2D02246C25670015135D /* PitchResult.swift in Sources */,
+				30BD2D02246C25670015135D /* Pitch.swift in Sources */,
 				3051CE0D2463CB2F004A8175 /* NetworkTask.swift in Sources */,
 				30310AEA2467BF0E0045402A /* CircleView.swift in Sources */,
 				30464B00246AAC42003D74E7 /* InningCollectionViewDelegate.swift in Sources */,
@@ -427,6 +430,7 @@
 				3007CEBD2462A3E3008D67E8 /* GameListTableDataSource.swift in Sources */,
 				30FE85342467D641004CDE13 /* GameFieldView.swift in Sources */,
 				30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */,
+				30BD2D04246C29F00015135D /* PlayInfo.swift in Sources */,
 				3071872F2469800E002B1983 /* NowTurnPlayerInfoStackView.swift in Sources */,
 				30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */,
 			);

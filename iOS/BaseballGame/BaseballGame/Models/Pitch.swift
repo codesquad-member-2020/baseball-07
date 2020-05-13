@@ -1,5 +1,5 @@
 //
-//  PitchResult.swift
+//  Pitch.swift
 //  BaseballGame
 //
 //  Created by delma on 2020/05/13.
