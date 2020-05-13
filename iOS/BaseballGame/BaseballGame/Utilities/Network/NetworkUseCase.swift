@@ -23,15 +23,4 @@ struct NetworkUseCase {
         }
     }
     
-    static func requestGameRoomEmptyInfoStub(handler: @escaping handler) {
-        let task = NetworkTask(dispatcher: NetworkDispatcher())
-        task.perform(request: MockGameRoomEmptyRequest(), dataType: GameRoomEmpty.self) { result in
-            switch result {
-            case .success(let decodedData):
-                handler(decodedData)
-            case .failure(let error):
-                NotificationCenter.default.post(name: .networkError, object: nil, userInfo: ["error":error])
-            }
-        }
-    }
 }

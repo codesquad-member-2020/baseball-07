@@ -46,6 +46,7 @@
 		30BD2D04246C29F00015135D /* PlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D03246C29F00015135D /* PlayInfo.swift */; };
 		30BD2D07246C2D840015135D /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D06246C2D840015135D /* EndPoints.swift */; };
 		30BD2D09246C2E8D0015135D /* MockPitchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D08246C2E8D0015135D /* MockPitchUseCase.swift */; };
+		30BD2D0B246C33410015135D /* MockGameRoomInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D0A246C33410015135D /* MockGameRoomInfoUseCase.swift */; };
 		30CF5B522460501800F80E1F /* GithubLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B512460501800F80E1F /* GithubLoginViewController.swift */; };
 		30CF5B54246057D500F80E1F /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CF5B53246057D500F80E1F /* GameListViewController.swift */; };
 		30DF9F1A2460374100BB21F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DF9F192460374100BB21F2 /* AppDelegate.swift */; };
@@ -100,6 +101,7 @@
 		30BD2D03246C29F00015135D /* PlayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayInfo.swift; sourceTree = "<group>"; };
 		30BD2D06246C2D840015135D /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		30BD2D08246C2E8D0015135D /* MockPitchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPitchUseCase.swift; sourceTree = "<group>"; };
+		30BD2D0A246C33410015135D /* MockGameRoomInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameRoomInfoUseCase.swift; sourceTree = "<group>"; };
 		30CF5B512460501800F80E1F /* GithubLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginViewController.swift; sourceTree = "<group>"; };
 		30CF5B53246057D500F80E1F /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
 		30DF9F162460374100BB21F2 /* BaseballGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseballGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				30BD2D08246C2E8D0015135D /* MockPitchUseCase.swift */,
+				30BD2D0A246C33410015135D /* MockGameRoomInfoUseCase.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				3071872D2469760D002B1983 /* OnePlayerInfoView.swift in Sources */,
 				301EE3D22462544400774D71 /* ParticipantLabel.swift in Sources */,
 				30464AFD246AAB5E003D74E7 /* InningCollectionViewDataSource.swift in Sources */,
+				30BD2D0B246C33410015135D /* MockGameRoomInfoUseCase.swift in Sources */,
 				30310AEC2467C5E30045402A /* CircleStackView.swift in Sources */,
 				3051CE062463AE49004A8175 /* NetworkDispatcher.swift in Sources */,
 				30464AF9246A920D003D74E7 /* PlayHistoryTableView.swift in Sources */,
