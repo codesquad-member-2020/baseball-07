@@ -1,5 +1,5 @@
 //
-//  InningCollectionView.swift
+//  AllInningHistoryCollectionView.swift
 //  BaseballGame
 //
 //  Created by delma on 2020/05/12.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class InningCollectionView: UICollectionView {
-
+class AllInningHistoryCollectionView: UICollectionView {
+    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -20,5 +20,5 @@ class InningCollectionView: UICollectionView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
+
 }
