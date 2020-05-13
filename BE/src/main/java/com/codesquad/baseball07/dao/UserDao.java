@@ -15,9 +15,11 @@ public class UserDao {
     }
 
     public Boolean isExists(String userId) {
-        String sql = "SELECT CASE WHEN EXISTS(SELECT * FROM USER WHERE id = ?) THEN TRUE ELSE FALSE END";
+        String sql = "SELECT id from user where id =?";
 
-        return jdbcTemplate.queryForObject(sql, new Object[]{userId}, Boolean.class);
+
+        Long id =  jdbcTemplate.queryForObject(sql, new Object[]{userId}, Long.class);
+        return id != null;
     }
 
     public void createUser(String userId) {
