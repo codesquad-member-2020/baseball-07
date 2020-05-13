@@ -1,9 +1,7 @@
 package com.codesquad.baseball07.dao;
 
-import com.codesquad.baseball07.dto.EntryDto;
-import com.codesquad.baseball07.dto.ResultDto;
+import com.codesquad.baseball07.dto.*;
 import com.codesquad.baseball07.entity.*;
-import com.codesquad.baseball07.dto.GameDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -87,9 +85,9 @@ public class GameDao {
                 (rs, rowNum) -> new EntryDto(rs.getBoolean("valid")), gameId, teamName);
     }
 
-    public ResultDto createBall(Long gameId, String teamName, Ball ball) {
+    public void saveBall(Long gameId, String teamName, Ball ball) {
         this.jdbcTemplate.update("insert into ball (result) values (?)", ball.getResult());
-        ball.setId(this.jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Long.class));
+        ball.setId(getNewBallId());
 
         Player batter = getBatterPlayer(gameId, teamName, ball.getId());
         Player pitcher = getPitcherPlayer(gameId, teamName);
@@ -108,8 +106,6 @@ public class GameDao {
                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                 pitcher.getId(), ball.getId(), recordOfPitcher.getInning(), recordOfPitcher.getTurn(), recordOfPitcher.getBallCount() + 1,
                 recordOfPitcher.getTurnAtBatCount(), recordOfPitcher.getHitCount(), recordOfPitcher.isStrikeOut());
-
-        return null;
     }
 
     public PitchingRecord getLastPitchingRecord(Long lastBallId, Long playerId) {
@@ -195,5 +191,38 @@ public class GameDao {
 
         return this.jdbcTemplate.queryForObject(sql,
                 (rs, rowNum) -> rs.getLong("player"), gameId, teamName, ballId - 1);
+    }
+
+    public Long getNewBallId() {
+        return this.jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Long.class);
+    }
+
+    public List<Map<String, Object>> getNewPitchingRecords(Long ballId) {
+        String sql = "SELECT player.name, player.position, player.match_order, pitching_record.ball, " +
+                "pitching_record.inning, pitching_record.turn, pitching_record.ball_count, " +
+                "pitching_record.turn_at_bat_count, pitching_record.hit_count, pitching_record.strike_out, " +
+                "ball.result FROM player join PITCHING_RECORD on pitching_record.player = player.id " +
+                "join ball on ball.id = pitching_record.ball " +
+                "where pitching_record.ball = ?";
+
+        return jdbcTemplate.queryForList(sql, ballId);
+    }
+
+    public ResultDto getResult() {
+        List<Map<String, Object>> rows = getNewPitchingRecords(getNewBallId());
+        ResultDto resultDto = new ResultDto();
+        rows.forEach(row -> {
+            if (((String) row.get("position")).equals("pitcher")) {
+                resultDto.setPitcher(new Pitcher((String) row.get("name"), (int) row.get("ball_count")));
+            }
+            if (((String) row.get("position")).equals("hitter")) {
+                resultDto.setHitter(new Hitter((String) row.get("name"), (int) row.get("match_order"), (int) row.get("turn_at_bat_count"), (int) row.get("hit_count")));
+            }
+            resultDto.setInning((int) row.get("inning"));
+            resultDto.setTurn((String) row.get("turn"));
+            resultDto.setPitchResult((String) row.get("result"));
+            resultDto.setOut((boolean) row.get("strike_out"));
+        });
+        return resultDto;
     }
 }
