@@ -10,7 +10,7 @@ import UIKit
 
 final class GameListViewController: UIViewController {
     
-    private let gameListTitle = GameListTitle()
+    private let gameListTitle = GameListTitleLabel()
     @IBOutlet var gameListTableView: GameListTableView!
     private var gameListDataSource: GameListTableDataSource!
     private var networkIndicator: NetworkIndicator!
