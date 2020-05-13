@@ -14,8 +14,8 @@ struct GameList: Codable {
 
 struct GameInfo: Codable {
     var id: Int
-    var home_team: TeamInfo
-    var away_team: TeamInfo
+    var homeTeam: TeamInfo
+    var awayTeam: TeamInfo
 }
 
 struct TeamInfo: Codable {
