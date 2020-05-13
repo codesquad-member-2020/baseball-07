@@ -13,6 +13,7 @@ class PlayHistoryTableView: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: .plain)
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.showsVerticalScrollIndicator = false
     }
     
     required init?(coder: NSCoder) {

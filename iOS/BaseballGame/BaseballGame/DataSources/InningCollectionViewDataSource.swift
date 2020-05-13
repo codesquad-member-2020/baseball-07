@@ -18,10 +18,12 @@ class InningCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InningCollectionViewCell", for: indexPath) as! InningCollectionViewCell
         cell.set(inning: indexPath.row + 1)
+        if indexPath.section == 0, indexPath.row == 0 { cell.selected() }
         guard let selected = collectionView.indexPathsForSelectedItems else { return cell }
         guard let selectedIndexPath = selected.first else { return cell }
         if selectedIndexPath == indexPath { cell.selected() } else { cell.deselected() }
         return cell
     }
+    
     
 }

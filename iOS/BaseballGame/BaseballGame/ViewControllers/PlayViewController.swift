@@ -64,6 +64,7 @@ class PlayViewController: UIViewController {
         inningCollectionView.register(InningCollectionViewCell.self, forCellWithReuseIdentifier: InningCollectionViewCell.identifier)
         inningCollectionView.dataSource = inningDataSource
         inningCollectionView.delegate = inningDelegate
+
     }
     
     private func configureInningHistoryCollectionView() {

@@ -20,4 +20,5 @@ class InningCollectionViewDelegate: NSObject, UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? InningCollectionViewCell else { return }
         cell.deselected()
     }
+    
 }

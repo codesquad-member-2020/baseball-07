@@ -14,6 +14,7 @@ class AllInningHistoryCollectionView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .clear
+        self.showsHorizontalScrollIndicator = false
     }
     
     required init?(coder: NSCoder) {
