@@ -11,7 +11,6 @@ import UIKit
 class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "AllInningHistoryCollectionViewCell"
-    private let nowTurnPlayerInfoView = NowTurnPlayerInfoStackView()
     private let playHistoryTableView = PlayHistoryTableView()
     
     override init(frame: CGRect) {
@@ -32,7 +31,6 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureSubViews() {
-        self.addSubview(nowTurnPlayerInfoView)
         self.addSubview(playHistoryTableView)
         
         configureConstraints()
@@ -40,13 +38,10 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     
     private func configureConstraints() {
         let constraints = [
-            nowTurnPlayerInfoView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 22),
-            nowTurnPlayerInfoView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 26),
-            nowTurnPlayerInfoView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -26),
             
-            playHistoryTableView.topAnchor.constraint(equalTo: nowTurnPlayerInfoView.bottomAnchor, constant: 28),
-            playHistoryTableView.leadingAnchor.constraint(equalTo: self.nowTurnPlayerInfoView.leadingAnchor),
-            playHistoryTableView.trailingAnchor.constraint(equalTo: nowTurnPlayerInfoView.trailingAnchor),
+            playHistoryTableView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 26),
+            playHistoryTableView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 26),
+            playHistoryTableView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -26),
             playHistoryTableView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
         ]
         constraints.forEach { $0.isActive = true }
