@@ -38,7 +38,7 @@ public class ProductServiceInterceptor implements HandlerInterceptor {
                 cookieValue = cookie.getValue();
             }
         }
-        if(loginService.isValidAuthToken(cookieValue)) {
+        if (cookieValue != null && loginService.isValidAuthToken(cookieValue)) {
             return true;
         }
         response.sendError(401, "사용자 인증이 필요합니다.");

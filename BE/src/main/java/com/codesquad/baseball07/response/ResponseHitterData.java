@@ -7,7 +7,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ResponseData {
+public class ResponseHitterData {
 
-    private Object result;
+    private Object pitchHistory;
+
 }
