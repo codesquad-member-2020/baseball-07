@@ -12,7 +12,6 @@ struct MockPitchUseCase {
     private let task = NetworkTask(dispatcher: NetworkDispatcher())
     
     class MockPitchRequest: Request {
-        var method: HTTPMethod = .post
         var path: String = EndPoints.fakePitch
     }
     

@@ -21,7 +21,7 @@ class PlayViewController: UIViewController {
     
     private var inningHistoryCollectionView: AllInningHistoryCollectionView!
     private let inningHistoryDataSource = AllInningHistoryCollectionViewDataSource()
-   
+    
     private var pitchViewModel: PitchViewModel!
     
     override func viewDidLoad() {
@@ -41,9 +41,9 @@ class PlayViewController: UIViewController {
     private func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(moveInningInfoCell(_:)), name: .selectInningCell, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveInningCell(_:)), name: .swipeCell, object: nil)
-
+        
     }
-
+    
     @objc private func moveInningInfoCell(_ notification: Notification) {
         guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
         inningHistoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
@@ -69,7 +69,7 @@ class PlayViewController: UIViewController {
         inningCollectionView.register(InningCollectionViewCell.self, forCellWithReuseIdentifier: InningCollectionViewCell.identifier)
         inningCollectionView.dataSource = inningDataSource
         inningCollectionView.delegate = inningDelegate
-
+        
     }
     
     private func configureInningHistoryCollectionView() {
@@ -123,9 +123,15 @@ class PlayViewController: UIViewController {
     }
     
     private func requestData() {
-        
+        MockPitchUseCase().requestPitchStub { decodeData in
+            self.pitchViewModel = PitchViewModel(pitch: decodeData as? Pitch) { pitchData in
+                DispatchQueue.main.async {
+                    self.gameHeaderView.configure(playInfo: pitchData)
+                }
+                
+            }
+        }
     }
-    
 }
 
 extension PlayViewController: UICollectionViewDelegate {

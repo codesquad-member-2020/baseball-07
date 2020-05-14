@@ -29,24 +29,15 @@ class GameHeaderView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-     
+    
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        temp()
         configureVersus()
         configureScore()
         configureInningInfo()
         configureTeamName()
         configureSubviews()
         configureTurnBar()
-    }
-    
-    private func temp() {
-        homeTeamScore.text = "10"
-        visitingTeamScore.text = "15"
-        homeTeamName.text = "Home"
-        visitingTeamName.text = "Visiting"
-        inningInfo.text = "2회초 수비"
     }
     
     private func configureVersus() {
@@ -106,7 +97,7 @@ class GameHeaderView: UIView {
             visitingTeamName.trailingAnchor.constraint(equalTo: visitingTeamScore.leadingAnchor, constant: -8),
             visitingTeamName.centerYAnchor.constraint(equalTo: versus.centerYAnchor),
             visitingTeamName.bottomAnchor.constraint(equalTo: versus.bottomAnchor),
-
+            
             visitingTeamTurn.leadingAnchor.constraint(equalTo: visitingTeamName.leadingAnchor),
             visitingTeamTurn.trailingAnchor.constraint(equalTo: visitingTeamScore.trailingAnchor),
             visitingTeamTurn.heightAnchor.constraint(equalToConstant: 5.0),
@@ -118,7 +109,7 @@ class GameHeaderView: UIView {
             homeTeamName.leadingAnchor.constraint(equalTo: homeTeamScore.trailingAnchor, constant: 8),
             homeTeamName.centerYAnchor.constraint(equalTo: versus.centerYAnchor),
             homeTeamName.bottomAnchor.constraint(equalTo: versus.bottomAnchor),
-
+            
             homeTeamTurn.leadingAnchor.constraint(equalTo: homeTeamScore.leadingAnchor),
             homeTeamTurn.trailingAnchor.constraint(equalTo: homeTeamName.trailingAnchor),
             homeTeamTurn.heightAnchor.constraint(equalToConstant: 5.0),
@@ -128,6 +119,13 @@ class GameHeaderView: UIView {
         constraints.forEach { $0.isActive = true }
     }
     
-    
+    func configure(playInfo: Pitch?) {
+        guard let info = playInfo else { return }
+        homeTeamScore.text = "\(info.game.homeTeam.score ?? 0)"
+        visitingTeamScore.text = "\(info.game.awayTeam.score ?? 0)"
+        homeTeamName.text = info.game.homeTeam.name
+        visitingTeamName.text = info.game.awayTeam.name
+        inningInfo.text = "\(info.result.inning)회\(info.result.turn) 수비"
+    }
     
 }
