@@ -127,6 +127,7 @@ class PlayViewController: UIViewController {
             self.pitchViewModel = PitchViewModel(pitch: decodeData as? Pitch) { pitchData in
                 DispatchQueue.main.async {
                     self.gameHeaderView.configure(playInfo: pitchData)
+                    self.gameFieldView.configure(inningTotal: pitchData?.inningTotal)
                 }
                 
             }

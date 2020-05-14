@@ -104,4 +104,25 @@ class SBOView: UIView {
         ]
         constraints.forEach { $0.isActive = true }
     }
+    
+    func configureStrike(_ count: Int) {
+        for index in 0...count {
+            guard let circle = strikeCircleStack.subviews[index] as? CircleView else { return }
+            circle.show()
+        }
+    }
+    
+    func configureBall(_ count: Int) {
+        for index in 0...count {
+            guard let circle = ballCircleStack.subviews[index] as? CircleView else { return }
+            circle.show()
+        }
+    }
+    
+    func configureOut(_ count: Int) {
+        for index in 0...count {
+            guard let circle = outCircleStack.subviews[index] as? CircleView else { return }
+            circle.show()
+        }
+    }
 }

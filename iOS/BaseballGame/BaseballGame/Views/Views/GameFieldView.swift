@@ -50,4 +50,12 @@ class GameFieldView: UIView {
         ]
         constraints.forEach { $0.isActive = true }
     }
+    
+    func configure(inningTotal: InningTotal?) {
+        guard let inningCount = inningTotal else { return }
+        sboView.configureStrike(inningCount.strike)
+        sboView.configureBall(inningCount.ball)
+        sboView.configureOut(inningCount.out)
+    }
+    
 }

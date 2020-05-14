@@ -28,10 +28,15 @@ class CircleView: UIView {
         
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.borderWidth = 2.0
+        self.alpha = 0.0
     }
  
     func set(color: UIColor?) {
         self.layer.borderColor = color?.cgColor
         self.backgroundColor = color
+    }
+    
+    func show() {
+        self.alpha = 1.0
     }
 }
