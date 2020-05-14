@@ -15,6 +15,7 @@ class GroundView: UIView {
     private let secondBase = RhombusView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
     private let thirdBase = RhombusView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
     private let homeView = HomeView()
+    private lazy var bases = [firstBase, secondBase, thirdBase]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,9 +33,7 @@ class GroundView: UIView {
     
     private func configureSubViews() {
         self.addSubview(rhombusView)
-        self.addSubview(firstBase)
-        self.addSubview(secondBase)
-        self.addSubview(thirdBase)
+        bases.forEach { self.addSubview($0)}
         self.addSubview(homeView)
         configureConstraints()
     }
@@ -74,5 +73,12 @@ class GroundView: UIView {
         constraints.forEach{ $0.isActive = true }
     }
     
+    func occupy(_ count: Int) {
+        guard count > 0 else { return }
+         for index in 1...count {
+            bases[index-1].change(color: UIColor(named: "Orange"))
+            bases[index-1].setNeedsDisplay()
+        }
+    }
 
 }

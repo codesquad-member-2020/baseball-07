@@ -56,6 +56,7 @@ class GameFieldView: UIView {
         sboView.configureStrike(inningCount.strike)
         sboView.configureBall(inningCount.ball)
         sboView.configureOut(inningCount.out)
+        groundView.occupy(inningCount.base)
     }
     
 }

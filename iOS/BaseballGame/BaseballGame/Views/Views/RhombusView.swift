@@ -40,4 +40,7 @@ class RhombusView: UIView {
         rhombusPath.fill()
     }
 
+    func change(color: UIColor?) {
+        self.color = color
+    }
 }
