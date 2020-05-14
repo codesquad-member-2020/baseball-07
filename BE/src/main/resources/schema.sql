@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS game_has_team;
 DROP TABLE IF EXISTS player;
 DROP TABLE IF EXISTS ball;
 DROP TABLE IF EXISTS player_has_action;
+DROP TABLE IF EXISTS pitching_record;
 
 CREATE TABLE user
 (
