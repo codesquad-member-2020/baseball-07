@@ -4,6 +4,7 @@ import com.codesquad.baseball07.dao.GameDao;
 import com.codesquad.baseball07.dao.PlayerDao;
 import com.codesquad.baseball07.dto.EntryDto;
 import com.codesquad.baseball07.dto.GameDto;
+import com.codesquad.baseball07.dto.HitterHistoryDto;
 import com.codesquad.baseball07.dto.ResultDto;
 import com.codesquad.baseball07.entity.Ball;
 import com.codesquad.baseball07.entity.Game;
@@ -38,5 +39,9 @@ public class GameService {
     public ResultDto pitch(Long gameId, String teamName) {
         gameDao.saveBall(gameId, teamName, new Ball());
         return gameDao.getResult();
+    }
+
+    public List<HitterHistoryDto> getHitterHistory(Long gameId, String teamName, int inning) {
+        return gameDao.getHitterHistoryList(gameId, teamName, inning);
     }
 }
