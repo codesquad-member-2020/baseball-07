@@ -8,22 +8,6 @@
 
 import Foundation
 
-struct Play {
-    var pitch: Pitch
-    var playInfo: PlayInfo
-    
-    var gameHeader: GameHeader
-//    var gameField: GameField
-//    var nowTurnPlayerInfo: NowTurnPlayerInfo
-//    var inningHistory: [InningHistory]
-    
-    init(pitch: Pitch, playInfo: PlayInfo ) {
-        self.pitch = pitch
-        self.playInfo = playInfo
-        self.gameHeader = GameHeader(pitch: pitch, playInfo: playInfo)
-    }
-}
-
 struct GameHeader {
     var pitch: Pitch
     var playInfo: PlayInfo
@@ -31,6 +15,8 @@ struct GameHeader {
     var awayTeamName: String
     var homeTeamScore: Int
     var awayTeamScore: Int
+    var inning: Int
+    var turn: String
     
     init(pitch: Pitch, playInfo: PlayInfo ) {
         self.pitch = pitch
@@ -39,6 +25,7 @@ struct GameHeader {
         self.awayTeamName = playInfo.game.awayTeam.name
         self.homeTeamScore = playInfo.game.homeTeam.score ?? 0
         self.awayTeamScore = playInfo.game.awayTeam.score ?? 0
+        self.inning = pitch.result.inning
+        self.turn = pitch.result.turn
     }
-    
 }
