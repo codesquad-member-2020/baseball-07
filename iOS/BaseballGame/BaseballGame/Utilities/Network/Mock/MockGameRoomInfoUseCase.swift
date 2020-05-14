@@ -15,7 +15,7 @@ struct MockGameRoomInfoUseCase {
         var path: String = EndPoints.fakeGameRoomEmpty
       }
       
-      func requestPitchStub(handler: @escaping (Any) -> Void) {
+      func requestGameRoomInfoStub(handler: @escaping (Any) -> Void) {
           task.perform(request: MockGameRoomRequest(), dataType: GameRoomEmpty.self) { result in
               switch result {
               case .success(let decodedData):
