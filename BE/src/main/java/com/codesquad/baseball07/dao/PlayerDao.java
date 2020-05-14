@@ -180,7 +180,7 @@ public class PlayerDao {
     }
 
     private List<PitchingRecord> getAllPitchingRecordsByPlayerId(Long playerId) {
-        String sql = "SELECT * FROM PITCHING_RECORD where player=" + playerId;
+        String sql = "SELECT * FROM pitching_record where player=" + playerId;
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
         return rows.stream().map(row -> {
             return new PitchingRecord((Long)row.get("ball"),(Integer)row.get("inning"),
