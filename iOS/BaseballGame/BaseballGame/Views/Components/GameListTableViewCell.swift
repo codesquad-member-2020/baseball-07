@@ -51,7 +51,7 @@ class GameListTableViewCell: UITableViewCell {
    
     func configureCell(gameInfo: GameInfo) {
         gameTitle.text! += "\(gameInfo.id)"
-        gameCard.setHomeTeam(gameInfo.home_team.name)
-        gameCard.setVisitingTeam(gameInfo.away_team.name)
+        gameCard.setHomeTeam(gameInfo.homeTeam.name)
+        gameCard.setVisitingTeam(gameInfo.awayTeam.name)
     }
 }
