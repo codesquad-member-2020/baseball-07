@@ -39,4 +39,8 @@ class CircleView: UIView {
     func show() {
         self.alpha = 1.0
     }
+    
+    func hide() {
+        self.alpha = 0.0
+    }
 }
