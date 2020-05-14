@@ -92,6 +92,7 @@ class PlayHistoryTableViewCell: UITableViewCell {
     
     func setCircleColor() {
         circleView.set(color: UIColor(named: "Yellow"))
+        circleView.show()
     }
     
     override func prepareForReuse() {
