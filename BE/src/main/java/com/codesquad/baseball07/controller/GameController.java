@@ -1,9 +1,8 @@
 package com.codesquad.baseball07.controller;
 
 import com.codesquad.baseball07.dto.EntryDto;
-import com.codesquad.baseball07.dto.ResultDto;
-import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.dto.GameDto;
+import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.response.ResponseData;
 import com.codesquad.baseball07.service.GameService;
 import org.springframework.web.bind.annotation.CrossOrigin;

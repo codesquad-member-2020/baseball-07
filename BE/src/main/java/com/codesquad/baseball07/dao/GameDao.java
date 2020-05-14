@@ -2,6 +2,7 @@ package com.codesquad.baseball07.dao;
 
 import com.codesquad.baseball07.dto.*;
 import com.codesquad.baseball07.entity.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,9 @@ import java.util.Map;
 public class GameDao {
 
     private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    PlayerDao playerDao;
 
     public GameDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -89,8 +93,8 @@ public class GameDao {
         this.jdbcTemplate.update("insert into ball (result) values (?)", ball.getResult());
         ball.setId(getNewBallId());
 
-        Player batter = getBatterPlayer(gameId, teamName, ball.getId());
-        Player pitcher = getPitcherPlayer(gameId, teamName);
+        Player batter = playerDao.getBatterPlayer(gameId, teamName, ball.getId());
+        Player pitcher = playerDao.getPitcherPlayer(gameId, teamName);
 
         PitchingRecord recordOfBatter = getLastPitchingRecord(ball.getId(), batter.getId());
         PitchingRecord recordOfPitcher = getLastPitchingRecord(ball.getId(), pitcher.getId());
@@ -156,41 +160,6 @@ public class GameDao {
                         rs.getBoolean("strike_out")), gameId, teamName);
 
 
-    }
-
-    public Player getPitcherPlayer(Long gameId, String teamName) {
-        String sql = "select player.id, player.team_id, player.match_order, player.position, player.name " +
-                "from game join game_has_team on game_has_team.game_id = game.id " +
-                "join team on team.id = game_has_team.team_id join player on player.team_id = team.id " +
-                "where game.id = ? and team.name = ? and player.position = 'pitcher'";
-
-        List<PitchingRecord> records = getAllRecordOfPitcher(gameId, teamName);
-
-        return this.jdbcTemplate.queryForObject(sql,
-                (rs, rowNum) -> new Player(rs.getLong("id"), rs.getInt("match_order"),
-                        rs.getString("position"), rs.getString("name"), records),
-                gameId, teamName);
-    }
-
-    public Player getBatterPlayer(Long gameId, String teamName, Long ballId) {
-        String sql = "select * from player where player.id = ?";
-
-        List<PitchingRecord> records = getAllRecordOfHitter(gameId, teamName);
-
-        return this.jdbcTemplate.queryForObject(sql,
-                (rs, rowNum) -> new Player(rs.getLong("id"), rs.getInt("match_order"),
-                        rs.getString("position"), rs.getString("name"), records),
-                getBatterId(gameId, teamName, ballId));
-    }
-
-    public Long getBatterId(Long gameId, String teamName, Long ballId) {
-        String sql = "SELECT pitching_record.player from game join game_has_team on game_has_team.game_id = game.id " +
-                "join team on team.id = game_has_team.team_id join player on player.team_id = team.id " +
-                "join pitching_record on pitching_record.player = player.id " +
-                "where game.id = ? and not team.name = ? and pitching_record.ball = ?";
-
-        return this.jdbcTemplate.queryForObject(sql,
-                (rs, rowNum) -> rs.getLong("player"), gameId, teamName, ballId - 1);
     }
 
     public Long getNewBallId() {
