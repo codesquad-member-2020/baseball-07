@@ -24,7 +24,5 @@ struct InningTotal: Codable {
     var ball: Int
     var strike: Int
     var out: Int
-    var base_1: String?
-    var base_2: String?
-    var base_3: String?
+    var base: Int
 }
