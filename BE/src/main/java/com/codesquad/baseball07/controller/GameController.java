@@ -2,6 +2,7 @@ package com.codesquad.baseball07.controller;
 
 import com.codesquad.baseball07.dto.EntryDto;
 import com.codesquad.baseball07.dto.GameDto;
+import com.codesquad.baseball07.dto.PlayerDto;
 import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.response.ResponseData;
 import com.codesquad.baseball07.service.GameService;
@@ -45,5 +46,10 @@ public class GameController {
     @PostMapping("/games/{gameId}/{teamName}")
     public ResponseEntity<ResponseData> pitchBall(@PathVariable("gameId") Long gameId, @PathVariable("teamName") String teamName) {
         return new ResponseEntity<>(new ResponseData(gameService.pitch(gameId, teamName)), HttpStatus.OK);
+    }
+
+    @GetMapping("/games/{gameId}/teams")
+    public Map<String, List<PlayerDto>> players(@PathVariable("gameId") Long gameId) {
+        return gameService.getPlayersByGameId(gameId);
     }
 }
