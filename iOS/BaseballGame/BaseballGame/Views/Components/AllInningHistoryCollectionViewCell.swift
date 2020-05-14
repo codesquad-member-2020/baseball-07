@@ -26,7 +26,6 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     private func configure() {
         playHistoryTableView.register(PlayHistoryTableViewCell.self, forCellReuseIdentifier: PlayHistoryTableViewCell.identifier)
         playHistoryTableView.delegate = self
-//        playHistoryTableView.dataSource = self
         playHistoryTableView.separatorStyle = .none
         configureSubViews()
     }
@@ -38,7 +37,7 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     
     private func configureConstraints() {
         let constraints = [
-            playHistoryTableView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 100),
+            playHistoryTableView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 70),
             playHistoryTableView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             playHistoryTableView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             playHistoryTableView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
