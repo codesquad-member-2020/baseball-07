@@ -2,6 +2,7 @@ package com.codesquad.baseball07.dao;
 
 import com.codesquad.baseball07.dto.*;
 import com.codesquad.baseball07.entity.*;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Repository
 public class GameDao {
@@ -67,6 +69,29 @@ public class GameDao {
         });
 
         return new ArrayList<>(games.values());
+    }
+
+    public Game getGameById(Long gameId) {
+        String sql = "SELECT game_id, team_id, position FROM game_has_team  WHERE game_id =" + gameId;
+        Game game = new Game();
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+
+        List<Team> teams = rows.stream().map(row -> {
+            Team team = new Team();
+            team.setId((Long) row.get("team_id"));
+            team.setGameId((Long) row.get("game_id"));
+            team.setPosition((String) row.get("position"));
+            return team;
+        }).collect(Collectors.toList());
+
+        for (Team team : teams) {
+            if (team.getPosition().equals("home")) {
+                game.setHomeTeam(team);
+                continue;
+            }
+            game.setAwayTeam(team);
+        }
+        return game;
     }
 
     public GameDto getGameForEntry(Long gameId) {
@@ -140,8 +165,17 @@ public class GameDao {
                         rs.getString("turn"), rs.getInt("ball_count"),
                         rs.getInt("turn_at_bat_count"), rs.getInt("hit_count"),
                         rs.getBoolean("strike_out")), gameId, teamName);
+    }
 
-
+    public List<PitchingRecord> getAllPitchingRecordsByPlayerId(Long playerId) {
+        String sql = "SELECT * FROM PITCHING_RECORD where player=" + playerId;
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+        return rows.stream().map(row -> {
+            return new PitchingRecord((Long)row.get("ball"),(Integer)row.get("inning"),
+                    (String)row.get("turn"),(Integer) row.get("ball_count"),
+                    (Integer) row.get("turn_at_bat_count"),(Integer) row.get("hit_count"),
+                    (Boolean) row.get("strike_out"));
+        }).collect(Collectors.toList());
     }
 
     public List<PitchingRecord> getAllRecordOfHitter(Long gameId, String teamName) {
@@ -159,7 +193,6 @@ public class GameDao {
                         rs.getInt("turn_at_bat_count"), rs.getInt("hit_count"),
                         rs.getBoolean("strike_out")), gameId, teamName);
 
-
     }
 
     public Long getNewBallId() {
@@ -175,7 +208,7 @@ public class GameDao {
                 "where pitching_record.ball = ?";
 
         return jdbcTemplate.queryForList(sql, ballId);
-    }
+    };
 
     public ResultDto getResult() {
         List<Map<String, Object>> rows = getNewPitchingRecords(getNewBallId());
@@ -193,5 +226,10 @@ public class GameDao {
             resultDto.setOut((boolean) row.get("strike_out"));
         });
         return resultDto;
+    }
+
+    public String getBallByBallId(Long ballId) {
+        String sql = "SELECT result from BALL where id=" + ballId;
+        return jdbcTemplate.queryForObject(sql, String.class);
     }
 }
