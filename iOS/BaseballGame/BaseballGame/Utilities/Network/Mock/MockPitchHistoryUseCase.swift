@@ -15,8 +15,8 @@ struct MockInningHistoryUseCase {
         var path: String = EndPoints.fakePlayInfo
     }
     
-    func requestPitchStub(handler: @escaping (Any) -> Void) {
-        task.perform(request: MockPitchRequest(), dataType: InningHistory.self) { result in
+    func requestInningHistoryStub(handler: @escaping (Any) -> Void) {
+        task.perform(request: MockPitchRequest(), dataType: PitchHistory.self) { result in
             switch result {
             case .success(let decodedData):
                 handler(decodedData)

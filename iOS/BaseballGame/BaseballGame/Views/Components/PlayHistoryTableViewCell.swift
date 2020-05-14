@@ -98,4 +98,10 @@ class PlayHistoryTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         circleView.set(color: .lightGray)
     }
+    
+    func configureHitInfo(sequence: Int, result: String) {
+        self.sequence.text = "\(sequence)"
+        self.result.text = "\(result)"
+        accumulatedResult.text = "S1 B2"
+    }
 }

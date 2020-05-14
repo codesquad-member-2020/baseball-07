@@ -9,12 +9,20 @@
 import UIKit
 
 class AllInningHistoryCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+    
+    private var pitchHistory: PitchHistory!
+    
+    init(pitchHistory: PitchHistory) {
+        self.pitchHistory = pitchHistory
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return pitchHistory.pitchHistory.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllInningHistoryCollectionViewCell", for: indexPath) as! AllInningHistoryCollectionViewCell
+        cell.set(inningHistory: pitchHistory.pitchHistory[indexPath.row])
         return cell
     }
 }

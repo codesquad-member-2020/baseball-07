@@ -45,7 +45,7 @@
 		309014C92466C3AA003786BE /* ScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309014C82466C3AA003786BE /* ScoresViewController.swift */; };
 		309014CB2466C7CC003786BE /* GameHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309014CA2466C7CC003786BE /* GameHeaderView.swift */; };
 		30BD2D02246C25670015135D /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D01246C25670015135D /* Pitch.swift */; };
-		30BD2D04246C29F00015135D /* PlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D03246C29F00015135D /* PlayInfo.swift */; };
+		30BD2D04246C29F00015135D /* PitchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D03246C29F00015135D /* PitchHistory.swift */; };
 		30BD2D07246C2D840015135D /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D06246C2D840015135D /* EndPoints.swift */; };
 		30BD2D09246C2E8D0015135D /* MockPitchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D08246C2E8D0015135D /* MockPitchUseCase.swift */; };
 		30BD2D0B246C33410015135D /* MockGameRoomInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BD2D0A246C33410015135D /* MockGameRoomInfoUseCase.swift */; };
@@ -102,7 +102,7 @@
 		309014C82466C3AA003786BE /* ScoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresViewController.swift; sourceTree = "<group>"; };
 		309014CA2466C7CC003786BE /* GameHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHeaderView.swift; sourceTree = "<group>"; };
 		30BD2D01246C25670015135D /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
-		30BD2D03246C29F00015135D /* PlayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayInfo.swift; sourceTree = "<group>"; };
+		30BD2D03246C29F00015135D /* PitchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchHistory.swift; sourceTree = "<group>"; };
 		30BD2D06246C2D840015135D /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		30BD2D08246C2E8D0015135D /* MockPitchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPitchUseCase.swift; sourceTree = "<group>"; };
 		30BD2D0A246C33410015135D /* MockGameRoomInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameRoomInfoUseCase.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 			children = (
 				3038B8D42462D2AC00AE0BF8 /* GameList.swift */,
 				30BD2D01246C25670015135D /* Pitch.swift */,
-				30BD2D03246C29F00015135D /* PlayInfo.swift */,
+				30BD2D03246C29F00015135D /* PitchHistory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -458,7 +458,7 @@
 				30FE85342467D641004CDE13 /* GameFieldView.swift in Sources */,
 				30DF9F1C2460374100BB21F2 /* SceneDelegate.swift in Sources */,
 				30BD2D09246C2E8D0015135D /* MockPitchUseCase.swift in Sources */,
-				30BD2D04246C29F00015135D /* PlayInfo.swift in Sources */,
+				30BD2D04246C29F00015135D /* PitchHistory.swift in Sources */,
 				3071872F2469800E002B1983 /* NowTurnPlayerInfoStackView.swift in Sources */,
 				30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */,
 			);

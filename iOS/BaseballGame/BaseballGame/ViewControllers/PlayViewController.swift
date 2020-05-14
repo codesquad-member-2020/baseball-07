@@ -20,7 +20,7 @@ class PlayViewController: UIViewController {
     private let inningDelegate = InningCollectionViewDelegate()
     
     private var inningHistoryCollectionView: AllInningHistoryCollectionView!
-    private let inningHistoryDataSource = AllInningHistoryCollectionViewDataSource()
+    private var inningHistoryDataSource:  AllInningHistoryCollectionViewDataSource!
     
     private var pitchViewModel: PitchViewModel!
     
@@ -67,9 +67,8 @@ class PlayViewController: UIViewController {
         layout.scrollDirection = .horizontal
         inningCollectionView = InningCollectionView(frame: .zero, collectionViewLayout: layout)
         inningCollectionView.register(InningCollectionViewCell.self, forCellWithReuseIdentifier: InningCollectionViewCell.identifier)
-        inningCollectionView.dataSource = inningDataSource
         inningCollectionView.delegate = inningDelegate
-        
+        inningCollectionView.dataSource = inningDataSource
     }
     
     private func configureInningHistoryCollectionView() {
@@ -81,7 +80,6 @@ class PlayViewController: UIViewController {
         inningHistoryCollectionView = AllInningHistoryCollectionView(frame: .zero, collectionViewLayout: layout)
         inningHistoryCollectionView.register(AllInningHistoryCollectionViewCell.self, forCellWithReuseIdentifier: AllInningHistoryCollectionViewCell.identifier)
         inningHistoryCollectionView.isPagingEnabled = true
-        inningHistoryCollectionView.dataSource = inningHistoryDataSource
         inningHistoryCollectionView.delegate = self
     }
     
@@ -123,6 +121,11 @@ class PlayViewController: UIViewController {
     }
     
     private func requestData() {
+        requestPitchData()
+        requestInningHistoryData()
+    }
+    
+    private func requestPitchData() {
         MockPitchUseCase().requestPitchStub { decodeData in
             self.pitchViewModel = PitchViewModel(pitch: decodeData as? Pitch) { pitchData in
                 DispatchQueue.main.async {
@@ -131,7 +134,18 @@ class PlayViewController: UIViewController {
                     self.nowTurnPlayerInfoView.configureHitterInfo(pitchData?.result.hitter)
                     self.nowTurnPlayerInfoView.configurePitcherInfo(pitchData?.result.pitcher)
                 }
-                
+            }
+        }
+    }
+    
+    private func requestInningHistoryData() {
+        MockInningHistoryUseCase().requestInningHistoryStub {
+            decodeData in
+            guard let pitchHistory = decodeData as? PitchHistory else { return }
+            DispatchQueue.main.async {
+                self.inningHistoryDataSource = AllInningHistoryCollectionViewDataSource(pitchHistory: pitchHistory)
+                self.inningHistoryCollectionView.dataSource = self.inningHistoryDataSource
+                self.inningHistoryCollectionView.reloadData()
             }
         }
     }

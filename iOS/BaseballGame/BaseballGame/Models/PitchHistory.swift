@@ -1,5 +1,5 @@
 //
-//  PlayInfo.swift
+//  PitchHistory.swift
 //  BaseballGame
 //
 //  Created by delma on 2020/05/13.
@@ -8,12 +8,18 @@
 
 import Foundation
 
-struct InningHistory: Codable {
-    var pitchHistory: [PitchHistory]
+struct PitchHistory: Codable {
+    var pitchHistory: [InningHistory]
 }
 
-struct PitchHistory: Codable {
+struct InningHistory: Codable {
+    var inning: Int
+    var histories: [InningHistoryInfo]
+}
+
+struct InningHistoryInfo: Codable {
     var hitter: String
     var hitterOrder: Int
     var pitchResults: [String]
 }
+
