@@ -264,11 +264,13 @@ public class GameDao {
             for (int i = 1; i <= 9; i++) {
                 if (((String) row.get("position")).equals("home") && ((int) row.get("inning")) == i) {
                     homeTeam.setName((String) row.get("name"));
-                    homeScore.add(((Long) (row.get("score"))).intValue());
+                    String score = String.valueOf((row.get("score")));
+                    homeScore.add(Integer.parseInt(score));
                 }
                 if (((String) row.get("position")).equals("away") && ((int) row.get("inning")) == i) {
                     awayTeam.setName((String) row.get("name"));
-                    awayScore.add(((Long) (row.get("score"))).intValue());
+                    String score = String.valueOf((row.get("score")));
+                    awayScore.add(Integer.parseInt(score));
                 }
             }
         });
