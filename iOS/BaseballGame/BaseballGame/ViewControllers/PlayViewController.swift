@@ -13,11 +13,11 @@ class PlayViewController: UIViewController {
     private let gameHeaderView = GameHeaderView()
     private let gameFieldView = GameFieldView()
     
+    private let nowTurnPlayerInfoView = NowTurnPlayerInfoStackView()
+    
     private var inningCollectionView: InningCollectionView!
     private let inningDataSource = InningCollectionViewDataSource()
     private let inningDelegate = InningCollectionViewDelegate()
-    
-    private let nowTurnPlayerInfoView = NowTurnPlayerInfoStackView()
     
     private var inningHistoryCollectionView: AllInningHistoryCollectionView!
     private let inningHistoryDataSource = AllInningHistoryCollectionViewDataSource()
@@ -128,6 +128,8 @@ class PlayViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.gameHeaderView.configure(playInfo: pitchData)
                     self.gameFieldView.configure(inningTotal: pitchData?.inningTotal)
+                    self.nowTurnPlayerInfoView.configureHitterInfo(pitchData?.result.hitter)
+                    self.nowTurnPlayerInfoView.configurePitcherInfo(pitchData?.result.pitcher)
                 }
                 
             }

@@ -9,16 +9,16 @@
 import UIKit
 
 class OnePlayerInfoView: UIView {
-
+    
     private let role: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let playerName: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -33,10 +33,10 @@ class OnePlayerInfoView: UIView {
     }()
     
     private let checkMark: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.image = UIImage(named: "checkmark")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.isOpaque = true
+        imageView.isHidden = true
         return imageView
     }()
     
@@ -57,14 +57,6 @@ class OnePlayerInfoView: UIView {
         
         self.heightAnchor.constraint(equalToConstant: 30).isActive = true
         configureConstraints()
-        temp()
-    }
-    
-    private func temp() {
-        role.text = "투수"
-        playerName.text = "박보검"
-        info.text = "1타석 2안타"
-        showCheckMarker()
     }
     
     private func configureConstraints() {
@@ -74,11 +66,11 @@ class OnePlayerInfoView: UIView {
             role.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
             
             playerName.topAnchor.constraint(equalTo: role.topAnchor),
+            playerName.leadingAnchor.constraint(equalTo: role.trailingAnchor, constant: 122),
             
             info.leadingAnchor.constraint(equalTo: playerName.trailingAnchor, constant: 14),
             info.topAnchor.constraint(equalTo: role.topAnchor),
             
-            checkMark.leadingAnchor.constraint(equalTo: info.trailingAnchor, constant: 14),
             checkMark.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
             checkMark.topAnchor.constraint(equalTo: role.topAnchor),
             checkMark.bottomAnchor.constraint(equalTo: role.bottomAnchor),
@@ -86,20 +78,19 @@ class OnePlayerInfoView: UIView {
         constraints.forEach { $0.isActive = true }
     }
     
-    func set(role: String) {
-        self.role.text = role
-    }
-    
-    func set(playerName: String) {
-        self.playerName.text = playerName
-    }
-    
-    func set(info: String) {
-        self.info.text = info
-    }
-    
     func showCheckMarker() {
-        checkMark.isOpaque = false
+        checkMark.isHidden = false
     }
     
+    func configurePitcher(_ pitcher: Pitcher) {
+        self.role.text = "투수"
+        self.playerName.text = pitcher.name
+        self.info.text = "\(pitcher.pitchCount)"
+    }
+    
+    func configureHitter(_ hitter: Hitter) {
+        self.role.text = "타자"
+        self.playerName.text = hitter.name
+        self.info.text = "\(hitter.batCount)타석 \(hitter.hitCount)안타"
+    }
 }

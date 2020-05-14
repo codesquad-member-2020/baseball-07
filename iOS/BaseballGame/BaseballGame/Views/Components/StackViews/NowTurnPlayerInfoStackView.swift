@@ -52,8 +52,16 @@ class NowTurnPlayerInfoStackView: UIStackView {
             
             hitter.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -4),
         ]
-        
         constraints.forEach { $0.isActive = true}
-        
+    }
+
+    func configureHitterInfo(_ hitter: Hitter?) {
+        guard let hitterInfo = hitter else { return }
+        self.hitter.configureHitter(hitterInfo)
+    }
+    
+    func configurePitcherInfo(_ pitcher: Pitcher?) {
+        guard let pitcherInfo = pitcher else { return }
+        self.pitcher.configurePitcher(pitcherInfo)
     }
 }
