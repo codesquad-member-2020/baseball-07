@@ -3,6 +3,7 @@ package com.codesquad.baseball07.controller;
 import com.codesquad.baseball07.dto.EachInningScore;
 import com.codesquad.baseball07.dto.EntryDto;
 import com.codesquad.baseball07.dto.GameDto;
+import com.codesquad.baseball07.dto.PlayerDto;
 import com.codesquad.baseball07.entity.Game;
 import com.codesquad.baseball07.response.ResponseHitterData;
 import com.codesquad.baseball07.response.ResponsePitchData;
@@ -60,5 +61,10 @@ public class GameController {
     public ResponseEntity<EachInningScore> getEachInningScore(@PathVariable("gameId") Long gameId) {
 
         return new ResponseEntity<>(gameService.getEachInningScoreList(gameId), HttpStatus.OK);
+    }
+
+    @GetMapping("/games/{gameId}/teams")
+    public Map<String, List<PlayerDto>> players(@PathVariable("gameId") Long gameId) {
+        return gameService.getPlayersByGameId(gameId);
     }
 }
