@@ -17,6 +17,8 @@ class PlayViewController: UIViewController {
     private let inningDataSource = InningCollectionViewDataSource()
     private let inningDelegate = InningCollectionViewDelegate()
     
+    private let nowTurnPlayerInfoView = NowTurnPlayerInfoStackView()
+    
     private var inningHistoryCollectionView: AllInningHistoryCollectionView!
     private let inningHistoryDataSource = AllInningHistoryCollectionViewDataSource()
     
@@ -83,6 +85,7 @@ class PlayViewController: UIViewController {
     private func configureSubViews() {
         self.view.addSubview(gameHeaderView)
         self.view.addSubview(gameFieldView)
+        self.view.addSubview(nowTurnPlayerInfoView)
         self.view.addSubview(inningCollectionView)
         self.view.addSubview(inningHistoryCollectionView)
     }
@@ -98,14 +101,18 @@ class PlayViewController: UIViewController {
             gameFieldView.topAnchor.constraint(equalTo: gameHeaderView.bottomAnchor, constant: 5),
             gameFieldView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 3),
             
-            inningCollectionView.topAnchor.constraint(equalTo: gameFieldView.bottomAnchor),
+            nowTurnPlayerInfoView.topAnchor.constraint(equalTo: gameFieldView.bottomAnchor, constant: 12),
+            nowTurnPlayerInfoView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 26),
+            nowTurnPlayerInfoView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -26),
+            
+            inningCollectionView.topAnchor.constraint(equalTo: nowTurnPlayerInfoView.bottomAnchor, constant: 4),
             inningCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             inningCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             inningCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.06),
             
             inningHistoryCollectionView.topAnchor.constraint(equalTo: inningCollectionView.bottomAnchor, constant: 4),
-            inningHistoryCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            inningHistoryCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            inningHistoryCollectionView.leadingAnchor.constraint(equalTo: self.nowTurnPlayerInfoView.leadingAnchor),
+            inningHistoryCollectionView.trailingAnchor.constraint(equalTo: self.nowTurnPlayerInfoView.trailingAnchor),
             inningHistoryCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -4),
             inningHistoryCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ]
