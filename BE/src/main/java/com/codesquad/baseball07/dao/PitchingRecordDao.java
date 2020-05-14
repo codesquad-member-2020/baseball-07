@@ -18,7 +18,7 @@ public class PitchingRecordDao {
     public PitchingRecord getLastPitchingRecord(Long lastBallId, Long playerId) {
         String sql = "SELECT pitching_record.ball, pitching_record.inning, pitching_record.turn, " +
                 "pitching_record.ball_count, pitching_record.turn_at_bat_count, pitching_record.hit_count, " +
-                "pitching_record.strike_out FROM PITCHING_RECORD " +
+                "pitching_record.strike_out FROM pitching_record " +
                 "where pitching_record.ball = ? and pitching_record.player = ?";
 
         return this.jdbcTemplate.queryForObject(sql,

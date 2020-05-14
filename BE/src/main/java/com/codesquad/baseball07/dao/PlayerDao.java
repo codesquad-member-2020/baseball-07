@@ -180,7 +180,7 @@ public class PlayerDao {
     }
 
     private List<PitchingRecord> getAllPitchingRecordsByPlayerId(Long playerId) {
-        String sql = "SELECT * FROM PITCHING_RECORD where player=" + playerId;
+        String sql = "SELECT * FROM pitching_record where player=" + playerId;
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
         return rows.stream().map(row -> {
             return new PitchingRecord((Long)row.get("ball"),(Integer)row.get("inning"),
@@ -191,7 +191,7 @@ public class PlayerDao {
     }
 
     private String getBallByBallId(Long ballId) {
-        String sql = "SELECT result from BALL where id=" + ballId;
+        String sql = "SELECT result from ball where id=" + ballId;
         return jdbcTemplate.queryForObject(sql, String.class);
     }
 }

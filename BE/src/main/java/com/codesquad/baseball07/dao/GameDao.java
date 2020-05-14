@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Repository
 public class GameDao {
@@ -75,7 +74,7 @@ public class GameDao {
 
 
     public GameDto getGameForEntry(Long gameId) {
-        String sql = "SELECT game.id, GROUP_CONCAT(CONCAT_WS(',', `valid`, `name`) SEPARATOR ',')  AS valid FROM GAME " +
+        String sql = "SELECT game.id, GROUP_CONCAT(CONCAT_WS(',', `valid`, `name`) SEPARATOR ',')  AS valid FROM game " +
                 "JOIN game_has_team ON game_has_team.game_id = game.id " +
                 "JOIN team ON team.id = game_has_team.team_id " +
                 "WHERE game.id = ? GROUP BY game.id";
@@ -120,7 +119,7 @@ public class GameDao {
     public PitchingRecord getLastPitchingRecord(Long lastBallId, Long playerId) {
         String sql = "SELECT pitching_record.ball, pitching_record.inning, pitching_record.turn, " +
                 "pitching_record.ball_count, pitching_record.turn_at_bat_count, pitching_record.hit_count, " +
-                "pitching_record.strike_out FROM PITCHING_RECORD " +
+                "pitching_record.strike_out FROM pitching_record " +
                 "where pitching_record.ball = ? and pitching_record.player = ?";
 
         return this.jdbcTemplate.queryForObject(sql,
@@ -172,7 +171,7 @@ public class GameDao {
         String sql = "SELECT player.name, player.position, player.match_order, pitching_record.ball, " +
                 "pitching_record.inning, pitching_record.turn, pitching_record.ball_count, " +
                 "pitching_record.turn_at_bat_count, pitching_record.hit_count, pitching_record.strike_out, " +
-                "ball.result FROM player join PITCHING_RECORD on pitching_record.player = player.id " +
+                "ball.result FROM player join pitching_record on pitching_record.player = player.id " +
                 "join ball on ball.id = pitching_record.ball " +
                 "where pitching_record.ball = ?";
 
@@ -265,11 +264,11 @@ public class GameDao {
             for (int i = 1; i <= 9; i++) {
                 if (((String) row.get("position")).equals("home") && ((int) row.get("inning")) == i) {
                     homeTeam.setName((String) row.get("name"));
-                    homeScore.add(Math.toIntExact((Long) row.get("score")));
+                    homeScore.add(((Long) (row.get("score"))).intValue());
                 }
                 if (((String) row.get("position")).equals("away") && ((int) row.get("inning")) == i) {
                     awayTeam.setName((String) row.get("name"));
-                    awayScore.add(Math.toIntExact((Long) row.get("score")));
+                    awayScore.add(((Long) (row.get("score"))).intValue());
                 }
             }
         });
