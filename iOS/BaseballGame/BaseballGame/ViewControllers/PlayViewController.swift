@@ -111,8 +111,8 @@ class PlayViewController: UIViewController {
             inningCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.06),
             
             inningHistoryCollectionView.topAnchor.constraint(equalTo: inningCollectionView.bottomAnchor, constant: 4),
-            inningHistoryCollectionView.leadingAnchor.constraint(equalTo: self.nowTurnPlayerInfoView.leadingAnchor),
-            inningHistoryCollectionView.trailingAnchor.constraint(equalTo: self.nowTurnPlayerInfoView.trailingAnchor),
+            inningHistoryCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            inningHistoryCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             inningHistoryCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -4),
             inningHistoryCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ]

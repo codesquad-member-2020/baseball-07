@@ -38,8 +38,8 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     private func configureConstraints() {
         let constraints = [
             playHistoryTableView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 58),
-            playHistoryTableView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            playHistoryTableView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            playHistoryTableView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            playHistoryTableView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             playHistoryTableView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
         ]
         constraints.forEach { $0.isActive = true }

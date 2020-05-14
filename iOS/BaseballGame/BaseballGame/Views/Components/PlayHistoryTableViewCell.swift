@@ -84,7 +84,7 @@ class PlayHistoryTableViewCell: UITableViewCell {
             result.topAnchor.constraint(equalTo: circleView.topAnchor),
 
             accumulatedResult.topAnchor.constraint(equalTo: circleView.topAnchor),
-            accumulatedResult.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -4),
+            accumulatedResult.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
         ]
         constraints.forEach { $0.isActive = true }
         
