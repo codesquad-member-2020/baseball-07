@@ -191,7 +191,7 @@ public class PlayerDao {
     }
 
     private String getBallByBallId(Long ballId) {
-        String sql = "SELECT result from BALL where id=" + ballId;
+        String sql = "SELECT result from ball where id=" + ballId;
         return jdbcTemplate.queryForObject(sql, String.class);
     }
 }
