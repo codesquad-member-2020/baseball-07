@@ -2,6 +2,7 @@ package com.codesquad.baseball07.service;
 
 import com.codesquad.baseball07.dao.GameDao;
 import com.codesquad.baseball07.dao.PlayerDao;
+import com.codesquad.baseball07.dto.*;
 import com.codesquad.baseball07.dto.EntryDto;
 import com.codesquad.baseball07.dto.GameDto;
 import com.codesquad.baseball07.dto.PlayerDto;
@@ -51,5 +52,9 @@ public class GameService {
 
     public List<HitterHistoryDto> getHitterHistory(Long gameId, String teamName, int inning) {
         return gameDao.getHitterHistoryList(gameId, teamName, inning);
+    }
+
+    public EachInningScore getEachInningScoreList(Long gameId) {
+        return gameDao.getInningScore(gameId);
     }
 }

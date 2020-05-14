@@ -201,20 +201,24 @@ public class GameDao {
     public HitterHistoryDto getHitterHistory(Long gameId, Long playerId, String teamName, int inning) {
 //        Player hitter = playerDao.findByLastBallId(gameId, teamName, getNewBallId());
         Player hitter = playerDao.findByGameIdAndPlayerId(gameId, playerId);
+        History history = new History();
         List<Map<String, Object>> rows = getHitterPitchResults(gameId, teamName, hitter.getId(), inning);
         List<String> pitchResult = new ArrayList<>();
         HitterHistoryDto hitterHistoryDto = new HitterHistoryDto();
 
 
         rows.forEach(row -> {
-            hitterHistoryDto.setTurn((String) row.get("turn"));
+            history.setTurn((String) row.get("turn"));
             pitchResult.add((String) row.get("result"));
         });
 
         hitterHistoryDto.setInning(inning);
-        hitterHistoryDto.setHitter(hitter.getName());
-        hitterHistoryDto.setHitterOrder(hitter.getMatchOrder());
-        hitterHistoryDto.setPitchResults(pitchResult);
+        history.setHitter(hitter.getName());
+        history.setHitterOrder(hitter.getMatchOrder());
+        history.setPitchResults(pitchResult);
+
+        hitterHistoryDto.setHistories(history);
+
 
         return hitterHistoryDto;
     }
@@ -223,7 +227,7 @@ public class GameDao {
         List<HitterHistoryDto> hitterHistoryDtoList = new ArrayList<>();
         List<Map<String, Object>> rows = getTeamPlayerIdList(teamName);
         rows.forEach(row -> {
-            if (!getHitterHistory(gameId, (Long) row.get("id"), teamName, inning).getPitchResults().isEmpty()) {
+            if (!getHitterHistory(gameId, (Long) row.get("id"), teamName, inning).getHistories().getPitchResults().isEmpty()) {
                 hitterHistoryDtoList.add(getHitterHistory(gameId, (Long) row.get("id"), teamName, inning));
             }
         });
@@ -246,6 +250,47 @@ public class GameDao {
         String sql = "SELECT player.id FROM team join player on player.team_id = team.id where team.name = ?";
 
         return jdbcTemplate.queryForList(sql, teamName);
+    }
+
+    public EachInningScore getInningScore(Long gameId) {
+        HomeTeam homeTeam = new HomeTeam();
+        AwayTeam awayTeam = new AwayTeam();
+
+        List<Map<String, Object>> rows = getEachInningScore(gameId);
+
+        List<Integer> homeScore = new ArrayList<>();
+        List<Integer> awayScore = new ArrayList<>();
+
+        rows.forEach(row -> {
+            for (int i = 1; i <= 9; i++) {
+                if (((String) row.get("position")).equals("home") && ((int) row.get("inning")) == i) {
+                    homeTeam.setName((String) row.get("name"));
+                    homeScore.add(Math.toIntExact((Long) row.get("score")));
+                }
+                if (((String) row.get("position")).equals("away") && ((int) row.get("inning")) == i) {
+                    awayTeam.setName((String) row.get("name"));
+                    awayScore.add(Math.toIntExact((Long) row.get("score")));
+                }
+            }
+        });
+
+        homeTeam.setResult(homeScore);
+        awayTeam.setResult(awayScore);
+
+        return new EachInningScore(homeTeam, awayTeam);
+    }
+
+    public List<Map<String, Object>> getEachInningScore(Long gameId) {
+        String sql = "SELECT team.name, sum(game_has_team.score) as score, " +
+                "game_has_team.position, pitching_record.inning FROM game " +
+                "join game_has_team on game_has_team.game_id = game.id " +
+                "join team on team.id = game_has_team.team_id " +
+                "join player on player.team_id = team.id " +
+                "join pitching_record on pitching_record.player = player.id " +
+                "join ball on ball.id = pitching_record.ball " +
+                "where game.id = ? group by game_has_team.position, pitching_record.inning";
+
+        return jdbcTemplate.queryForList(sql, gameId);
     }
 }
 

@@ -2,15 +2,16 @@ package com.codesquad.baseball07.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class HitterHistoryDto {
+public class AwayTeam {
 
-    private int inning;
+    private String name;
 
-    private History histories;
-
+    List<Integer> result;
 }

@@ -7,10 +7,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class HitterHistoryDto {
+public class EachInningScore {
 
-    private int inning;
+    private HomeTeam homeTeam;
 
-    private History histories;
-
+    private AwayTeam awayTeam;
 }
