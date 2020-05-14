@@ -15,7 +15,7 @@ import java.util.Map;
 public class GameService {
 
     @Autowired
-    GameDao gameDao;
+    private GameDao gameDao;
 
     public Map<String, List<Game>> getAll() {
         List<Game> games = gameDao.getAll();
