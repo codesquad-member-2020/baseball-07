@@ -22,7 +22,7 @@ class PlayViewController: UIViewController {
     private var inningHistoryCollectionView: AllInningHistoryCollectionView!
     private let inningHistoryDataSource = AllInningHistoryCollectionViewDataSource()
    
-    private var gameHeaderViewModel: GameHeaderViewModel!
+    private var pitchViewModel: PitchViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

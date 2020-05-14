@@ -1,5 +1,5 @@
 //
-//  GameHeaderViewModel.swift
+//  PitchViewModel.swift
 //  BaseballGame
 //
 //  Created by delma on 2020/05/14.
@@ -8,20 +8,20 @@
 
 import Foundation
 
-class GameHeaderViewModel: ViewModelBinding {
-    typealias Key = GameHeader?
-    typealias handler = (GameHeader?) -> Void
+class PitchViewModel: ViewModelBinding {
+    typealias Key = Pitch?
+    typealias handler = (Pitch?) -> Void
     private var changedHandler: handler
-    private var gameHeader: Key {
+    private var pitch: Key {
         didSet {
-            changedHandler(gameHeader)
+            changedHandler(pitch)
         }
     }
     
-    init(gameHeader: GameHeader? = nil, handler: @escaping handler) {
-        self.gameHeader = gameHeader
+    init(pitch: Pitch? = nil, handler: @escaping handler) {
+        self.pitch = pitch
         self.changedHandler = handler
-        changedHandler(gameHeader)
+        changedHandler(pitch)
     }
     
     func updateNotify(changed handler: @escaping handler) {
