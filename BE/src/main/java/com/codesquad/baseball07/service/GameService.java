@@ -2,10 +2,7 @@ package com.codesquad.baseball07.service;
 
 import com.codesquad.baseball07.dao.GameDao;
 import com.codesquad.baseball07.dao.PlayerDao;
-import com.codesquad.baseball07.dto.EntryDto;
-import com.codesquad.baseball07.dto.GameDto;
-import com.codesquad.baseball07.dto.HitterHistoryDto;
-import com.codesquad.baseball07.dto.ResultDto;
+import com.codesquad.baseball07.dto.*;
 import com.codesquad.baseball07.entity.Ball;
 import com.codesquad.baseball07.entity.Game;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +38,11 @@ public class GameService {
         return gameDao.getResult();
     }
 
-    public List<HitterHistoryDto> getHitterHistory(Long gameId, String teamName, int inning) {
+    public List<HitterHistoryDto> getHitterHistoryList(Long gameId, String teamName, int inning) {
         return gameDao.getHitterHistoryList(gameId, teamName, inning);
+    }
+
+    public EachInningScore getEachInningScoreList(Long gameId) {
+        return gameDao.getInningScore(gameId);
     }
 }
