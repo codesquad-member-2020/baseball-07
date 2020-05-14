@@ -8,21 +8,12 @@
 
 import Foundation
 
-struct PlayInfo: Codable {
+struct InningHistory: Codable {
     var pitchHistory: [PitchHistory]
-    var inningTotal: InningTotal
-    var game: GameInfo
 }
 
 struct PitchHistory: Codable {
     var hitter: String
     var hitterOrder: Int
     var pitchResults: [String]
-}
-
-struct InningTotal: Codable {
-    var ball: Int
-    var strike: Int
-    var out: Int
-    var base: Int
 }

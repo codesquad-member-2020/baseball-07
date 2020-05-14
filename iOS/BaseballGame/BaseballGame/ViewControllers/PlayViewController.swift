@@ -21,6 +21,8 @@ class PlayViewController: UIViewController {
     
     private var inningHistoryCollectionView: AllInningHistoryCollectionView!
     private let inningHistoryDataSource = AllInningHistoryCollectionViewDataSource()
+   
+    private var gameHeaderViewModel: GameHeaderViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,7 @@ class PlayViewController: UIViewController {
         configureSubViews()
         configureConstraints()
         configureObserver()
+        requestData()
     }
     
     private func configureObserver() {
@@ -118,6 +121,11 @@ class PlayViewController: UIViewController {
         ]
         constraints.forEach { $0.isActive = true }
     }
+    
+    private func requestData() {
+        
+    }
+    
 }
 
 extension PlayViewController: UICollectionViewDelegate {

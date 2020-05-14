@@ -10,6 +10,8 @@ import Foundation
 
 struct Pitch: Codable {
     var result: NowPlayInfo
+    var inningTotal: InningTotal
+    var game: GameInfo
 }
 
 struct NowPlayInfo: Codable {
@@ -31,4 +33,11 @@ struct Hitter: Codable {
     var order: Int
     var batCount: Int
     var hitCount: Int
+}
+
+struct InningTotal: Codable {
+    var ball: Int
+    var strike: Int
+    var out: Int
+    var base: Int
 }
