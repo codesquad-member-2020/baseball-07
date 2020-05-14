@@ -37,13 +37,18 @@ public class GameController {
         return gameService.getGameForEntry(gameId);
     }
 
-    @PatchMapping("/games/{gameId}/{teamName}")
+    @PatchMapping("/games/{gameId}/teams/{teamName}")
     public EntryDto enterGame(@PathVariable("gameId") Long gameId, @PathVariable("teamName") String teamName) {
         return gameService.enterGame(gameId, teamName);
     }
 
-    @PostMapping("/games/{gameId}/{teamName}")
-    public ResponseEntity<ResponseData> pitchBall(@PathVariable("gameId") Long gameId, @PathVariable("teamName") String teamName) {
-        return new ResponseEntity<>(new ResponseData(gameService.pitch(gameId, teamName)), HttpStatus.OK);
+    @PostMapping("/games/{gameId}/teams/{teamName}")
+    public ResponseEntity<ResponsePitchData> pitchBall(@PathVariable("gameId") Long gameId,
+                                                       @PathVariable("teamName") String teamName) {
+
+        return new ResponseEntity<>(new ResponsePitchData(
+                gameService.pitch(gameId, teamName)), HttpStatus.OK);
+    }
+
     }
 }
