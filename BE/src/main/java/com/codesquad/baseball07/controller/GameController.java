@@ -54,7 +54,7 @@ public class GameController {
                                                                @PathVariable("inning") int inning) {
 
         return new ResponseEntity<>(new ResponseHitterData(
-                gameService.getHitterHistoryList(gameId, teamName, inning)), HttpStatus.OK);
+                gameService.getHitterHistory(gameId, teamName, inning)), HttpStatus.OK);
     }
 
     @GetMapping("/games/{gameId}/score")
