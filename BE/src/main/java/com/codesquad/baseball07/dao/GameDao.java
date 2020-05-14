@@ -2,7 +2,6 @@ package com.codesquad.baseball07.dao;
 
 import com.codesquad.baseball07.dto.*;
 import com.codesquad.baseball07.entity.*;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
