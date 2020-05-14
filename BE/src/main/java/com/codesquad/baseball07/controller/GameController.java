@@ -4,7 +4,8 @@ import com.codesquad.baseball07.dto.EntryDto;
 import com.codesquad.baseball07.dto.GameDto;
 import com.codesquad.baseball07.dto.PlayerDto;
 import com.codesquad.baseball07.entity.Game;
-import com.codesquad.baseball07.response.ResponseData;
+import com.codesquad.baseball07.response.ResponseHitterData;
+import com.codesquad.baseball07.response.ResponsePitchData;
 import com.codesquad.baseball07.service.GameService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,14 +39,26 @@ public class GameController {
         return gameService.getGameForEntry(gameId);
     }
 
-    @PatchMapping("/games/{gameId}/{teamName}")
+    @PatchMapping("/games/{gameId}/teams/{teamName}")
     public EntryDto enterGame(@PathVariable("gameId") Long gameId, @PathVariable("teamName") String teamName) {
         return gameService.enterGame(gameId, teamName);
     }
 
-    @PostMapping("/games/{gameId}/{teamName}")
-    public ResponseEntity<ResponseData> pitchBall(@PathVariable("gameId") Long gameId, @PathVariable("teamName") String teamName) {
-        return new ResponseEntity<>(new ResponseData(gameService.pitch(gameId, teamName)), HttpStatus.OK);
+    @PostMapping("/games/{gameId}/teams/{teamName}")
+    public ResponseEntity<ResponsePitchData> pitchBall(@PathVariable("gameId") Long gameId,
+                                                       @PathVariable("teamName") String teamName) {
+
+        return new ResponseEntity<>(new ResponsePitchData(
+                gameService.pitch(gameId, teamName)), HttpStatus.OK);
+    }
+
+    @GetMapping("/games/{gameId}/teams/{teamName}/inning/{inning}")
+    public ResponseEntity<ResponseHitterData> getHitterHistory(@PathVariable("gameId") Long gameId,
+                                                               @PathVariable("teamName") String teamName,
+                                                               @PathVariable("inning") int inning) {
+
+        return new ResponseEntity<>(new ResponseHitterData(
+                gameService.getHitterHistory(gameId, teamName, inning)), HttpStatus.OK);
     }
 
     @GetMapping("/games/{gameId}/teams")

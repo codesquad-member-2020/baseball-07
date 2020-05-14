@@ -5,6 +5,7 @@ import com.codesquad.baseball07.dao.PlayerDao;
 import com.codesquad.baseball07.dto.EntryDto;
 import com.codesquad.baseball07.dto.GameDto;
 import com.codesquad.baseball07.dto.PlayerDto;
+import com.codesquad.baseball07.dto.HitterHistoryDto;
 import com.codesquad.baseball07.dto.ResultDto;
 import com.codesquad.baseball07.entity.Ball;
 import com.codesquad.baseball07.entity.Game;
@@ -46,5 +47,9 @@ public class GameService {
 
     public Map<String, List<PlayerDto>> getPlayersByGameId(Long gameId) {
         return playerDao.getPlayersByGameId(gameId);
+    }
+
+    public List<HitterHistoryDto> getHitterHistory(Long gameId, String teamName, int inning) {
+        return gameDao.getHitterHistoryList(gameId, teamName, inning);
     }
 }
