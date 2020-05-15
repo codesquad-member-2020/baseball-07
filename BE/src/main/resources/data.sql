@@ -42,15 +42,15 @@ VALUES (10, null, null);
 
 
 INSERT INTO game_has_team (game_id, team_id, position, valid, score)
-VALUES (1, 1, 'home', false, 0);
+VALUES (1, 1, 'home', true, 0);
 INSERT INTO game_has_team (game_id, team_id, position, valid, score)
-VALUES (1, 2, 'away', false, 0);
+VALUES (1, 2, 'away', true, 0);
 INSERT INTO game_has_team (game_id, team_id, position, valid, score)
 VALUES (2, 3, 'home', true, 0);
 INSERT INTO game_has_team (game_id, team_id, position, valid, score)
 VALUES (2, 4, 'away', true, 0);
 INSERT INTO game_has_team (game_id, team_id, position, valid, score)
-VALUES (3, 5, 'home', false, 0);
+VALUES (3, 5, 'home', true, 0);
 INSERT INTO game_has_team (game_id, team_id, position, valid, score)
 VALUES (3, 6, 'away', true, 0);
 
