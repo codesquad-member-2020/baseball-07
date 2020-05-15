@@ -319,7 +319,8 @@ public class GameDao {
                 "join player on team.id = player.team_id " +
                 "join pitching_record on player.id = pitching_record.player " +
                 "join ball on pitching_record.ball = ball.id " +
-                "where game.id = ? and pitching_record.inning = ? and player.position = 'hitter' and player.id = ?";
+                "where game.id = ? and pitching_record.inning = ? and player.position = 'hitter' and player.id = ? " +
+                "group by pitching_record.inning";
 
         return jdbcTemplate.queryForList(sql, gameId, inning, playerId);
     }
