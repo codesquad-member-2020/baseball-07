@@ -57,7 +57,7 @@
         <!--Game List View Controller-->
         <scene sceneID="NE6-oY-dTm">
             <objects>
-                <viewController storyboardIdentifier="GameListViewController" id="ESD-9M-weV" customClass="GameListViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameListViewController" modalPresentationStyle="fullScreen" id="ESD-9M-weV" customClass="GameListViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TKY-kJ-IUr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="hsi-oO-PFD">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0SR-ms-LE7" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="0SR-ms-LE7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dm5-ey-AIH">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
