@@ -63,7 +63,7 @@ class PlayViewController: UIViewController {
     @objc private func requestPitchData(_ notification: Notification) {
         gameFieldView.hidePitchButton()
         requestPitchData()
-        gameFieldView.showPitchButton()
+//        gameFieldView.showPitchButton()
     }
     
     private func configureInningCollectionView() {
@@ -139,6 +139,7 @@ class PlayViewController: UIViewController {
                     self.gameFieldView.configure(inningTotal: pitchData?.inningTotal)
                     self.nowTurnPlayerInfoView.configureHitterInfo(pitchData?.result.hitter)
                     self.nowTurnPlayerInfoView.configurePitcherInfo(pitchData?.result.pitcher)
+                    self.gameFieldView.showPitchButton()
                 }
             }
         }
