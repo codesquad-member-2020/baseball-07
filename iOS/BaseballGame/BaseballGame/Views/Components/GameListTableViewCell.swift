@@ -29,6 +29,13 @@ class GameListTableViewCell: UITableViewCell {
         configure()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        gameTitle.text! = "GAME "
+        gameCard.setHomeTeam("")
+        gameCard.setVisitingTeam("")
+    }
+    
     private func configure() {
         self.contentView.addSubview(gameTitle)
         self.contentView.addSubview(gameCard)
