@@ -12,7 +12,7 @@ struct MockPitchUseCase {
     private let task = NetworkTask(dispatcher: NetworkDispatcher())
     
     class MockPitchRequest: Request {
-        var path: String = EndPoints.fakePitch
+        var path: String = "\(EndPoints.fakePitch)"
     }
     
     func requestPitchStub(handler: @escaping (Any) -> Void) {

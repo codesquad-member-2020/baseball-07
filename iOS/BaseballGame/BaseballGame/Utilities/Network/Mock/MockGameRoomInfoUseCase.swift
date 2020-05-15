@@ -26,3 +26,26 @@ struct MockGameRoomInfoUseCase {
           }
       }
 }
+
+struct GameRoomInfoUseCase {
+      private let task = NetworkTask(dispatcher: NetworkDispatcher())
+      
+      class GameRoomRequest: Request {
+        var path: String = EndPoints.defaultURL + EndPoints.games
+        
+        func add(id: String) {
+            path += id
+        }
+      }
+      
+    func requestGameRoomInfoStub(handler: @escaping (Any) -> Void) {
+          task.perform(request: GameRoomRequest(), dataType: GameRoomEmpty.self) { result in
+              switch result {
+              case .success(let decodedData):
+                  handler(decodedData)
+              case .failure(let error):
+                  NotificationCenter.default.post(name: .networkError, object: nil, userInfo: ["error":error])
+              }
+          }
+      }
+}
