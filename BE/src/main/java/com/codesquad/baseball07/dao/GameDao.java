@@ -319,10 +319,10 @@ public class GameDao {
                 "join player on team.id = player.team_id " +
                 "join pitching_record on player.id = pitching_record.player " +
                 "join ball on pitching_record.ball = ball.id " +
-                "where game.id = ? and pitching_record.inning = ? and player.position = 'hitter' and player.id = ? " +
-                "group by pitching_record.inning";
+                "where game.id = " + gameId + " and pitching_record.inning = " + inning + " and player.position = 'hitter' and player.id = " + playerId +
+                " group by pitching_record.inning";
 
-        return jdbcTemplate.queryForList(sql, gameId, inning, playerId);
+        return jdbcTemplate.queryForList(sql);
     }
 
     public List<Map<String, Object>> getMapInningTotal(Long gameId, int inning) {
