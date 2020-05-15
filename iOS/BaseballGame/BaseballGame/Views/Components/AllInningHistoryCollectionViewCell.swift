@@ -12,7 +12,8 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "AllInningHistoryCollectionViewCell"
     private let playHistoryTableView = PlayHistoryTableView()
-    private var inningHistory: InningHistory!
+    private var histories: [InningHistoryInfo]!
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,8 +46,8 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
         constraints.forEach { $0.isActive = true }
     }
     
-    func set(inningHistory: InningHistory) {
-        self.inningHistory = inningHistory
+    func set(histories: [InningHistoryInfo]) {
+        self.histories = histories
         playHistoryTableView.dataSource = self
         playHistoryTableView.reloadData()
     }
@@ -55,26 +56,25 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
 extension AllInningHistoryCollectionViewCell: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return inningHistory.histories.count
+        return histories.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return inningHistory?.histories[section].pitchResults.count ?? 0
+        return histories[section].pitchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayHistoryTableViewCell", for: indexPath) as! PlayHistoryTableViewCell
         if indexPath.section == 0 { cell.setCircleColor() }
-       
-        cell.configureHitInfo(sequence: indexPath.row, result: inningHistory?.histories[indexPath.section].pitchResults[indexPath.row] ?? "")
+        let reversedResult = histories[indexPath.section].pitchResults.reversed() as [String]
+        cell.configureHitInfo(sequence: indexPath.row, result: reversedResult[indexPath.row], strikeCount: 0, ballCount: 0)
         return cell
     }
 }
 
 extension AllInningHistoryCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let inningInfo = inningHistory else { return nil }
-        return "\(inningInfo.histories[section].hitterOrder) 타자 \(inningInfo.histories[section].hitter)"
+        return "\(histories[section].hitterOrder) 타자 \(histories[section].hitter)"
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

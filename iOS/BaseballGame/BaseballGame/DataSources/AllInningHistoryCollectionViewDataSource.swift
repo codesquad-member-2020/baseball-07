@@ -22,7 +22,7 @@ class AllInningHistoryCollectionViewDataSource: NSObject, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllInningHistoryCollectionViewCell", for: indexPath) as! AllInningHistoryCollectionViewCell
-        cell.set(inningHistory: pitchHistory.pitchHistory[indexPath.row])
+        cell.set(histories: pitchHistory.pitchHistory[indexPath.row].histories)
         return cell
     }
 }
