@@ -310,17 +310,17 @@ public class GameDao {
     }
 
     public List<Map<String, Object>> getInningTotal(Long gameId, int inning, Long playerId) {
-        String sql = "select sum(ball.result = 'BALL') as ball, " +
-                "sum(ball.result = 'STRIKE') as strike, " +
-                "sum(ball.result = 'HIT') as hit, " +
-                "sum(ball.result = 'OUT') as out FROM game " +
-                "join game_has_team on game.id = game_has_team.game_id " +
-                "join team on game_has_team.team_id = team.id " +
-                "join player on team.id = player.team_id " +
-                "join pitching_record on player.id = pitching_record.player " +
-                "join ball on pitching_record.ball = ball.id " +
-                "where game.id = " + gameId + " and pitching_record.inning = " + inning + " and player.position = 'hitter' and player.id = " + playerId +
-                " group by pitching_record.inning";
+        String sql = "SELECT SUM(ball.result = 'BALL') AS ball, " +
+                "SUM(ball.result = 'STRIKE') AS strike, " +
+                "SUM(ball.result = 'HIT') AS hit, " +
+                "SUM(ball.result = 'OUT') AS out FROM game " +
+                "JOIN game_has_team ON game.id = game_has_team.game_id " +
+                "JOIN team ON game_has_team.team_id = team.id " +
+                "JOIN player ON team.id = player.team_id " +
+                "JOIN pitching_record ON player.id = pitching_record.player " +
+                "JOIN ball ON pitching_record.ball = ball.id " +
+                "WHERE game.id = " + gameId + " AND pitching_record.inning = " + inning + " AND player.position = 'hitter' AND player.id = " + playerId +
+                " GROUP BY pitching_record.inning";
 
         return jdbcTemplate.queryForList(sql);
     }
