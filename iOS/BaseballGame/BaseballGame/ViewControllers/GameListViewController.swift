@@ -76,7 +76,7 @@ final class GameListViewController: UIViewController {
     }
     
     private func requestData() {
-        MockGameListUseCase().requestGameListStub { decodedData in
+        GameListUseCase().requestGameList { decodedData in
             DispatchQueue.main.async {
                 self.gameListDataSource = GameListTableDataSource(gameList: decodedData as! GameList)
                 self.gameListTableView.dataSource = self.gameListDataSource
@@ -90,6 +90,7 @@ final class GameListViewController: UIViewController {
 
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         MockGameRoomInfoUseCase().requestGameRoomInfoStub { decodedData in
             DispatchQueue.main.async {
                 self.judge(decodedData as! GameRoomEmpty)
