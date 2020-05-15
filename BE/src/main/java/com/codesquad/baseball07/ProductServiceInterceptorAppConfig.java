@@ -16,6 +16,6 @@ public class ProductServiceInterceptorAppConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new ProductServiceInterceptor(loginService)).addPathPatterns("/games/**");
+//        registry.addInterceptor(new ProductServiceInterceptor(loginService)).addPathPatterns("/games/**");
     }
 }
