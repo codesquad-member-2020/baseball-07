@@ -68,10 +68,13 @@ class GithubLoginViewController: UIViewController, WKUIDelegate, WKNavigationDel
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         networkIndicator.stopAnimating()
-        let errorAlert = networkAlert(title: "알림", message: "네트워크에 오류가 생겼습니다. 잠시후 다시 시도해주세요") {
-            self.dismiss(animated: true)
+        DispatchQueue.main.async {
+            let errorAlert = self.networkAlert(title: "알림", message: "네트워크에 오류가 생겼습니다. 잠시후 다시 시도해주세요") {
+                self.dismiss(animated: true)
+            }
+            self.present(errorAlert, animated: true)
         }
-        present(errorAlert, animated: true)
+        
     }
     
     private func networkAlert(title: String, message: String, handler: @escaping () -> ()) -> UIAlertController {
