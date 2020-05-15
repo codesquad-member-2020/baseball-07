@@ -134,7 +134,8 @@ extension GameListViewController: UITableViewDelegate {
     }
     
     private func moveToNext(teamName: String) {
-        
+        guard let playViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") else { return }
+        self.present(playViewController, animated: true)
     }
     
 }
