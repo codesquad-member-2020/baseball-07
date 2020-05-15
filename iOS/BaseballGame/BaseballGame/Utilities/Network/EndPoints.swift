@@ -9,8 +9,9 @@
 import Foundation
 
 enum EndPoints {
-    static let defaultURL = ""
-    static let fakeGameList = "https://a2ce38a7-8dc6-4960-847e-fd40393fe743.mock.pstmn.io/games"
+    static let defaultURL = "http://52.78.108.151:8080/"
+    static let games = "games"
+    static let fakeGameList = "http://www.mocky.io/v2/5ebe2ff03100006800c5d048"
     static let fakeGameRoomEmpty = "http://www.mocky.io/v2/5eb6705a3100006900699a0c"
     static let fakePitch = "http://www.mocky.io/v2/5ebcedc731000059005b0e39"
     static let fakePlayInfo = "http://www.mocky.io/v2/5ebd3a9b31000092005b11fa"
