@@ -19,9 +19,10 @@ public class GameDto {
 
     public GameDto(String splitString) {
         String[] arrayString = splitString.split(",");
-        this.homeTeamEmpty = Boolean.parseBoolean(arrayString[0]);
+
+        this.homeTeamEmpty = Boolean.parseBoolean(String.valueOf(arrayString[0]));
         this.homeTeam = arrayString[1];
-        this.awayTeamEmpty = Boolean.parseBoolean(arrayString[2]);
+        this.awayTeamEmpty = Boolean.parseBoolean(String.valueOf(arrayString[2]));
         this.awayTeam = arrayString[3];
     }
 }

@@ -42,8 +42,12 @@ public class GameService {
     }
 
     public ResultDto pitch(Long gameId, String teamName) {
-        gameDao.saveBall(gameId, teamName, new Ball());
         return gameDao.getResult();
+    }
+
+    public InningTotal pitchSave(Long gameId, String teamName) {
+        return gameDao.saveBall(gameId, teamName, new Ball());
+
     }
 
     public Map<String, List<PlayerDto>> getPlayersByGameId(Long gameId) {
@@ -56,5 +60,9 @@ public class GameService {
 
     public EachInningScore getEachInningScoreList(Long gameId) {
         return gameDao.getInningScore(gameId);
+    }
+
+    public GameScoreDto getTeamInfo(Long gameId, String teamName) {
+        return gameDao.getTeamInfo(gameId, teamName);
     }
 }

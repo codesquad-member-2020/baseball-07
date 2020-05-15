@@ -45,7 +45,7 @@ public class GameController {
                                                        @PathVariable("teamName") String teamName) {
 
         return new ResponseEntity<>(new ResponsePitchData(
-                gameService.pitch(gameId, teamName)), HttpStatus.OK);
+                gameService.pitch(gameId, teamName), gameService.pitchSave(gameId, teamName), gameService.getTeamInfo(gameId, teamName)), HttpStatus.OK);
     }
 
     @GetMapping("/games/{gameId}/teams/{teamName}/inning/{inning}")

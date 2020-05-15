@@ -10,4 +10,8 @@ import lombok.*;
 public class ResponsePitchData {
 
     private Object result;
+
+    private Object inningTotal;
+
+    private Object game;
 }

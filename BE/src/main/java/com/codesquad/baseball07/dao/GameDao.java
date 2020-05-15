@@ -93,27 +93,40 @@ public class GameDao {
                 (rs, rowNum) -> new EntryDto(rs.getBoolean("valid")), gameId, teamName);
     }
 
-    public void saveBall(Long gameId, String teamName, Ball ball) {
+    public InningTotal saveBall(Long gameId, String teamName, Ball ball) {
         this.jdbcTemplate.update("insert into ball (result) values (?)", ball.getResult());
         ball.setId(getNewBallId());
 
         Player hitter = playerDao.getAwayHitterPlayer(gameId, teamName, ball.getId());
         Player pitcher = playerDao.getPitcherPlayer(gameId, teamName);
 
+        int inning = getInning(gameId, ball.getId());
+        InningHistory inningHistory = getInningTotalEachHitter(gameId, inning, hitter.getId());
+        System.out.println(inningHistory);
+        InningTotal inningTotal = getNowInningTotal(gameId, inning);
+
         PitchingRecord recordOfBatter = pitchingRecordDao.getLastPitchingRecord(ball.getId(), hitter.getId());
         PitchingRecord recordOfPitcher = pitchingRecordDao.getLastPitchingRecord(ball.getId(), pitcher.getId());
 
-        this.jdbcTemplate.update("INSERT INTO pitching_record " +
-                        "(player, ball, inning, turn, ball_count, turn_at_bat_count, hit_count, strike_out) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                hitter.getId(), ball.getId(), recordOfBatter.getInning(), recordOfBatter.getTurn(), recordOfBatter.getBallCount() + 1,
-                recordOfBatter.getTurnAtBatCount(), recordOfBatter.getHitCount(), recordOfBatter.isStrikeOut());
+        if (inningHistory.getOut() == 1) {
+            updatePitching(hitter.getId() + 1, recordOfBatter, ball);
+        } else if (inningHistory.getHit() == 1) {
+            updatePitching(hitter.getId() + 1, recordOfBatter, ball);
+        } else if (inningHistory.getBall() == 4) {
+            updatePitching(hitter.getId() + 1, recordOfBatter, ball);
+        } else if (inningHistory.getStrike() == 3) {
+            updatePitching(hitter.getId() + 1, recordOfBatter, ball);
+        } else {
+            updatePitching(hitter.getId(), recordOfBatter, ball);
+        }
 
         this.jdbcTemplate.update("INSERT INTO pitching_record " +
                         "(player, ball, inning, turn, ball_count, turn_at_bat_count, hit_count, strike_out) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                 pitcher.getId(), ball.getId(), recordOfPitcher.getInning(), recordOfPitcher.getTurn(), recordOfPitcher.getBallCount() + 1,
                 recordOfPitcher.getTurnAtBatCount(), recordOfPitcher.getHitCount(), recordOfPitcher.isStrikeOut());
+
+        return inningTotal;
     }
 
     public PitchingRecord getLastPitchingRecord(Long lastBallId, Long playerId) {
@@ -176,7 +189,9 @@ public class GameDao {
                 "where pitching_record.ball = ?";
 
         return jdbcTemplate.queryForList(sql, ballId);
-    };
+    }
+
+    ;
 
     public ResultDto getResult() {
         List<Map<String, Object>> rows = getNewPitchingRecords(getNewBallId());
@@ -290,6 +305,119 @@ public class GameDao {
                 "join pitching_record on pitching_record.player = player.id " +
                 "join ball on ball.id = pitching_record.ball " +
                 "where game.id = ? group by game_has_team.position, pitching_record.inning";
+
+        return jdbcTemplate.queryForList(sql, gameId);
+    }
+
+    public List<Map<String, Object>> getInningTotal(Long gameId, int inning, Long playerId) {
+        String sql = "select sum(ball.result = 'BALL') as ball, " +
+                "sum(ball.result = 'STRIKE') as strike, " +
+                "sum(ball.result = 'HIT') as hit, " +
+                "sum(ball.result = 'OUT') as out FROM game " +
+                "join game_has_team on game.id = game_has_team.game_id " +
+                "join team on game_has_team.team_id = team.id " +
+                "join player on team.id = player.team_id " +
+                "join pitching_record on player.id = pitching_record.player " +
+                "join ball on pitching_record.ball = ball.id\n" +
+                "where game.id = ? and pitching_record.inning = ? and player.position = 'hitter' and player.id = ?";
+
+        return jdbcTemplate.queryForList(sql, gameId, inning, playerId);
+    }
+
+    public List<Map<String, Object>> getMapInningTotal(Long gameId, int inning) {
+        String sql = "select sum(ball=4) as ball, sum(strike=3) as strike, sum(hit=1) as base, sum(out=1) as out " +
+                "from (select sum(ball.result = 'BALL') as ball, sum(ball.result = 'STRIKE') as strike, " +
+                "sum(ball.result = 'HIT') as hit, sum(ball.result = 'OUT') as out FROM game " +
+                "join game_has_team on game.id = game_has_team.game_id join team on game_has_team.team_id = team.id " +
+                "join player on team.id = player.team_id join pitching_record on player.id = pitching_record.player " +
+                "join ball on pitching_record.ball = ball.id " +
+                "where game.id = ? and player.position = 'hitter' and pitching_record.inning = ? group by player.id)";
+
+        return jdbcTemplate.queryForList(sql, gameId, inning);
+    }
+
+    public InningHistory getInningTotalEachHitter(Long gameId, int inning, Long playerId) {
+        List<Map<String, Object>> rows = getInningTotal(gameId, inning, playerId);
+        InningHistory inningHistory = new InningHistory();
+
+        rows.forEach(row -> {
+            inningHistory.setBall(Integer.parseInt(String.valueOf((row.get("BALL")))));
+            inningHistory.setStrike(Integer.parseInt(String.valueOf((row.get("STRIKE")))));
+            inningHistory.setHit(Integer.parseInt(String.valueOf((row.get("HIT")))));
+            inningHistory.setOut(Integer.parseInt(String.valueOf((row.get("OUT")))));
+        });
+
+        return inningHistory;
+    }
+
+    public InningTotal getNowInningTotal(Long gameId, int inning) {
+        List<Map<String, Object>> rows = getMapInningTotal(gameId, inning);
+        InningTotal inningTotal = new InningTotal();
+
+        rows.forEach(row -> {
+            inningTotal.setBall(Integer.parseInt(String.valueOf((row.get("ball")))));
+            inningTotal.setStrike(Integer.parseInt(String.valueOf((row.get("strike")))));
+            inningTotal.setBase(Integer.parseInt(String.valueOf((row.get("base")))));
+            inningTotal.setOut(Integer.parseInt(String.valueOf((row.get("out")))));
+        });
+
+        return inningTotal;
+    }
+
+    public int getInning(Long gameId, Long ballId) {
+        String sql = "select pitching_record.inning from game " +
+                "join game_has_team on game.id = game_has_team.game_id " +
+                "join team on game_has_team.team_id = team.id " +
+                "join player on team.id = player.team_id " +
+                "join pitching_record on player.id = pitching_record.player " +
+                "join ball on pitching_record.ball = ball.id " +
+                "where game.id = ? and player.position = 'hitter' and ball.id = ?";
+
+        return this.jdbcTemplate.queryForObject(sql, Integer.class, gameId, ballId - 1);
+    }
+
+    public void updatePitching(Long hitterId, PitchingRecord recordOfBatter, Ball ball) {
+        Long checkHitterId = hitterId;
+        if (checkHitterId % 10 == 0) {
+            checkHitterId = checkHitterId - 9;
+        }
+        this.jdbcTemplate.update("INSERT INTO pitching_record " +
+                        "(player, ball, inning, turn, ball_count, turn_at_bat_count, hit_count, strike_out) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                checkHitterId, ball.getId(), recordOfBatter.getInning(), recordOfBatter.getTurn(), recordOfBatter.getBallCount() + 1,
+                recordOfBatter.getTurnAtBatCount(), recordOfBatter.getHitCount(), recordOfBatter.isStrikeOut());
+    }
+
+    public GameScoreDto getTeamInfo(Long gameId, String teamName) {
+        List<Map<String, Object>> rows = getTeamInfoList(gameId);
+        GameScoreDto gameScoreDto = new GameScoreDto();
+        Map<String, Object> away = new HashMap<>();
+        Map<String, Object> home = new HashMap<>();
+
+        rows.forEach(row -> {
+            if (((String) row.get("position")).equals("home")) {
+                home.put("id", row.get("id"));
+                home.put("name", row.get("name"));
+                home.put("score", row.get("score"));
+            }
+            if (((String) row.get("position")).equals("away")) {
+                away.put("id", row.get("id"));
+                away.put("name", row.get("name"));
+                away.put("score", row.get("score"));
+            }
+        });
+
+        gameScoreDto.setId(gameId);
+        gameScoreDto.setHomeTeam(home);
+        gameScoreDto.setAwayTeam(away);
+
+        return gameScoreDto;
+    }
+
+    public List<Map<String, Object>> getTeamInfoList(Long gameId) {
+        String sql = "select team.id, team.name, game_has_team.position,game_has_team.score from game " +
+                "join game_has_team on game_has_team.game_id = game.id " +
+                "join team on team.id = game_has_team.team_id where game.id = ? ";
 
         return jdbcTemplate.queryForList(sql, gameId);
     }
