@@ -31,6 +31,7 @@ class GameFieldView: UIView {
         self.addSubview(pitch)
 
         configureConstraints()
+        configurePitchButton()
     }
     
     private func configureConstraints() {
@@ -49,6 +50,14 @@ class GameFieldView: UIView {
             pitch.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.15),
         ]
         constraints.forEach { $0.isActive = true }
+    }
+    
+    private func configurePitchButton() {
+        pitch.addTarget(self, action: #selector(pressPitchButton), for: .touchUpInside)
+    }
+    
+    @objc private func pressPitchButton() {
+        NotificationCenter.default.post(name: .pitch, object: nil)
     }
     
     func configure(inningTotal: InningTotal?) {

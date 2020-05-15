@@ -12,4 +12,5 @@ extension Notification.Name {
     static let networkError = Notification.Name("networkError")
     static let selectInningCell = Notification.Name("selectInningCell")
     static let swipeCell = Notification.Name("swipeCell")
+    static let pitch = Notification.Name("pitch")
 }

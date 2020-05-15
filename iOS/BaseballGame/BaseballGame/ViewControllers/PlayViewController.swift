@@ -41,7 +41,7 @@ class PlayViewController: UIViewController {
     private func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(moveInningInfoCell(_:)), name: .selectInningCell, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveInningCell(_:)), name: .swipeCell, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(requestPitchData(_:)), name: .pitch, object: nil)
     }
     
     @objc private func moveInningInfoCell(_ notification: Notification) {
@@ -58,6 +58,10 @@ class PlayViewController: UIViewController {
             visibleCell.deselected()
         }
         cell.selected()
+    }
+    
+    @objc private func requestPitchData(_ notification: Notification) {
+       requestPitchData()
     }
     
     private func configureInningCollectionView() {
