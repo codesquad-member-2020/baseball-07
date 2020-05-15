@@ -49,7 +49,7 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
             infoView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 100),
             infoView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             
-            playHistoryTableView.topAnchor.constraint(equalTo: self.infoView.bottomAnchor, constant: -40),
+            playHistoryTableView.topAnchor.constraint(equalTo: self.infoView.bottomAnchor, constant: 0),
             playHistoryTableView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             playHistoryTableView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             playHistoryTableView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
