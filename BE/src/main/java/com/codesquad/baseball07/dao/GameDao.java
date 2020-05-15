@@ -165,7 +165,7 @@ public class GameDao {
                 "pitching_record.turn_at_bat_count, pitching_record.hit_count, pitching_record.strike_out from game " +
                 "join game_has_team on game_has_team.game_id = game.id join team on team.id = game_has_team.team_id " +
                 "join player on player.team_id = team.id join pitching_record on pitching_record.player = player.id " +
-                "join ball on ball.id = pitching_record.ball \n" +
+                "join ball on ball.id = pitching_record.ball " +
                 "where game.id = ? and not team.name = ? and player.position = 'hitter'";
 
         return this.jdbcTemplate.query(sql,
@@ -318,7 +318,7 @@ public class GameDao {
                 "join team on game_has_team.team_id = team.id " +
                 "join player on team.id = player.team_id " +
                 "join pitching_record on player.id = pitching_record.player " +
-                "join ball on pitching_record.ball = ball.id\n" +
+                "join ball on pitching_record.ball = ball.id " +
                 "where game.id = ? and pitching_record.inning = ? and player.position = 'hitter' and player.id = ?";
 
         return jdbcTemplate.queryForList(sql, gameId, inning, playerId);
