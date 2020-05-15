@@ -13,7 +13,8 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     static let identifier = "AllInningHistoryCollectionViewCell"
     private let playHistoryTableView = PlayHistoryTableView()
     private var histories: [InningHistoryInfo]!
-
+    var strikeCount = 0
+    var ballCount = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,14 +67,33 @@ extension AllInningHistoryCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayHistoryTableViewCell", for: indexPath) as! PlayHistoryTableViewCell
         if indexPath.section == 0 { cell.setCircleColor() }
+        
+        let reversedSequence = makeReversedArray(indexPath: indexPath)
         let reversedResult = histories[indexPath.section].pitchResults.reversed() as [String]
-        cell.configureHitInfo(sequence: indexPath.row, result: reversedResult[indexPath.row], strikeCount: 0, ballCount: 0)
+        
+        if histories[indexPath.section].pitchResults[indexPath.row] == "strike" {
+            strikeCount += 1
+        }else if histories[indexPath.section].pitchResults[indexPath.row] == "ball" {
+            ballCount += 1
+        }
+        
+        cell.configureHitInfo(sequence: reversedSequence[indexPath.row], result: reversedResult[indexPath.row], strikeCount: strikeCount, ballCount: ballCount)
         return cell
+    }
+    
+    private func makeReversedArray(indexPath: IndexPath) -> [Int] {
+        var sequence: [Int] = []
+        for index in 0..<histories[indexPath.section].pitchResults.count {
+            sequence.append(index)
+        }
+        return sequence.reversed() as [Int]
     }
 }
 
 extension AllInningHistoryCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        strikeCount = 0
+        ballCount = 0
         return "\(histories[section].hitterOrder) 타자 \(histories[section].hitter)"
     }
     
