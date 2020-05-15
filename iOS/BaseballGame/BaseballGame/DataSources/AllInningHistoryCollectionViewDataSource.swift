@@ -17,12 +17,16 @@ class AllInningHistoryCollectionViewDataSource: NSObject, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pitchHistory.pitchHistory.count
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllInningHistoryCollectionViewCell", for: indexPath) as! AllInningHistoryCollectionViewCell
-        cell.set(histories: pitchHistory.pitchHistory[indexPath.row].histories)
+        if pitchHistory.pitchHistory.count > indexPath.row {
+            cell.set(histories: pitchHistory.pitchHistory[indexPath.row].histories)
+        }else {
+            cell.showInfoView()
+        }
         return cell
     }
 }

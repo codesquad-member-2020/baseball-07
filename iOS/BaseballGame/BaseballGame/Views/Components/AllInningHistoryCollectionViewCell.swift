@@ -11,10 +11,16 @@ import UIKit
 class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "AllInningHistoryCollectionViewCell"
+    private let infoView: UILabel = {
+       let label = UILabel()
+        label.text = "아직 게임 정보가 없어요!"
+        label.textAlignment = .center
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     private let playHistoryTableView = PlayHistoryTableView()
     private var histories: [InningHistoryInfo]!
-    var strikeCount = 0
-    var ballCount = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,13 +39,17 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureSubViews() {
+        self.addSubview(infoView)
         self.addSubview(playHistoryTableView)
         configureConstraints()
     }
     
     private func configureConstraints() {
         let constraints = [
-            playHistoryTableView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 70),
+            infoView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 100),
+            infoView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            
+            playHistoryTableView.topAnchor.constraint(equalTo: self.infoView.bottomAnchor, constant: -40),
             playHistoryTableView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             playHistoryTableView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             playHistoryTableView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
@@ -47,10 +57,20 @@ class AllInningHistoryCollectionViewCell: UICollectionViewCell {
         constraints.forEach { $0.isActive = true }
     }
     
+    override func prepareForReuse() {
+        infoView.isHidden = false
+        playHistoryTableView.isHidden = true
+    }
+    
     func set(histories: [InningHistoryInfo]) {
         self.histories = histories
         playHistoryTableView.dataSource = self
+        playHistoryTableView.isHidden = false
         playHistoryTableView.reloadData()
+    }
+    
+    func showInfoView() {
+        infoView.isHidden = false
     }
 }
 
@@ -71,13 +91,7 @@ extension AllInningHistoryCollectionViewCell: UITableViewDataSource {
         let reversedSequence = makeReversedArray(indexPath: indexPath)
         let reversedResult = histories[indexPath.section].pitchResults.reversed() as [String]
         
-        if histories[indexPath.section].pitchResults[indexPath.row] == "strike" {
-            strikeCount += 1
-        }else if histories[indexPath.section].pitchResults[indexPath.row] == "ball" {
-            ballCount += 1
-        }
-        
-        cell.configureHitInfo(sequence: reversedSequence[indexPath.row], result: reversedResult[indexPath.row], strikeCount: strikeCount, ballCount: ballCount)
+        cell.configureHitInfo(sequence: reversedSequence[indexPath.row], result: reversedResult[indexPath.row], strikeCount: 0, ballCount: 0)
         return cell
     }
     
@@ -92,8 +106,6 @@ extension AllInningHistoryCollectionViewCell: UITableViewDataSource {
 
 extension AllInningHistoryCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        strikeCount = 0
-        ballCount = 0
         return "\(histories[section].hitterOrder) 타자 \(histories[section].hitter)"
     }
     

@@ -9,7 +9,6 @@
 import UIKit
 
 class InningCollectionViewDataSource: NSObject, UICollectionViewDataSource {
-    // TODO: - 각 회차별 정보 가지고 있는 모델 필요. 연장전 갈수도 있으므로 셀 추가되어야 함.
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 9
