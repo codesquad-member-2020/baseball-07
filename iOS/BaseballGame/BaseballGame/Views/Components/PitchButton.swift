@@ -28,4 +28,16 @@ class PitchButton: UIButton {
         self.layer.cornerRadius = 6.0
         self.layer.masksToBounds = true
     }
+    
+    func hideAnimation() {
+        UIView.animate(withDuration: 1.0) {
+            self.alpha = 0.0
+        }
+    }
+    
+    func showAnimation() {
+        UIView.animate(withDuration: 1.0) {
+            self.alpha = 1.0
+        }
+    }
 }

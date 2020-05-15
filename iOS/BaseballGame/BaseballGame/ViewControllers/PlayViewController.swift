@@ -61,7 +61,9 @@ class PlayViewController: UIViewController {
     }
     
     @objc private func requestPitchData(_ notification: Notification) {
-       requestPitchData()
+        gameFieldView.hidePitchButton()
+        requestPitchData()
+        gameFieldView.showPitchButton()
     }
     
     private func configureInningCollectionView() {

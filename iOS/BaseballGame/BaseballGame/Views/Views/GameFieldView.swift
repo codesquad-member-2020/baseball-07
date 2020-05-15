@@ -68,4 +68,12 @@ class GameFieldView: UIView {
         groundView.occupy(inningCount.base)
     }
     
+    func hidePitchButton() {
+        pitch.hideAnimation()
+    }
+    
+    func showPitchButton() {
+        pitch.showAnimation()
+    }
+    
 }
