@@ -44,6 +44,7 @@ class GithubLoginViewController: UIViewController, WKUIDelegate, WKNavigationDel
         WKWebsiteDataStore.default().httpCookieStore.getAllCookies { (cookies) in
             for cookie in cookies {
                 if cookie.name == "auth-token" {
+                    UserDefaults.standard.set(cookie.value, forKey: "auth-token")
                     let successAlert = self.networkAlert(title: "알림", message: "로그인에 성공했습니다!"){
                         guard let gameListViewController = self.storyboard?.instantiateViewController(withIdentifier: "GameListViewController") as? GameListViewController else { return }
                         self.present(gameListViewController, animated: true)
