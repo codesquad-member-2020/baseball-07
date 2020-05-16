@@ -30,3 +30,7 @@ struct GameRoomEmpty: Codable {
     var awayTeamEmpty: Bool
     var awayTeam: String
 }
+
+struct EnterRequest: Codable {
+    var result: String
+}

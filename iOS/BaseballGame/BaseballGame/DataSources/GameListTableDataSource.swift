@@ -27,4 +27,8 @@ class GameListTableDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
+    func getTeamId(indexPath: IndexPath) -> (homeId: Int, awayId: Int) {
+        return (homeId: gameList.games[indexPath.row].homeTeam.id, awayId:  gameList.games[indexPath.row].awayTeam.id)
+    }
+    
 }

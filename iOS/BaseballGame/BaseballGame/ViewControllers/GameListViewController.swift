@@ -91,18 +91,19 @@ final class GameListViewController: UIViewController {
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? GameListTableViewCell else { return }
+        let teamsId = gameListDataSource.getTeamId(indexPath: indexPath)
         GameRoomInfoUseCase().requestGameRoomInfo(gameId: cell.getGameId()) { decodedData in
             DispatchQueue.main.async {
-                self.judge(decodedData as! GameRoomEmpty)
+                self.judge(decodedData as! GameRoomEmpty, homeTeamId: teamsId.homeId, awayTeamId: teamsId.awayId)
             }
         }
     }
     
-    private func judge(_ gameRoomEmpty: GameRoomEmpty) {
+    private func judge(_ gameRoomEmpty: GameRoomEmpty, homeTeamId: Int, awayTeamId: Int) {
         if !gameRoomEmpty.homeTeamEmpty, !gameRoomEmpty.awayTeamEmpty {
             roomFullAlert()
         }else {
-            makeActionSheet(homeTeam: gameRoomEmpty.homeTeamEmpty ? gameRoomEmpty.homeTeam : nil, visitingTeam: gameRoomEmpty.awayTeamEmpty ? gameRoomEmpty.awayTeam : nil)
+            makeActionSheet(home: gameRoomEmpty.homeTeamEmpty ? (gameRoomEmpty.homeTeam, homeTeamId) : nil, away: gameRoomEmpty.awayTeamEmpty ? (gameRoomEmpty.awayTeam, awayTeamId) : nil)
         }
     }
     
@@ -112,20 +113,20 @@ extension GameListViewController: UITableViewDelegate {
         present(alert, animated: true)
     }
     
-    private func makeActionSheet(homeTeam hName: String?, visitingTeam vName: String?) {
+    private func makeActionSheet(home: (name: String, id: Int)?, away: (name: String, id: Int)?) {
         let actionSheet = UIAlertController(title: "입장", message: "팀을 선택해주세요", preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "취소", style: .cancel) { _ in }
         
-        if let homeTeamName = hName {
+        if let homeTeamName = home?.name, let homeTeamId = home?.id {
             let homeTeam = UIAlertAction(title: homeTeamName, style: .default) { _ in
-                self.moveToNext(teamName: homeTeamName)
+                self.moveToNext(teamName: homeTeamName, teamId: homeTeamId)
             }
             actionSheet.addAction(homeTeam)
         }
         
-        if let visitingTeamName = vName {
-            let visitingTeam = UIAlertAction(title: visitingTeamName, style: .default) { _ in
-                self.moveToNext(teamName: visitingTeamName)
+        if let awayTeamName = away?.name, let awayTeamId = away?.id {
+            let visitingTeam = UIAlertAction(title: awayTeamName, style: .default) { _ in
+                self.moveToNext(teamName: awayTeamName, teamId: awayTeamId)
             }
             actionSheet.addAction(visitingTeam)
         }
@@ -134,7 +135,7 @@ extension GameListViewController: UITableViewDelegate {
         present(actionSheet, animated: true)
     }
     
-    private func moveToNext(teamName: String) {
+    private func moveToNext(teamName: String, teamId: Int) {
         guard let playViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") else { return }
         self.present(playViewController, animated: true)
     }

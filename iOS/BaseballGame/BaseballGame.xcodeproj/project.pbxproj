@@ -57,6 +57,7 @@
 		30DF9F212460374100BB21F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F1F2460374100BB21F2 /* Main.storyboard */; };
 		30DF9F232460374400BB21F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F222460374400BB21F2 /* Assets.xcassets */; };
 		30DF9F262460374400BB21F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30DF9F242460374400BB21F2 /* LaunchScreen.storyboard */; };
+		30EA7B2D246FE2B100B1E995 /* RoomEnterAvailableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EA7B2C246FE2B100B1E995 /* RoomEnterAvailableUseCase.swift */; };
 		30F02BD52466793C00F3A066 /* MockGameListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD42466793C00F3A066 /* MockGameListUseCase.swift */; };
 		30F02BD724667E6500F3A066 /* ErrorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F02BD624667E6500F3A066 /* ErrorAlertController.swift */; };
 		30FE85342467D641004CDE13 /* GameFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE85332467D641004CDE13 /* GameFieldView.swift */; };
@@ -116,6 +117,7 @@
 		30DF9F222460374400BB21F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30DF9F252460374400BB21F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30DF9F272460374400BB21F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30EA7B2C246FE2B100B1E995 /* RoomEnterAvailableUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEnterAvailableUseCase.swift; sourceTree = "<group>"; };
 		30F02BD42466793C00F3A066 /* MockGameListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameListUseCase.swift; sourceTree = "<group>"; };
 		30F02BD624667E6500F3A066 /* ErrorAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertController.swift; sourceTree = "<group>"; };
 		30FE85332467D641004CDE13 /* GameFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFieldView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		3051CE042462E59C004A8175 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				30EA7B2B246FE19100B1E995 /* UseCase */,
 				30BD2D05246C2D550015135D /* Mock */,
 				3051CE052463AE49004A8175 /* NetworkDispatcher.swift */,
 				3051CE072463AEB4004A8175 /* Request.swift */,
@@ -321,6 +324,14 @@
 			path = BaseballGame;
 			sourceTree = "<group>";
 		};
+		30EA7B2B246FE19100B1E995 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				30EA7B2C246FE2B100B1E995 /* RoomEnterAvailableUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		30F02BD824667EAE00F3A066 /* ErrorHandling */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +424,7 @@
 				30464B04246AAFEA003D74E7 /* AllInningHistoryCollectionViewCell.swift in Sources */,
 				3071872B246962FD002B1983 /* PitchButton.swift in Sources */,
 				301EE3CE2462505600774D71 /* GameListTableViewCell.swift in Sources */,
+				30EA7B2D246FE2B100B1E995 /* RoomEnterAvailableUseCase.swift in Sources */,
 				30464B06246AB4C7003D74E7 /* AllInningHistoryCollectionViewDataSource.swift in Sources */,
 				3071872524691B7A002B1983 /* RhombusView.swift in Sources */,
 				301EE3D0246252ED00774D71 /* GameListCardView.swift in Sources */,

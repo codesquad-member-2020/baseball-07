@@ -11,6 +11,7 @@ import UIKit
 class GameListTableViewCell: UITableViewCell {
     
     private var gameId: Int?
+    
     private let gameCard = GameListCardView()
     private let gameTitle: UILabel = {
         let label = UILabel()
