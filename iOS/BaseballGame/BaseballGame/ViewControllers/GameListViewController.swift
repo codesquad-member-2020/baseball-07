@@ -90,20 +90,19 @@ final class GameListViewController: UIViewController {
 
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? GameListTableViewCell else { return }
-        let teamsId = gameListDataSource.getTeamId(indexPath.row)
-        GameRoomInfoUseCase().requestGameRoomInfo(gameId: gameListDataSource.getGameId(indexPath.row)) { decodedData in
+        let gameId = gameListDataSource.getGameId(indexPath.row)
+        GameRoomInfoUseCase().requestGameRoomInfo(gameId: gameId) { decodedData in
             DispatchQueue.main.async {
-                self.judge(decodedData as! GameRoomEmpty, homeTeamId: teamsId.homeId, awayTeamId: teamsId.awayId)
+                self.judge(decodedData as! GameRoomEmpty, gameId: gameId)
             }
         }
     }
     
-    private func judge(_ gameRoomEmpty: GameRoomEmpty, homeTeamId: Int, awayTeamId: Int) {
+    private func judge(_ gameRoomEmpty: GameRoomEmpty, gameId: Int) {
         if !gameRoomEmpty.homeTeamEmpty, !gameRoomEmpty.awayTeamEmpty {
             roomFullAlert()
         }else {
-            makeActionSheet(home: gameRoomEmpty.homeTeamEmpty ? (gameRoomEmpty.homeTeam, homeTeamId) : nil, away: gameRoomEmpty.awayTeamEmpty ? (gameRoomEmpty.awayTeam, awayTeamId) : nil)
+            makeActionSheet(home: gameRoomEmpty.homeTeamEmpty ? gameRoomEmpty.homeTeam : nil, away: gameRoomEmpty.awayTeamEmpty ? gameRoomEmpty.awayTeam : nil, gameId: gameId)
         }
     }
     
@@ -113,31 +112,43 @@ extension GameListViewController: UITableViewDelegate {
         present(alert, animated: true)
     }
     
-    private func makeActionSheet(home: (name: String, id: Int)?, away: (name: String, id: Int)?) {
+    private func makeActionSheet(home: String?, away: String?, gameId: Int) {
         let actionSheet = UIAlertController(title: "입장", message: "팀을 선택해주세요", preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "취소", style: .cancel) { _ in }
         
-        if let homeTeamName = home?.name, let homeTeamId = home?.id {
+        if let homeTeamName = home {
             let homeTeam = UIAlertAction(title: homeTeamName, style: .default) { _ in
-                self.moveToNext(teamName: homeTeamName, teamId: homeTeamId)
+                self.moveToNext(gameId: gameId, teamName: homeTeamName)
             }
             actionSheet.addAction(homeTeam)
         }
         
-        if let awayTeamName = away?.name, let awayTeamId = away?.id {
-            let visitingTeam = UIAlertAction(title: awayTeamName, style: .default) { _ in
-                self.moveToNext(teamName: awayTeamName, teamId: awayTeamId)
+        if let awayTeamName = away {
+            let awayTeam = UIAlertAction(title: awayTeamName, style: .default) { _ in
+                self.moveToNext(gameId: gameId, teamName: awayTeamName)
             }
-            actionSheet.addAction(visitingTeam)
+            actionSheet.addAction(awayTeam)
         }
         
         actionSheet.addAction(cancel)
         present(actionSheet, animated: true)
     }
     
-    private func moveToNext(teamName: String, teamId: Int) {
-        guard let playViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") else { return }
-        self.present(playViewController, animated: true)
+    private func moveToNext(gameId: Int, teamName: String) {
+        RoomEnterAvailableUseCase().requestRoomEnterAvailable(gameId: gameId, teamName: teamName) { decodedData in
+            guard let result = decodedData as? EnterRequest else { return }
+            switch result.result {
+            case "ok" :
+                guard let playViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") else { return }
+                self.present(playViewController, animated: true)
+            case "fail" :
+                self.roomFullAlert()
+            default:
+                break
+                
+            }
+        }
+        
     }
     
 }

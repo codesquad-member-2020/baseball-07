@@ -12,6 +12,7 @@ struct RoomEnterAvailableUseCase {
       private let task = NetworkTask(dispatcher: NetworkDispatcher())
       
       class RoomEnterAvailableRequest: Request {
+        var method: HTTPMethod = .patch
         var path: String = EndPoints.defaultURL
         var gameId: Int
         var teamName: String
@@ -19,7 +20,7 @@ struct RoomEnterAvailableUseCase {
         init(gameId: Int, teamName: String) {
             self.gameId = gameId
             self.teamName = teamName
-            self.path += "/\(self.gameId)" + "/teams/\(self.teamName)"
+            self.path += EndPoints.games + "/\(self.gameId)" + "/teams/\(self.teamName)"
         }
       }
       
