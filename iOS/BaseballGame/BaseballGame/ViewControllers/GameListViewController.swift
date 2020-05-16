@@ -91,8 +91,8 @@ final class GameListViewController: UIViewController {
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? GameListTableViewCell else { return }
-        let teamsId = gameListDataSource.getTeamId(indexPath: indexPath)
-        GameRoomInfoUseCase().requestGameRoomInfo(gameId: cell.getGameId()) { decodedData in
+        let teamsId = gameListDataSource.getTeamId(indexPath.row)
+        GameRoomInfoUseCase().requestGameRoomInfo(gameId: gameListDataSource.getGameId(indexPath.row)) { decodedData in
             DispatchQueue.main.async {
                 self.judge(decodedData as! GameRoomEmpty, homeTeamId: teamsId.homeId, awayTeamId: teamsId.awayId)
             }

@@ -9,9 +9,7 @@
 import UIKit
 
 class GameListTableViewCell: UITableViewCell {
-    
-    private var gameId: Int?
-    
+        
     private let gameCard = GameListCardView()
     private let gameTitle: UILabel = {
         let label = UILabel()
@@ -62,11 +60,5 @@ class GameListTableViewCell: UITableViewCell {
         gameTitle.text! += "\(gameInfo.id)"
         gameCard.setHomeTeam(gameInfo.homeTeam.name)
         gameCard.setVisitingTeam(gameInfo.awayTeam.name)
-        gameId = gameInfo.id
-    }
-    
-    func getGameId() -> Int {
-        guard let id = gameId else { return 0 }
-        return id
     }
 }
