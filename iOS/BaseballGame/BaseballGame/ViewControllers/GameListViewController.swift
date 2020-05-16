@@ -85,7 +85,6 @@ final class GameListViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension GameListViewController: UITableViewDelegate {
@@ -129,7 +128,6 @@ extension GameListViewController: UITableViewDelegate {
             }
             actionSheet.addAction(awayTeam)
         }
-        
         actionSheet.addAction(cancel)
         present(actionSheet, animated: true)
     }
@@ -145,10 +143,7 @@ extension GameListViewController: UITableViewDelegate {
                 self.roomFullAlert()
             default:
                 break
-                
             }
         }
-        
     }
-    
 }
