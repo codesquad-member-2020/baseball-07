@@ -90,8 +90,8 @@ final class GameListViewController: UIViewController {
 
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        MockGameRoomInfoUseCase().requestGameRoomInfoStub { decodedData in
+        guard let cell = tableView.cellForRow(at: indexPath) as? GameListTableViewCell else { return }
+        GameRoomInfoUseCase().requestGameRoomInfo(gameId: cell.getGameId()) { decodedData in
             DispatchQueue.main.async {
                 self.judge(decodedData as! GameRoomEmpty)
             }

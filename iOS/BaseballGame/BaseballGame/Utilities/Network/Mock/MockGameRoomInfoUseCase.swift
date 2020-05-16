@@ -32,14 +32,16 @@ struct GameRoomInfoUseCase {
       
       class GameRoomRequest: Request {
         var path: String = EndPoints.defaultURL + EndPoints.games
+        var gameId: Int
         
-        func add(id: String) {
-            path += id
+        init(gameId: Int) {
+            self.gameId = gameId
+            self.path += "/\(self.gameId)"
         }
       }
       
-    func requestGameRoomInfoStub(handler: @escaping (Any) -> Void) {
-          task.perform(request: GameRoomRequest(), dataType: GameRoomEmpty.self) { result in
+    func requestGameRoomInfo(gameId: Int, handler: @escaping (Any) -> Void) {
+          task.perform(request: GameRoomRequest(gameId: gameId), dataType: GameRoomEmpty.self) { result in
               switch result {
               case .success(let decodedData):
                   handler(decodedData)
