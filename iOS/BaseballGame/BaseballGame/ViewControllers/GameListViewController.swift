@@ -10,8 +10,9 @@ import UIKit
 
 final class GameListViewController: UIViewController {
     
-    private let gameListTitle = GameListTitleLabel()
     @IBOutlet var gameListTableView: GameListTableView!
+    
+    private let gameListTitle = GameListTitleLabel()
     private var gameListDataSource: GameListTableDataSource!
     private var networkIndicator: NetworkIndicator!
     
@@ -137,8 +138,14 @@ extension GameListViewController: UITableViewDelegate {
             guard let result = decodedData as? EnterRequest else { return }
             switch result.result {
             case "ok" :
-                guard let playViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") else { return }
-                self.present(playViewController, animated: true)
+                guard let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController else { return }
+                guard let playViewController = tabBarController.viewControllers?[0] as? PlayViewController else { return }
+                DispatchQueue.main.async {
+                    self.present(tabBarController, animated: true) {
+                        playViewController.requestPitchData(gameId: gameId, teamName: teamName)
+                        playViewController.requestInningHistoryData(gameId: gameId, teamName: teamName, inning: 0)
+                    }
+                }
             case "fail" :
                 self.roomFullAlert()
             default:

@@ -1,22 +1,23 @@
 //
-//  MockPitchHistoryUseCase.swift
+//  GameListUseCase.swift
 //  BaseballGame
 //
-//  Created by delma on 2020/05/14.
+//  Created by delma on 2020/05/09.
 //  Copyright © 2020 delma. All rights reserved.
 //
 
 import Foundation
 
-struct MockInningHistoryUseCase {
+struct GameListUseCase {
     private let task = NetworkTask(dispatcher: NetworkDispatcher())
-    
-    class MockPitchRequest: Request {
-        var path: String = EndPoints.fakePlayInfo
+
+    class GameListRequest: Request {
+        var path: String = EndPoints.defaultURL + EndPoints.games
     }
     
-    func requestInningHistoryStub(handler: @escaping (Any) -> Void) {
-        task.perform(request: MockPitchRequest(), dataType: PitchHistory.self) { result in
+    func requestGameList(handler: @escaping (Any) -> Void) {
+        let task = NetworkTask(dispatcher: NetworkDispatcher())
+        task.perform(request: GameListRequest(), dataType: GameList.self) { result in
             switch result {
             case .success(let decodedData):
                 handler(decodedData)
@@ -25,4 +26,7 @@ struct MockInningHistoryUseCase {
             }
         }
     }
+    
 }
+
+
