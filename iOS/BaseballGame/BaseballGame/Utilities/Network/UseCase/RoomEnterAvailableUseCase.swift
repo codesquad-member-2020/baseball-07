@@ -9,9 +9,9 @@
 import Foundation
 
 struct RoomEnterAvailableUseCase {
-      private let task = NetworkTask(dispatcher: NetworkDispatcher())
-      
-      class RoomEnterAvailableRequest: Request {
+    private let task = NetworkTask(dispatcher: NetworkDispatcher())
+    
+    class RoomEnterAvailableRequest: Request {
         var method: HTTPMethod = .patch
         var path: String = EndPoints.defaultURL
         var gameId: Int
@@ -22,16 +22,16 @@ struct RoomEnterAvailableUseCase {
             self.teamName = teamName
             self.path += EndPoints.games + "/\(self.gameId)" + "/teams/\(self.teamName)"
         }
-      }
-      
+    }
+    
     func requestRoomEnterAvailable(gameId: Int, teamName: String, handler: @escaping (Any) -> Void) {
-          task.perform(request: RoomEnterAvailableRequest(gameId: gameId, teamName: teamName), dataType: EnterRequest.self) { result in
-              switch result {
-              case .success(let decodedData):
-                  handler(decodedData)
-              case .failure(let error):
-                  NotificationCenter.default.post(name: .networkError, object: nil, userInfo: ["error":error])
-              }
-          }
-      }
+        task.perform(request: RoomEnterAvailableRequest(gameId: gameId, teamName: teamName), dataType: EnterRequest.self) { result in
+            switch result {
+            case .success(let decodedData):
+                handler(decodedData)
+            case .failure(let error):
+                NotificationCenter.default.post(name: .networkError, object: nil, userInfo: ["error":error])
+            }
+        }
+    }
 }

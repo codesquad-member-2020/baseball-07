@@ -1,5 +1,5 @@
 //
-//  MockPitchUseCase.swift
+//  PitchUseCase.swift
 //  BaseballGame
 //
 //  Created by delma on 2020/05/13.
@@ -8,15 +8,24 @@
 
 import Foundation
 
-struct MockPitchUseCase {
+struct PitchUseCase {
     private let task = NetworkTask(dispatcher: NetworkDispatcher())
     
-    class MockPitchRequest: Request {
-        var path: String = "\(EndPoints.fakePitch)"
+    class PitchRequest: Request {
+        var method: HTTPMethod = .post
+        var path: String = EndPoints.defaultURL
+        var gameId: Int
+        var teamName: String
+        
+        init(gameId: Int, teamName: String) {
+            self.gameId = gameId
+            self.teamName = teamName
+            self.path += EndPoints.games + "/\(self.gameId)" + "/teams/\(self.teamName)"
+        }
     }
     
-    func requestPitchStub(handler: @escaping (Any) -> Void) {
-        task.perform(request: MockPitchRequest(), dataType: Pitch.self) { result in
+    func requestPitch(gameId: Int, teamName: String, handler: @escaping (Any) -> Void) {
+        task.perform(request: PitchRequest(gameId: gameId, teamName: teamName), dataType: Pitch.self) { result in
             switch result {
             case .success(let decodedData):
                 handler(decodedData)

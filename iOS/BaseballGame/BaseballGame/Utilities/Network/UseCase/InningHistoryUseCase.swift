@@ -12,11 +12,21 @@ struct InningHistoryUseCase {
     private let task = NetworkTask(dispatcher: NetworkDispatcher())
     
     class InningHistoryRequest: Request {
-        var path: String = EndPoints.fakePlayInfo
+        var path: String = EndPoints.defaultURL
+        var gameId: Int
+        var teamName: String
+        var inning: Int
+        
+        init(gameId: Int, teamName: String, inning: Int) {
+            self.gameId = gameId
+            self.teamName = teamName
+            self.inning = inning
+            self.path += EndPoints.games + "/\(self.gameId)/" + EndPoints.teams + "/\(self.teamName)/" + EndPoints.inning + "/\(self.inning)"
+        }
     }
     
-    func requestInningHistoryStub(handler: @escaping (Any) -> Void) {
-        task.perform(request: InningHistoryRequest(), dataType: PitchHistory.self) { result in
+    func requestInningHistory(gameId: Int, teamName: String, inning: Int, handler: @escaping (Any) -> Void) {
+        task.perform(request: InningHistoryRequest(gameId: gameId, teamName: teamName, inning: inning), dataType: PitchHistory.self) { result in
             switch result {
             case .success(let decodedData):
                 handler(decodedData)
