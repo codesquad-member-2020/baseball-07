@@ -27,4 +27,8 @@ class GameListTableDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
+    func getGameId(_ row: Int) -> Int {
+        return gameList.games[row].id
+    }
+    
 }

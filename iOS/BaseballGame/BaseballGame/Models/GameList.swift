@@ -14,13 +14,14 @@ struct GameList: Codable {
 
 struct GameInfo: Codable {
     var id: Int
-    var home_team: TeamInfo
-    var away_team: TeamInfo
+    var homeTeam: TeamInfo
+    var awayTeam: TeamInfo
 }
 
 struct TeamInfo: Codable {
     var id: Int
     var name: String
+    var score: Int?
 }
 
 struct GameRoomEmpty: Codable {
@@ -28,4 +29,8 @@ struct GameRoomEmpty: Codable {
     var homeTeam: String
     var awayTeamEmpty: Bool
     var awayTeam: String
+}
+
+struct EnterRequest: Codable {
+    var result: String
 }

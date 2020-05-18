@@ -10,8 +10,9 @@ import UIKit
 
 final class GameListViewController: UIViewController {
     
-    private let gameListTitle = GameListTitleLabel()
     @IBOutlet var gameListTableView: GameListTableView!
+    
+    private let gameListTitle = GameListTitleLabel()
     private var gameListDataSource: GameListTableDataSource!
     private var networkIndicator: NetworkIndicator!
     
@@ -76,7 +77,7 @@ final class GameListViewController: UIViewController {
     }
     
     private func requestData() {
-        NetworkUseCase.requestGameListStub { decodedData in
+        GameListUseCase().requestGameList { decodedData in
             DispatchQueue.main.async {
                 self.gameListDataSource = GameListTableDataSource(gameList: decodedData as! GameList)
                 self.gameListTableView.dataSource = self.gameListDataSource
@@ -85,23 +86,23 @@ final class GameListViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension GameListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        NetworkUseCase.requestGameRoomEmptyInfoStub { decodedData in
+        let gameId = gameListDataSource.getGameId(indexPath.row)
+        GameRoomInfoUseCase().requestGameRoomInfo(gameId: gameId) { decodedData in
             DispatchQueue.main.async {
-                self.judge(decodedData as! GameRoomEmpty)
+                self.judge(decodedData as! GameRoomEmpty, gameId: gameId)
             }
         }
     }
     
-    private func judge(_ gameRoomEmpty: GameRoomEmpty) {
+    private func judge(_ gameRoomEmpty: GameRoomEmpty, gameId: Int) {
         if !gameRoomEmpty.homeTeamEmpty, !gameRoomEmpty.awayTeamEmpty {
             roomFullAlert()
         }else {
-            makeActionSheet(homeTeam: gameRoomEmpty.homeTeamEmpty ? gameRoomEmpty.homeTeam : nil, visitingTeam: gameRoomEmpty.awayTeamEmpty ? gameRoomEmpty.awayTeam : nil)
+            makeActionSheet(home: gameRoomEmpty.homeTeamEmpty ? gameRoomEmpty.homeTeam : nil, away: gameRoomEmpty.awayTeamEmpty ? gameRoomEmpty.awayTeam : nil, gameId: gameId)
         }
     }
     
@@ -111,30 +112,45 @@ extension GameListViewController: UITableViewDelegate {
         present(alert, animated: true)
     }
     
-    private func makeActionSheet(homeTeam hName: String?, visitingTeam vName: String?) {
+    private func makeActionSheet(home: String?, away: String?, gameId: Int) {
         let actionSheet = UIAlertController(title: "입장", message: "팀을 선택해주세요", preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "취소", style: .cancel) { _ in }
         
-        if let homeTeamName = hName {
+        if let homeTeamName = home {
             let homeTeam = UIAlertAction(title: homeTeamName, style: .default) { _ in
-                self.moveToNext(teamName: homeTeamName)
+                self.moveToNext(gameId: gameId, teamName: homeTeamName)
             }
             actionSheet.addAction(homeTeam)
         }
         
-        if let visitingTeamName = vName {
-            let visitingTeam = UIAlertAction(title: visitingTeamName, style: .default) { _ in
-                self.moveToNext(teamName: visitingTeamName)
+        if let awayTeamName = away {
+            let awayTeam = UIAlertAction(title: awayTeamName, style: .default) { _ in
+                self.moveToNext(gameId: gameId, teamName: awayTeamName)
             }
-            actionSheet.addAction(visitingTeam)
+            actionSheet.addAction(awayTeam)
         }
-        
         actionSheet.addAction(cancel)
         present(actionSheet, animated: true)
     }
     
-    private func moveToNext(teamName: String) {
-        
+    private func moveToNext(gameId: Int, teamName: String) {
+        RoomEnterAvailableUseCase().requestRoomEnterAvailable(gameId: gameId, teamName: teamName) { decodedData in
+            guard let result = decodedData as? EnterRequest else { return }
+            switch result.result {
+            case "ok" :
+                guard let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController else { return }
+                guard let playViewController = tabBarController.viewControllers?[0] as? PlayViewController else { return }
+                DispatchQueue.main.async {
+                    self.present(tabBarController, animated: true) {
+                        playViewController.requestPitchData(gameId: gameId, teamName: teamName)
+                        playViewController.requestInningHistoryData(gameId: gameId, teamName: teamName, inning: 0)
+                    }
+                }
+            case "fail" :
+                self.roomFullAlert()
+            default:
+                break
+            }
+        }
     }
-    
 }

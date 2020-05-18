@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0SR-ms-LE7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ESD-9M-weV">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -57,7 +57,7 @@
         <!--Game List View Controller-->
         <scene sceneID="NE6-oY-dTm">
             <objects>
-                <viewController storyboardIdentifier="GameListViewController" id="ESD-9M-weV" customClass="GameListViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameListViewController" modalPresentationStyle="fullScreen" id="ESD-9M-weV" customClass="GameListViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TKY-kJ-IUr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +92,7 @@
         <!--Play-->
         <scene sceneID="IcT-ZD-iso">
             <objects>
-                <viewController storyboardIdentifier="PlayViewController" id="bcC-Qf-VF0" customClass="PlayViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayViewController" modalPresentationStyle="fullScreen" id="bcC-Qf-VF0" customClass="PlayViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GFg-Ig-GzA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="hsi-oO-PFD">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0SR-ms-LE7" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="0SR-ms-LE7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dm5-ey-AIH">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -130,7 +130,7 @@
         <!--Scores-->
         <scene sceneID="4a2-tW-IbQ">
             <objects>
-                <viewController storyboardIdentifier="ScoresViewController" id="N9K-so-WsK" customClass="ScoresViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScoresViewController" modalPresentationStyle="fullScreen" id="N9K-so-WsK" customClass="ScoresViewController" customModule="BaseballGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m8l-Jg-h5P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

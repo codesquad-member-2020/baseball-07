@@ -11,10 +11,11 @@ import UIKit
 class PlayHistoryTableViewCell: UITableViewCell {
 
     static let identifier = "PlayHistoryTableViewCell"
-  
+    
     private let circleView: CircleView = {
        let view = CircleView()
         view.set(color: .lightGray)
+        view.show()
         return view
     }()
     
@@ -51,14 +52,7 @@ class PlayHistoryTableViewCell: UITableViewCell {
     
     private func configure() {
         self.isUserInteractionEnabled = false
-        temp()
         configureSubViews()
-    }
-    
-    private func temp() {
-        sequence.text = "12"
-        result.text = "스트라이크"
-        accumulatedResult.text = "S1 B2"
     }
     
     private func configureSubViews() {
@@ -84,7 +78,7 @@ class PlayHistoryTableViewCell: UITableViewCell {
             result.topAnchor.constraint(equalTo: circleView.topAnchor),
 
             accumulatedResult.topAnchor.constraint(equalTo: circleView.topAnchor),
-            accumulatedResult.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -4),
+            accumulatedResult.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10),
         ]
         constraints.forEach { $0.isActive = true }
         
@@ -92,9 +86,19 @@ class PlayHistoryTableViewCell: UITableViewCell {
     
     func setCircleColor() {
         circleView.set(color: UIColor(named: "Yellow"))
+        circleView.show()
     }
     
     override func prepareForReuse() {
         circleView.set(color: .lightGray)
+        self.sequence.text = nil
+        self.result.text = nil
+        accumulatedResult.text = nil
+    }
+    
+    func configureHitInfo(sequence: Int, result: String, strikeCount: Int, ballCount: Int) {
+        self.sequence.text = "\(sequence + 1)"
+        self.result.text = "\(result)"
+        accumulatedResult.text = "S\(strikeCount) B\(ballCount)"
     }
 }

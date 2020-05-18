@@ -57,6 +57,8 @@ class InningCollectionViewCell: UICollectionViewCell {
         inning.textColor = UIColor(named: "Navy")
         inning.backgroundColor = .white
         self.backgroundColor = .white
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor(named: "Navy")?.cgColor
         
     }
     

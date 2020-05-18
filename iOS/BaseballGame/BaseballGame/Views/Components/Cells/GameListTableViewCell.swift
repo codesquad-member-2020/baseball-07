@@ -9,7 +9,7 @@
 import UIKit
 
 class GameListTableViewCell: UITableViewCell {
-    
+        
     private let gameCard = GameListCardView()
     private let gameTitle: UILabel = {
         let label = UILabel()
@@ -27,6 +27,13 @@ class GameListTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configure()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        gameTitle.text! = "GAME "
+        gameCard.setHomeTeam("")
+        gameCard.setVisitingTeam("")
     }
     
     private func configure() {
@@ -51,7 +58,7 @@ class GameListTableViewCell: UITableViewCell {
    
     func configureCell(gameInfo: GameInfo) {
         gameTitle.text! += "\(gameInfo.id)"
-        gameCard.setHomeTeam(gameInfo.home_team.name)
-        gameCard.setVisitingTeam(gameInfo.away_team.name)
+        gameCard.setHomeTeam(gameInfo.homeTeam.name)
+        gameCard.setVisitingTeam(gameInfo.awayTeam.name)
     }
 }

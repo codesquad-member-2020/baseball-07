@@ -31,6 +31,7 @@ class GameFieldView: UIView {
         self.addSubview(pitch)
 
         configureConstraints()
+        configurePitchButton()
     }
     
     private func configureConstraints() {
@@ -50,4 +51,29 @@ class GameFieldView: UIView {
         ]
         constraints.forEach { $0.isActive = true }
     }
+    
+    private func configurePitchButton() {
+        pitch.addTarget(self, action: #selector(pressPitchButton), for: .touchUpInside)
+    }
+    
+    @objc private func pressPitchButton() {
+        NotificationCenter.default.post(name: .pitch, object: nil)
+    }
+    
+    func configure(inningTotal: InningTotal?) {
+        guard let inningCount = inningTotal else { return }
+        sboView.configureStrike(inningCount.strike)
+        sboView.configureBall(inningCount.ball)
+        sboView.configureOut(inningCount.out)
+        groundView.occupy(inningCount.base)
+    }
+    
+    func hidePitchButton() {
+        pitch.hideAnimation()
+    }
+    
+    func showPitchButton() {
+        pitch.showAnimation()
+    }
+    
 }

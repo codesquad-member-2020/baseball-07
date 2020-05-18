@@ -13,12 +13,16 @@ class PlayViewController: UIViewController {
     private let gameHeaderView = GameHeaderView()
     private let gameFieldView = GameFieldView()
     
+    private let nowTurnPlayerInfoView = NowTurnPlayerInfoStackView()
+    
     private var inningCollectionView: InningCollectionView!
     private let inningDataSource = InningCollectionViewDataSource()
     private let inningDelegate = InningCollectionViewDelegate()
     
     private var inningHistoryCollectionView: AllInningHistoryCollectionView!
-    private let inningHistoryDataSource = AllInningHistoryCollectionViewDataSource()
+    private var inningHistoryDataSource:  AllInningHistoryCollectionViewDataSource!
+    
+    private var pitchViewModel: PitchViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +40,9 @@ class PlayViewController: UIViewController {
     private func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(moveInningInfoCell(_:)), name: .selectInningCell, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(moveInningCell(_:)), name: .swipeCell, object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(requestPitchData(_:)), name: .pitch, object: nil)
     }
-
+    
     @objc private func moveInningInfoCell(_ notification: Notification) {
         guard let indexPath = notification.userInfo?["indexPath"] as? IndexPath else { return }
         inningHistoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
@@ -55,6 +59,11 @@ class PlayViewController: UIViewController {
         cell.selected()
     }
     
+    @objc private func requestPitchData(_ notification: Notification) {
+        gameFieldView.hidePitchButton()
+//        requestPitchData()
+    }
+    
     private func configureInningCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -62,9 +71,8 @@ class PlayViewController: UIViewController {
         layout.scrollDirection = .horizontal
         inningCollectionView = InningCollectionView(frame: .zero, collectionViewLayout: layout)
         inningCollectionView.register(InningCollectionViewCell.self, forCellWithReuseIdentifier: InningCollectionViewCell.identifier)
-        inningCollectionView.dataSource = inningDataSource
         inningCollectionView.delegate = inningDelegate
-
+        inningCollectionView.dataSource = inningDataSource
     }
     
     private func configureInningHistoryCollectionView() {
@@ -76,13 +84,13 @@ class PlayViewController: UIViewController {
         inningHistoryCollectionView = AllInningHistoryCollectionView(frame: .zero, collectionViewLayout: layout)
         inningHistoryCollectionView.register(AllInningHistoryCollectionViewCell.self, forCellWithReuseIdentifier: AllInningHistoryCollectionViewCell.identifier)
         inningHistoryCollectionView.isPagingEnabled = true
-        inningHistoryCollectionView.dataSource = inningHistoryDataSource
         inningHistoryCollectionView.delegate = self
     }
     
     private func configureSubViews() {
         self.view.addSubview(gameHeaderView)
         self.view.addSubview(gameFieldView)
+        self.view.addSubview(nowTurnPlayerInfoView)
         self.view.addSubview(inningCollectionView)
         self.view.addSubview(inningHistoryCollectionView)
     }
@@ -98,7 +106,11 @@ class PlayViewController: UIViewController {
             gameFieldView.topAnchor.constraint(equalTo: gameHeaderView.bottomAnchor, constant: 5),
             gameFieldView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 3),
             
-            inningCollectionView.topAnchor.constraint(equalTo: gameFieldView.bottomAnchor),
+            nowTurnPlayerInfoView.topAnchor.constraint(equalTo: gameFieldView.bottomAnchor, constant: 12),
+            nowTurnPlayerInfoView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 26),
+            nowTurnPlayerInfoView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -26),
+            
+            inningCollectionView.topAnchor.constraint(equalTo: nowTurnPlayerInfoView.bottomAnchor, constant: 4),
             inningCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             inningCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             inningCollectionView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.06),
@@ -110,6 +122,32 @@ class PlayViewController: UIViewController {
             inningHistoryCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         ]
         constraints.forEach { $0.isActive = true }
+    }
+    
+    func requestPitchData(gameId: Int, teamName: String) {
+        PitchUseCase().requestPitch(gameId: gameId, teamName: teamName) { decodeData in
+            self.pitchViewModel = PitchViewModel(pitch: decodeData as? Pitch) { pitchData in
+                DispatchQueue.main.async {
+                    self.gameHeaderView.configure(playInfo: pitchData)
+                    self.gameFieldView.configure(inningTotal: pitchData?.inningTotal)
+                    self.nowTurnPlayerInfoView.configureHitterInfo(pitchData?.result.hitter)
+                    self.nowTurnPlayerInfoView.configurePitcherInfo(pitchData?.result.pitcher)
+                    self.gameFieldView.showPitchButton()
+                }
+            }
+        }
+    }
+    
+    func requestInningHistoryData(gameId: Int, teamName: String, inning: Int) {
+        InningHistoryUseCase().requestInningHistory(gameId: gameId, teamName: teamName, inning: inning) {
+            decodeData in
+            guard let pitchHistory = decodeData as? PitchHistory else { return }
+            DispatchQueue.main.async {
+                self.inningHistoryDataSource = AllInningHistoryCollectionViewDataSource(pitchHistory: pitchHistory)
+                self.inningHistoryCollectionView.dataSource = self.inningHistoryDataSource
+                self.inningHistoryCollectionView.reloadData()
+            }
+        }
     }
 }
 
