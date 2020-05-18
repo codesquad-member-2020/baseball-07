@@ -35,7 +35,6 @@ class PlayViewController: UIViewController {
         configureSubViews()
         configureConstraints()
         configureObserver()
-        requestData()
     }
     
     private func configureObserver() {
@@ -62,7 +61,7 @@ class PlayViewController: UIViewController {
     
     @objc private func requestPitchData(_ notification: Notification) {
         gameFieldView.hidePitchButton()
-        requestPitchData()
+//        requestPitchData()
     }
     
     private func configureInningCollectionView() {
@@ -125,13 +124,8 @@ class PlayViewController: UIViewController {
         constraints.forEach { $0.isActive = true }
     }
     
-    private func requestData() {
-        requestPitchData()
-        requestInningHistoryData()
-    }
-    
-    private func requestPitchData() {
-        MockPitchUseCase().requestPitchStub { decodeData in
+    func requestPitchData(gameId: Int, teamName: String) {
+        PitchUseCase().requestPitch(gameId: gameId, teamName: teamName) { decodeData in
             self.pitchViewModel = PitchViewModel(pitch: decodeData as? Pitch) { pitchData in
                 DispatchQueue.main.async {
                     self.gameHeaderView.configure(playInfo: pitchData)
@@ -144,8 +138,8 @@ class PlayViewController: UIViewController {
         }
     }
     
-    private func requestInningHistoryData() {
-        MockInningHistoryUseCase().requestInningHistoryStub {
+    func requestInningHistoryData(gameId: Int, teamName: String, inning: Int) {
+        InningHistoryUseCase().requestInningHistory(gameId: gameId, teamName: teamName, inning: inning) {
             decodeData in
             guard let pitchHistory = decodeData as? PitchHistory else { return }
             DispatchQueue.main.async {
